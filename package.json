@@ -1,28 +1,28 @@
 {
-    "name": "BManagar",
+    "name": "node-mongo-registration-login-api",
     "version": "1.0.0",
-    "description": "BManagar app",
-    "main": "index.js",
-    "scripts": {
-        "test": "npm run",
-        "dev": "nodemon server.js"
+    "description": "NodeJS + MongoDB API for User Management, Authentication and Registration",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/cornflourblue/node-mongo-registration-login-api.git"
     },
-    "author": "yousights",
-    "license": "ISC",
+    "scripts": {
+        "start": "node ./server.js",
+        "start:dev": "nodemon ./server.js"
+    },
     "dependencies": {
-        "aws-sdk": "^2.715.0",
-        "bcrypt-nodejs": "0.0.3",
-        "body-parser": "^1.18.2",
-        "cors": "^2.8.4",
-        "express": "^4.16.3",
-        "geolib": "^2.0.24",
-        "googleapis": "^32.0.0",
-        "mongodb": "^3.0.4",
-        "multer": "^1.4.2",
-        "nodemailer": "^5.1.1",
-        "xoauth2": "^1.2.0"
+        "bcryptjs": "^2.4.3",
+        "body-parser": "^1.19.0",
+        "cors": "^2.8.5",
+        "express": "^4.17.1",
+        "express-jwt": "^6.0.0",
+        "jsonwebtoken": "^8.5.1",
+        "mongodb": "^3.5.9",
+        "mongoose": "^5.9.21",
+        "rootpath": "^0.1.2"
     },
     "devDependencies": {
-        "nodemon": "^1.18.9"
+        "nodemon": "^2.0.4"
     }
 }

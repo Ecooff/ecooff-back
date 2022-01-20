@@ -1,21 +1,26 @@
-const express = require('express'),
-    bodyParser = require('body-parser'),
-    MongoClient = require('mongodb').MongoClient,
-    app = express(),
-    port = 3000,
-    db = require('./config/db'),
-    cors = require('cors');
+﻿require('rootpath')();
+const express = require('express');
+const app = express();
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const jwt = require('_helpers/jwt');
+const errorHandler = require('_helpers/error-handler');
 
-app.use(cors());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(cors());
 
-MongoClient.connect(db.localhost, (err, database) => {
+// use JWT auth to secure the api
+app.use(jwt());
 
-    if (err) return console.log(err)
+// api routes
+app.use('/users', require('./users/users.controller'));
 
-    require('./app/routes')(app, database);
-    app.listen(port, () => {
-        console.log("Server running on " + port);
-    });
+// global error handler
+app.use(errorHandler);
 
+// start server
+const port = process.env.NODE_ENV === 'production' ? (process.env.PORT || 80) : 3000;
+const server = app.listen(port, function () {
+    console.log('Server running on port ' + port);
 });
