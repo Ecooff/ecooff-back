@@ -20,6 +20,7 @@
         "jsonwebtoken": "^8.5.1",
         "mongodb": "^3.5.9",
         "mongoose": "^5.9.21",
+        "nodemailer": "^6.7.2",
         "rootpath": "^0.1.2"
     },
     "devDependencies": {

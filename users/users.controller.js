@@ -12,6 +12,7 @@ router.post('/register', register);
 router.get('/', getAll);
 //router.get('/current', getCurrent);
 router.get('/:id', getById);
+router.post('/verifyEmail', verifyEmail);
 /*router.put('/:id', update);
 router.delete('/:id', _delete);*/
 
@@ -45,6 +46,12 @@ function getById(req, res, next) {
     userService.getById(req.params.id)
         .then(user => user ? res.json(user) : res.sendStatus(404))
         .catch(err => next(err));
+}
+
+function verifyEmail(req, res, next) {
+    userService.verifyEmail(req.body)
+        .then(() => res.json({ message: 'verificado!' }))
+        .catch(next);
 }
 
 /*function update(req, res, next) {
