@@ -7,12 +7,18 @@ const userService = require('./user.service');
 router.get('/serverAlive', (req, res) => {
     res.send("Hello World");
 });
+router.get('/serverAlive2', (req, res) => {
+    res.send("Hello World");
+});
 router.post('/authenticate', authenticate);
 router.post('/register', register);
 router.get('/', getAll);
 //router.get('/current', getCurrent);
 router.get('/:id', getById);
+router.post('/resendVerify', resendVerify);
 router.post('/verifyEmail', verifyEmail);
+router.post('/forgotPasswordRequest', forgotPasswordRequest);
+router.put('/forgotPasswordUpdate', forgotPasswordUpdate);
 /*router.put('/:id', update);
 router.delete('/:id', _delete);*/
 
@@ -48,10 +54,28 @@ function getById(req, res, next) {
         .catch(err => next(err));
 }
 
+function resendVerify(req, res, next) {
+    userService.resendVerify(req.body)
+    .then(() => res.json({ message: 'Codigo de verificacion reenviado'}))
+    .catch(next);
+}
+
 function verifyEmail(req, res, next) {
     userService.verifyEmail(req.body)
         .then(() => res.json({ message: 'verificado!' }))
         .catch(next);
+}
+
+function forgotPasswordRequest(req, res, next) {
+    userService.forgotPasswordRequest(req.body)
+    .then(() => res.json({ message: 'Token enviado por email' }))
+    .catch(next);
+}
+
+function forgotPasswordUpdate(req, res, next) {
+    userService.forgotPasswordUpdate(req.body)
+    .then(() => res.json({ message: 'Clave actualizada'}))
+    .catch(next);
 }
 
 /*function update(req, res, next) {

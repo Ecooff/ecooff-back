@@ -2,13 +2,13 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const schema = new Schema({
-    username: { type: String, unique: true, required: true },
+    email: {type: String, unique:true, reqired:true},
     hash: { type: String, required: true },
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
-    email: {type: String, unique:true, reqired:true},
     verified: {type: Boolean, default: false},
-    verificationToken: {type: String}
+    verificationToken: {type: String},
+    forgotPwToken: {type: String}
 });
 
 schema.set('toJSON', {

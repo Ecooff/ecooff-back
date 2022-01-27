@@ -5,4 +5,6 @@ NodeJS + MongoDB API for User Management, Authentication and Registration
 For documentation and instructions check out http://jasonwatmore.com/post/2018/06/14/nodejs-mongodb-simple-api-for-authentication-registration-and-user-management
 
 agregar:
-pulido de email q tenga formato correcto
+q funcione el mandado de mail
+de alguna manera pasarle el token a traves de un link
+forget password

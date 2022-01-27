@@ -1,13 +1,4 @@
 ﻿{
     "connectionString": "mongodb://localhost/node-mongo-registration-login-api",
-    "secret": "THIS IS USED TO SIGN AND VERIFY JWT TOKENS, REPLACE IT WITH YOUR OWN SECRET, IT CAN BE ANY STRING",
-    "emailFrom": "info@node-mongo-signup-verification-api.com",
-    "smtpOptions": {
-        "host": "smtp.ethereal.email",
-        "port": 587,
-        "auth": {
-            "user": "isom.kreiger64@ethereal.email",
-            "pass": "F2t5C97h8mkCTVX3cq"
-        }
-    }
+    "secret": "6d2ad504-d1b2-40c3-85cd-0af0b7e45c06-ec52e401-cb8c-40de-b25f-d48fccea1de4-12803fe4-8f21-47d2-beb8-a0f5a249c30d"
 }
