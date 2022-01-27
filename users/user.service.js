@@ -16,8 +16,6 @@ module.exports = {
     verifyEmail,
     forgotPasswordRequest,
     forgotPasswordUpdate
-    // update,
-    // delete: _delete
 };
 
 //Send email
@@ -58,8 +56,8 @@ function randomTokenString() {
     return crypto.randomBytes(3).toString('hex');
 }
 
+//REGISTER
 async function create(userParam) {
-    // validate
 
     if (await User.findOne({ email: userParam.email })) {
         throw 'Ese email ya esta en uso, prueba con otro';
@@ -67,7 +65,6 @@ async function create(userParam) {
 
     const user = new User(userParam);
 
-    // hash password
     if (userParam.password) {
         user.hash = bcrypt.hashSync(userParam.password, 10);
     }
@@ -93,9 +90,10 @@ async function create(userParam) {
         console.log("Email sent: " + info.response);
     });
 
-    // save user
     await user.save();
 }
+
+//VERIFY EMAIL, RESEND VERIFY
 
 async function resendVerify({ emailParam }) {
     const user = await db.User.findOne({ email : emailParam });
@@ -124,7 +122,6 @@ async function resendVerify({ emailParam }) {
         console.log("Email sent: " + info.response);
     });
 
-    // save user
     await user.save();
 }
 
@@ -140,6 +137,8 @@ async function verifyEmail({ token }) {
     user.verificationToken = undefined;
     await user.save();
 }
+
+//FORGOT PW
 
 async function forgotPasswordRequest({ email }) {
     const user = await db.User.findOne({email : email});
@@ -175,7 +174,6 @@ async function forgotPasswordUpdate(userParam) {
 
     if(userParam.pw != userParam.confirmPw) throw 'las contraseñas deben coincidir'
 
-    // hash password
     if (userParam.pw) {
         user.hash = bcrypt.hashSync(userParam.pw, 10);
     }
@@ -183,28 +181,3 @@ async function forgotPasswordUpdate(userParam) {
 
     await user.save();
 }
-
-
-/*async function update(id, userParam) {
-    const user = await User.findById(id);
-
-    // validate
-    if (!user) throw 'Usuario no encontrado';
-    if (user.username !== userParam.username && await User.findOne({ username: userParam.username })) {
-        throw 'El usuario "' + userParam.username + '" ya existe, prueba con otro';
-    }
-
-    // hash password if it was entered
-    if (userParam.password) {
-        userParam.hash = bcrypt.hashSync(userParam.password, 10);
-    }
-
-    // copy userParam properties to user
-    Object.assign(user, userParam);
-
-    await user.save();
-}
-
-async function _delete(id) {
-    await User.findByIdAndRemove(id);
-}*/
