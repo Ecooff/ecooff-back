@@ -5,7 +5,7 @@ const crypto = require("crypto");
 const db = require('_helpers/db');
 const res = require('express/lib/response');
 const User = db.User;
-const nodemailer = require('nodemailer');
+const sendEmail = require('_helpers/send-email');
 
 module.exports = {
     authenticate,
@@ -19,13 +19,13 @@ module.exports = {
 };
 
 //Send email
-const transporter = nodemailer.createTransport( {
-    service:"hotmail",
-    auth: {
-        user: "nodeseba@outlook.com",
-        pass: "node1234",
-    }
-});
+// const transporter = nodemailer.createTransport( {
+//     service:"hotmail",
+//     auth: {
+//         user: "nodeseba@outlook.com",
+//         pass: "node1234",
+//     }
+// });
 
 async function authenticate({ email, password }) {
     const user = await User.findOne({ email });
@@ -33,7 +33,7 @@ async function authenticate({ email, password }) {
     if (user && bcrypt.compareSync(password, user.hash)) {
 
         if (!user.verified) {
-            throw 'Por favor, confirma tu email para iniciar sesion';
+            return 'por favor validar cuenta';
         }   
 
         const token = jwt.sign({ sub: user.id }, config.secret, { expiresIn: '90d' });//refresh token cada vez q cambie de vista
@@ -71,23 +71,10 @@ async function create(userParam) {
 
     user.verificationToken = randomTokenString();
 
-    
-    const options = {
-        from: "nodeseba@outlook.com",
+    await sendEmail({
         to: user.email,
-        subject:"Verificar Email",
-        html:`
-        <p>Gracias por registrarse. Este es el codigo para validar la cuenta: </p>
-        <a href ="">${user.verificationToken}</a>
-        `
-    };
-    
-    transporter.sendMail(options, function(err, info) {
-        if(err){
-            console.log(err);
-            return;
-        }
-        console.log("Email sent: " + info.response);
+        subject: 'token de validacion',
+        html: `<p>utiliza este token para validar tu cuenta: ${user.verificationToken}</p>`
     });
 
     await user.save();
@@ -104,22 +91,10 @@ async function resendVerify({ emailParam }) {
     user.verificationToken = randomTokenString();
 
     
-    const options = {
-        from: "nodeseba@outlook.com",
+    await sendEmail({
         to: user.email,
-        subject:"Verificar Email (Reenviado)",
-        html:`
-        <p>El codigo de verificacion de su cuenta ha sido actualizado: </p>
-        <a href ="">${user.verificationToken}</a>
-        `
-    };
-    
-    transporter.sendMail(options, function(err, info) {
-        if(err){
-            console.log(err);
-            return;
-        }
-        console.log("Email sent: " + info.response);
+        subject: 'token de validacion (reenvio)',
+        html: `<p>utiliza este token para validar tu cuenta: ${user.verificationToken}</p>`
     });
 
     await user.save();
@@ -146,22 +121,10 @@ async function forgotPasswordRequest({ email }) {
 
     user.forgotPwToken = randomTokenString();
 
-    const options = {
-        from: "nodeseba@outlook.com",
+    await sendEmail({
         to: user.email,
-        subject:"Olvide mi clave",
-        html:`
-        <p>Codigo para cambiar contraseña: </p>
-        <a href ="">${user.forgotPwToken}</a>
-        `
-    };
-    
-    transporter.sendMail(options, function(err, info) {
-        if(err){
-            console.log(err);
-            return;
-        }
-        console.log("Email sent: " + info.response);
+        subject: 'olvide mi contraseña',
+        html: `<p>utiliza este token reestablecer tu contraseña: ${user.forgotPwToken}</p>`
     });    
 
     await user.save();
