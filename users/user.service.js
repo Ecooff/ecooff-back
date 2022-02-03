@@ -33,7 +33,7 @@ async function authenticate({ email, password }) {
     if (user && bcrypt.compareSync(password, user.hash)) {
 
         if (!user.verified) {
-            throw new Error('Por favor, confirma tu email para iniciar sesion');
+            throw 'Por favor, confirma tu email para iniciar sesion';
         }   
 
         const token = jwt.sign({ sub: user.id }, config.secret, { expiresIn: '90d' });//refresh token cada vez q cambie de vista

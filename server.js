@@ -3,7 +3,6 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const nodemailer = require('nodemailer');
 const jwt = require('_helpers/jwt');
 const errorHandler = require('_helpers/error-handler');
 
@@ -22,7 +21,7 @@ app.use('/api/users', require('./users/users.controller'));
 app.use(errorHandler);
 
 // start server
-const port = process.env.NODE_ENV === 'production' ? (process.env.PORT || 80) : 3000;
+const port = 3000;
 const server = app.listen(port, function () {
     console.log('Server running on port ' + port);
 });

@@ -15,6 +15,7 @@
         "bcryptjs": "^2.4.3",
         "body-parser": "^1.19.0",
         "cors": "^2.8.5",
+        "dotenv": "^16.0.0",
         "express": "^4.17.1",
         "express-jwt": "^6.0.0",
         "jsonwebtoken": "^8.5.1",
@@ -22,8 +23,5 @@
         "mongoose": "^5.9.21",
         "nodemailer": "^6.7.2",
         "rootpath": "^0.1.2"
-    },
-    "devDependencies": {
-        "nodemon": "^2.0.4"
     }
 }
