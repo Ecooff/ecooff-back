@@ -15,17 +15,11 @@ module.exports = {
     resendVerify,
     verifyEmail,
     forgotPasswordRequest,
+    forgotPasswordTokenOnly,
     forgotPasswordUpdate
 };
 
-//Send email
-// const transporter = nodemailer.createTransport( {
-//     service:"hotmail",
-//     auth: {
-//         user: "nodeseba@outlook.com",
-//         pass: "node1234",
-//     }
-// });
+//LOGIN
 
 async function authenticate({ email, password }) {
     const user = await User.findOne({ email });
@@ -52,6 +46,7 @@ async function getById(id) {
     return await User.findById(id);
 }
 
+//GENERATE TOKENS (not authentication tokens, verify email and forgot pw tokens)
 function randomTokenString() {
     return crypto.randomBytes(3).toString('hex');
 }
@@ -128,6 +123,13 @@ async function forgotPasswordRequest({ email }) {
     });    
 
     await user.save();
+}
+
+async function forgotPasswordTokenOnly(userParam) {
+    const user = await db.User.findOne({ forgotPwToken: userParam.token });
+    if (!user) throw 'Usuario no encontrado/token invalido';
+    
+    return;
 }
 
 async function forgotPasswordUpdate(userParam) {

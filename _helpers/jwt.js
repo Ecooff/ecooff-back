@@ -12,6 +12,7 @@ function jwt() {
             '/api/users/authenticate',
             '/api/users/register',
             '/api/users/forgotPasswordRequest',
+            '/api/users/forgotPasswordTokenOnly',
             '/api/users/forgotPasswordUpdate',
             '/api/users/verifyEmail',
             '/api/users/resendVerify'

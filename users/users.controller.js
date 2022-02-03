@@ -16,6 +16,7 @@ router.get('/:id', getById);
 router.post('/resendVerify', resendVerify);
 router.post('/verifyEmail', verifyEmail);
 router.post('/forgotPasswordRequest', forgotPasswordRequest);
+router.post('/forgotPasswordTokenOnly', forgotPasswordTokenOnly);
 router.put('/forgotPasswordUpdate', forgotPasswordUpdate);
 
 module.exports = router;
@@ -65,6 +66,12 @@ function verifyEmail(req, res, next) {
 function forgotPasswordRequest(req, res, next) {
     userService.forgotPasswordRequest(req.body)
     .then(() => res.json({ message: 'Token enviado por email' }))
+    .catch(next);
+}
+
+function forgotPasswordTokenOnly(req, res, next) {
+    userService.forgotPasswordTokenOnly(req.body)
+    .then(() => res.json({ message: 'Token ok' }))
     .catch(next);
 }
 
