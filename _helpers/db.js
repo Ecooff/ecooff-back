@@ -5,5 +5,9 @@ mongoose.connect("mongodb://localhost/ecooff" || config.connectionString, connec
 mongoose.Promise = global.Promise;
 
 module.exports = {
-    User: require('../users/user.model')
+    User: require('../users/user.model'),
+    Category: require('../categories/category.model'),
+    Provider: require('../providers/provider.model'),
+    Product: require('../products/product.model'),
+    Stock: require('../stock/stock.model')
 };
