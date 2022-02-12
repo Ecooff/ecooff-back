@@ -8,6 +8,12 @@ const schema = new Schema({
     lastName: { type: String, required: true },
     verified: {type: Boolean, default: false},
     verificationToken: {type: String},
+    // Favorites: [
+    //     {
+    //         subcategoryId: gaseosas
+    //         count:++
+    //     }
+    // ],
     forgotPwToken: {type: String}
 });
 

@@ -6,6 +6,7 @@ const db = require('_helpers/db');
 const res = require('express/lib/response');
 const User = db.User;
 const sendEmail = require('_helpers/send-email');
+const ObjectId = require('mongodb').ObjectId;
 
 module.exports = {
     authenticate,
@@ -27,7 +28,10 @@ async function authenticate({ email, password }) {
     if (user && bcrypt.compareSync(password, user.hash)) {
 
         if (!user.verified) {
-            return 'por favor validar cuenta';
+            console.log('not verified');
+            console.log(user);
+            console.log(user.verified);
+            return {verified: user.verified};
         }   
 
         const token = jwt.sign({ sub: user.id }, config.secret, { expiresIn: '90d' });//refresh token cada vez q cambie de vista
@@ -43,12 +47,12 @@ async function getAll() {
 }
 
 async function getById(id) {
-    return await User.findById(id);
+    return await User.findById(ObjectId(id));
 }
 
 //GENERATE TOKENS (not authentication tokens, verify email and forgot pw tokens)
 function randomTokenString() {
-    return crypto.randomBytes(3).toString('hex');
+    return crypto.randomBytes(2).toString('hex');
 }
 
 //REGISTER
@@ -96,16 +100,14 @@ async function resendVerify({ emailParam }) {
 }
 
 async function verifyEmail({ token }) {
-    console.log(token);
     const user = await db.User.findOne({ verificationToken: token });
-
-    console.log(user);
 
     if (!user) throw 'Usuario no encontrado/token invalido';
 
     user.verified = true;
     user.verificationToken = undefined;
     await user.save();
+    return user;
 }
 
 //FORGOT PW

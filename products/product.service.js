@@ -2,7 +2,9 @@ const db = require('_helpers/db');
 const Product = db.Product;
 
 module.exports = {
-    create
+    create,
+    getAll,
+    getById
 };
 
 async function create(userParam) {
@@ -13,4 +15,12 @@ async function create(userParam) {
     const product = new Product(userParam);
 
     await product.save();
+}
+
+async function getAll() {
+    return await Product.find();
+}
+
+async function getById(id) {
+    return await Product.findById(id);
 }

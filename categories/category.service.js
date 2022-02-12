@@ -2,7 +2,9 @@ const db = require('_helpers/db');
 const Category = db.Category;
 
 module.exports = {
-    create
+    create,
+    getAll,
+    getById
 };
 
 async function create(userParam) {
@@ -13,5 +15,13 @@ async function create(userParam) {
     const category = new Category(userParam);
 
     await category.save();
+}
+
+async function getAll() {
+    return await Category.find();
+}
+
+async function getById(id) {
+    return await Category.findById(id);
 }
 

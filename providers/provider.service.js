@@ -3,7 +3,9 @@ const res = require('express/lib/response');
 const Provider = db.Provider;
 
 module.exports = {
-    create
+    create,
+    getAll,
+    getById
 };
 
 async function create(userParam) {
@@ -14,4 +16,12 @@ async function create(userParam) {
     const provider = new Provider(userParam);
 
     await provider.save();
+}
+
+async function getAll() {
+    return await Provider.find();
+}
+
+async function getById(id) {
+    return await Provider.findById(id);
 }

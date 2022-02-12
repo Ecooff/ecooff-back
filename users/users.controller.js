@@ -49,7 +49,7 @@ function getById(req, res, next) {
 
 function resendVerify(req, res, next) {
     userService.resendVerify(req.body)
-    .then(() => res.json({ message: 'Codigo de verificacion reenviado'}))
+    .then(() => res.json({ message: 'Codigo de verificacion reenviado'} + user))
     .catch(next);
 }
 
@@ -57,7 +57,7 @@ function resendVerify(req, res, next) {
 
 function verifyEmail(req, res, next) {
     userService.verifyEmail(req.body)
-        .then(() => res.json({ message: 'verificado!' }))
+        .then(user => user) // () => res.json({ message: 'verificado!' })
         .catch(next);
 }
 
