@@ -5,7 +5,7 @@ const Provider = db.Provider;
 module.exports = {
     create,
     getAll,
-    getById
+    getProviders
 };
 
 async function create(userParam) {
@@ -22,6 +22,6 @@ async function getAll() {
     return await Provider.find();
 }
 
-async function getById(id) {
-    return await Provider.findById(id);
+async function getProviders() {
+    return await Provider.find();
 }

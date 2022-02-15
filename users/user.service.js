@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const crypto = require("crypto");
 const db = require('_helpers/db');
-const res = require('express/lib/response');
+//const res = require('express/lib/response');
 const User = db.User;
 const sendEmail = require('_helpers/send-email');
 const ObjectId = require('mongodb').ObjectId;
@@ -17,7 +17,8 @@ module.exports = {
     verifyEmail,
     forgotPasswordRequest,
     forgotPasswordTokenOnly,
-    forgotPasswordUpdate
+    forgotPasswordUpdate,
+    retrieveUser
 };
 
 //LOGIN
@@ -28,13 +29,10 @@ async function authenticate({ email, password }) {
     if (user && bcrypt.compareSync(password, user.hash)) {
 
         if (!user.verified) {
-            console.log('not verified');
-            console.log(user);
-            console.log(user.verified);
             return {verified: user.verified};
         }   
 
-        const token = jwt.sign({ sub: user.id }, config.secret, { expiresIn: '90d' });//refresh token cada vez q cambie de vista
+        const token = jwt.sign({ sub: user.id }, config.secret, { expiresIn: '90d' });
         return {
             ...user.toJSON(),
             token
@@ -70,13 +68,14 @@ async function create(userParam) {
 
     user.verificationToken = randomTokenString();
 
-    await sendEmail({
-        to: user.email,
-        subject: 'token de validacion',
-        html: `<p>utiliza este token para validar tu cuenta: ${user.verificationToken}</p>`
-    });
+    // await sendEmail({
+    //     to: user.email,
+    //     subject: 'token de validacion',
+    //     html: `<p>utiliza este token para validar tu cuenta: ${user.verificationToken}</p>`
+    // });
 
     await user.save();
+    return {...user.toJSON()};
 }
 
 //VERIFY EMAIL, RESEND VERIFY
@@ -90,11 +89,11 @@ async function resendVerify({ emailParam }) {
     user.verificationToken = randomTokenString();
 
     
-    await sendEmail({
-        to: user.email,
-        subject: 'token de validacion (reenvio)',
-        html: `<p>utiliza este token para validar tu cuenta: ${user.verificationToken}</p>`
-    });
+    // await sendEmail({
+    //     to: user.email,
+    //     subject: 'token de validacion (reenvio)',
+    //     html: `<p>utiliza este token para validar tu cuenta: ${user.verificationToken}</p>`
+    // });
 
     await user.save();
 }
@@ -106,8 +105,10 @@ async function verifyEmail({ token }) {
 
     user.verified = true;
     user.verificationToken = undefined;
+
     await user.save();
-    return user;
+    return {...user.toJSON()};
+    
 }
 
 //FORGOT PW
@@ -118,11 +119,11 @@ async function forgotPasswordRequest({ email }) {
 
     user.forgotPwToken = randomTokenString();
 
-    await sendEmail({
-        to: user.email,
-        subject: 'olvide mi contraseña',
-        html: `<p>utiliza este token reestablecer tu contraseña: ${user.forgotPwToken}</p>`
-    });    
+    // await sendEmail({
+    //     to: user.email,
+    //     subject: 'olvide mi contraseña',
+    //     html: `<p>utiliza este token reestablecer tu contraseña: ${user.forgotPwToken}</p>`
+    // });    
 
     await user.save();
 }
@@ -147,4 +148,29 @@ async function forgotPasswordUpdate(userParam) {
     user.forgotPwToken = undefined;
 
     await user.save();
+
+    return {user : user};
+}
+
+async function retrieveUser(){  //a completar
+    console.log('service');
+    const token = req.cookies.jwt;
+
+    if(token) {
+        jwt.verify(token, '6d2ad504-d1b2-40c3-85cd-0af0b7e45c06-ec52e401-cb8c-40de-b25f-d48fccea1de4-12803fe4-8f21-47d2-beb8-a0f5a249c30d', async (err, decodedToken) => {
+            if(err) {
+                console.log(err.message);
+                res.locals.user = null;
+                return 'error 1';
+            } else {
+                console.log(decodedToken);
+                let user = await User.findById(decodedToken.id);
+                res.locals.user = user;
+                return user;
+            }
+        })
+    } else {
+        res.locals.user = null;
+        return 'error 2';
+    }
 }

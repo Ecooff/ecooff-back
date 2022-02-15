@@ -1,3 +1,4 @@
+const { ObjectId } = require('mongoose');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
@@ -8,13 +9,13 @@ const schema = new Schema({
     lastName: { type: String, required: true },
     verified: {type: Boolean, default: false},
     verificationToken: {type: String},
-    // Favorites: [
-    //     {
-    //         subcategoryId: gaseosas
-    //         count:++
-    //     }
-    // ],
-    forgotPwToken: {type: String}
+    forgotPwToken: {type: String},
+    favorites: [
+        {
+            subcategoryId: {type: String},
+            count: {type: Number}
+        }
+    ],
 });
 
 schema.set('toJSON', {
