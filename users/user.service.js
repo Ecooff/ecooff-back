@@ -1,4 +1,5 @@
-﻿const config = require('config.json');
+﻿const express = require('express');
+const config = require('config.json');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const crypto = require("crypto");
@@ -6,10 +7,13 @@ const db = require('_helpers/db');
 //const res = require('express/lib/response');
 const User = db.User;
 const sendEmail = require('_helpers/send-email');
+const res = require('express/lib/response');
+const { getMaxListeners } = require('process');
 const ObjectId = require('mongodb').ObjectId;
 
 module.exports = {
     authenticate,
+    retrieveUser,
     getAll,
     getById,
     create,
@@ -17,11 +21,12 @@ module.exports = {
     verifyEmail,
     forgotPasswordRequest,
     forgotPasswordTokenOnly,
-    forgotPasswordUpdate,
-    retrieveUser
+    forgotPasswordUpdate
 };
 
 //LOGIN
+
+
 
 async function authenticate({ email, password }) {
     const user = await User.findOne({ email });
@@ -39,6 +44,26 @@ async function authenticate({ email, password }) {
         };
     }
 }
+
+async function retrieveUser(token) {
+    let id = '';
+    let user = '';
+    if (token) {
+        
+        jwt.verify(token, config.secret, (err, decoded) => {
+            if (err){
+                console.log(err.message);
+                throw 'error';
+            } else {
+                id = decoded.sub;
+            }
+        });
+        user = await User.findOne({ _id : ObjectId(id) });
+    }
+    return user;
+}
+
+
 
 async function getAll() {
     return await User.find();
@@ -152,25 +177,3 @@ async function forgotPasswordUpdate(userParam) {
     return {user : user};
 }
 
-async function retrieveUser(){  //a completar
-    console.log('service');
-    const token = req.cookies.jwt;
-
-    if(token) {
-        jwt.verify(token, '6d2ad504-d1b2-40c3-85cd-0af0b7e45c06-ec52e401-cb8c-40de-b25f-d48fccea1de4-12803fe4-8f21-47d2-beb8-a0f5a249c30d', async (err, decodedToken) => {
-            if(err) {
-                console.log(err.message);
-                res.locals.user = null;
-                return 'error 1';
-            } else {
-                console.log(decodedToken);
-                let user = await User.findById(decodedToken.id);
-                res.locals.user = user;
-                return user;
-            }
-        })
-    } else {
-        res.locals.user = null;
-        return 'error 2';
-    }
-}

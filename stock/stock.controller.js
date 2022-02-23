@@ -47,13 +47,12 @@ function getByProvSubcat(req, res, next) {
 
 function closeToExp(req, res, next) {
     stockService.closeToExp(req.body)
-        .then(stock => stock ? res.json(stock) : res.status(404).json({ message: 'no hay productos cerca de su vencimiento' }))
+        .then(stock => stock ? res.json(stock) : res.status(404).json({ message: 'No hay productos cerca de su vencimiento' }))
         .catch(err => next(err));
 }
 
 function forYou(req, res, next) {  //a completar
-    console.log('controller');
-    stockService.forYou(req.body)
-        .then(stock => stock ? res.json(stock) : res.status(404).json({ message: 'aun no tienes suficientes compras para que te recomendemos productos' }))
+    stockService.forYou(req.headers.authorization.split(' ')[1])
+        .then(stock => stock ? res.json(stock) : res.status(404).json({ message: 'Aún no tienes suficientes compras para que te recomendemos productos' }))
         .catch(err => next(err));
 }

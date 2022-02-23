@@ -1,5 +1,6 @@
 ﻿const express = require('express');
-const jwt = require('express-jwt');
+const config = require('config.json');
+const jwt = require('jsonwebtoken');
 const { JsonWebTokenError } = require('jsonwebtoken');
 const { serverAlive } = require('./user.service');
 const router = express.Router();
@@ -14,6 +15,7 @@ router.get('/serverAlive', (req, res) => {
 
 // routes
 router.post('/authenticate', authenticate);
+router.get('/retrieveUser', retrieveUser);
 router.post('/register', register);
 router.get('/', getAll);
 router.get('/:id', getById);
@@ -22,7 +24,7 @@ router.post('/verifyEmail', verifyEmail);
 router.post('/forgotPasswordRequest', forgotPasswordRequest);
 router.post('/forgotPasswordTokenOnly', forgotPasswordTokenOnly);
 router.put('/forgotPasswordUpdate', forgotPasswordUpdate);
-router.get('/retrieveUser', retrieveUser);
+
 
 
 module.exports = router;
@@ -32,6 +34,12 @@ module.exports = router;
 function authenticate(req, res, next) {
     userService.authenticate(req.body)
         .then(user => user ? res.json(user) : res.status(400).json({ message: 'El usuario o la contraseña son incorrectos' }))
+        .catch(err => next(err));
+}
+
+function retrieveUser (req, res, next) {
+    userService.retrieveUser(req.headers.authorization.split(' ')[1])
+        .then(user => user ? res.json(user) : res.status(400).json({ message: 'no se pudo recuperar la sesion' }))
         .catch(err => next(err));
 }
 
@@ -85,10 +93,4 @@ function forgotPasswordUpdate(req, res, next) {
     userService.forgotPasswordUpdate(req.body)
         .then(() => res.json({ message: 'Clave actualizada'}))
         .catch(next);
-}
-
-function retrieveUser(req, res, next) {  //a completar
-    userService.retrieveUser(req.body)
-        .then(user => user ? res.json(user) : res.status(404).json({ message: 'error controller' }))
-        .catch(err => next(err));
 }

@@ -1,6 +1,7 @@
 const db = require('_helpers/db');
 const Stock = db.Stock;
 const User = db.User;
+const userService = require('../users/user.service');
 
 module.exports = {
     create,
@@ -39,10 +40,28 @@ async function closeToExp(){
     return await Stock.find({expDate : { $lte : Date.now() + 14*24*60*60*1000}});
 }
 
-async function forYou(jwtParam){  //a completar
-    const user = await User.findOne({ jwt : jwtParam});
-    console.log(user);
+async function forYou(req){  //emprolijar con casos puntuales
+    const user = await userService.retrieveUser(req);
+    const favs = user.favorites;
+    let favItems = [];
+    let listOfFavs = [];
+    favs.sort((a, b) => {
+        return b.count - a.count;
+    });
 
-    return; //await Stock.find({ subcategory : user.favorites.subcategoryId });
+    // console.log(favs);
+    return new Promise(function(resolve, reject) {
+        favs.forEach((item, i) => {
+            favItems = getBySubcategory(item.subcategoryId).then(function(result) {
+                result.forEach( item2 => {
+                    listOfFavs.push(item2);
+                })
+                console.log(listOfFavs)
+                i == favs.length-1 ? resolve(listOfFavs) : null;
+            })
+
+        });
+    })
+               
 }
 
