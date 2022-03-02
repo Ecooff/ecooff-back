@@ -20,6 +20,7 @@ app.use('/api/categories', require('./categories/category.controller'));
 app.use('/api/providers', require('./providers/provider.controller'));
 app.use('/api/products', require('./products/product.controller'));
 app.use('/api/stock', require('./stock/stock.controller'));
+app.use('/api/cart', require('./cart/cart.controller'));
 
 // global error handler
 app.use(errorHandler);
