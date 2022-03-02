@@ -39,7 +39,10 @@ async function addToCart(token, userParam) {
     let name = userParam.name;
     let price = userParam.price;
     let length = userParam.length;
-    let lengthBool = (length.toLowerCase() === 'true');
+    let lengthBool = '';
+    if(length){
+        lengthBool = (length.toLowerCase() === 'true');
+    }
 
     try {
         let cart = await Cart.findOne({userId: userId});
