@@ -10,5 +10,6 @@ module.exports = {
     Provider: require('../providers/provider.model'),
     Product: require('../products/product.model'),
     Stock: require('../stock/stock.model'),
-    Cart: require('../cart/cart.model')
+    Cart: require('../cart/cart.model'),
+    Order: require('../orders/order.model')
 };

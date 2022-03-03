@@ -2,7 +2,6 @@ const db = require('_helpers/db');
 const config = require('config.json');
 const jwt = require('jsonwebtoken');
 const Cart = db.Cart;
-const userService = require('../users/user.service');
 
 module.exports = {
     addToCart,
@@ -21,7 +20,7 @@ async function getAll() {
 }
 
 async function addToCart(token, userParam) {
-    let userId = '620bfd7fbc61ae200885dfc1';
+    let userId = '';
     if (token) {
         
         jwt.verify(token, config.secret, (err, decoded) => {
@@ -86,5 +85,3 @@ async function addToCart(token, userParam) {
         console.log(err);
     }
 }
-
-//return { productLength : cart.products.length };

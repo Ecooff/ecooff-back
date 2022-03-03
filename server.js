@@ -21,6 +21,7 @@ app.use('/api/providers', require('./providers/provider.controller'));
 app.use('/api/products', require('./products/product.controller'));
 app.use('/api/stock', require('./stock/stock.controller'));
 app.use('/api/cart', require('./cart/cart.controller'));
+app.use('/api/orders', require('./orders/order.controller'));
 
 // global error handler
 app.use(errorHandler);
