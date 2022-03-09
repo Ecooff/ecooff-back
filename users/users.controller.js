@@ -24,6 +24,8 @@ router.post('/verifyEmail', verifyEmail);
 router.post('/forgotPasswordRequest', forgotPasswordRequest);
 router.post('/forgotPasswordTokenOnly', forgotPasswordTokenOnly);
 router.put('/forgotPasswordUpdate', forgotPasswordUpdate);
+router.put('/editEmail', editEmail);
+router.put('/editName', editName);
 
 
 
@@ -57,7 +59,7 @@ function getAll(req, res, next) {
 
 function getById(req, res, next) {
     userService.getById(req.params.id)
-        .then(user => user ? res.json(user) : res.sendStatus(404))
+        .then(console.log(user)) //(user => user ? res.json(user) : res.sendStatus(404))
         .catch(err => next(err));
 }
 
@@ -92,5 +94,17 @@ function forgotPasswordTokenOnly(req, res, next) {
 function forgotPasswordUpdate(req, res, next) {
     userService.forgotPasswordUpdate(req.body)
         .then(() => res.json({ message: 'Clave actualizada'}))
+        .catch(next);
+}
+
+function editEmail(req, res, next) {
+    userService.editEmail(req.body)
+        .then(user => user ? res.json(user) : res.status(404).json({ message: 'No se pudo actualizar el email' }))
+        .catch(next);
+}
+
+function editName(req, res, next) {
+    userService.editName(req.body)
+        .then(user => user ? res.json(user) : res.status(404).json({ message: 'No se pudo actualizar el nombre' }))
         .catch(next);
 }

@@ -6,7 +6,9 @@ const Cart = db.Cart;
 module.exports = {
     addToCart,
     create,
-    getAll
+    getAll,
+    deleteItem,
+    deleteCart
 };
 
 async function create (userParam) {
@@ -84,4 +86,51 @@ async function addToCart(token, userParam) {
     } catch(err) {
         console.log(err);
     }
+}
+
+async function deleteItem(token, userParam) {
+    let userId = '';
+    if (token) {
+        
+        jwt.verify(token, config.secret, (err, decoded) => {
+            if (err){
+                console.log(err.message);
+                throw 'error';
+            } else {
+                userId = decoded.sub;
+            }
+        });
+    }
+
+    let cart = await Cart.findOne({userId: userId});
+
+    console.log(cart.products);
+    console.log('!!!!!!!!!!!!!!!!!!!!!')
+
+    cart.products.id(userParam.productId).delete();
+
+    await cart.save();
+
+    console.log(cart.products);
+
+    return cart;
+}
+
+async function deleteCart(token) {
+    let userId = '';
+    if (token) {
+        
+        jwt.verify(token, config.secret, (err, decoded) => {
+            if (err){
+                console.log(err.message);
+                throw 'error';
+            } else {
+                userId = decoded.sub;
+            }
+        });
+    }
+
+    await Cart.deleteOne({userId: userId});
+
+    return;
 }

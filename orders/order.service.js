@@ -7,7 +7,10 @@ const ObjectId = require('mongodb').ObjectId;
 
 module.exports = {
     create,
-    getAll
+    getAll,
+    changeStatus,
+    cancelOrder,
+    getByUserId
 };
 
 async function create (token) {
@@ -62,4 +65,38 @@ async function create (token) {
 
 async function getAll() {
     return await Order.find();
+}
+
+async function changeStatus(userParam) {
+    const order = await Order.findOne({_id : ObjectId(userParam.id)});
+    const code = userParam.statusCode;
+
+    if(order) {
+        switch (code) {
+            case '1':
+                order.status = 'Pending'
+                break;
+            case '2':
+                order.status = 'In Progress'
+                break;
+            case '3':
+                order.status = 'Completed'
+                break;
+        }
+
+        await order.save();
+        return order;
+    }
+}
+
+async function cancelOrder(userParam) {
+    await Order.deleteOne({_id : ObjectId(userParam.id)});
+
+    return;
+}
+
+async function getByUserId(userParam) {
+    const orders = await Order.find({ userId : userParam.userId});
+
+    return orders;
 }

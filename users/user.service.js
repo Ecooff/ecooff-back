@@ -21,7 +21,9 @@ module.exports = {
     verifyEmail,
     forgotPasswordRequest,
     forgotPasswordTokenOnly,
-    forgotPasswordUpdate
+    forgotPasswordUpdate,
+    editEmail,
+    editName
 };
 
 //LOGIN
@@ -175,5 +177,46 @@ async function forgotPasswordUpdate(userParam) {
     await user.save();
 
     return {user : user};
+}
+
+async function editEmail(userParam) {
+    const user = await User.findOne({email : userParam.oldEmail});
+
+    if (!user) {
+        throw 'Usuario no encontrado';
+    }
+
+    if (user && bcrypt.compareSync(userParam.password, user.hash)) {
+
+        const emailInUse = await User.findOne({email : userParam.newEmail});
+
+        if(emailInUse) {
+            throw 'El nuevo email ya esta en uso';
+        }
+
+        user.email = userParam.newEmail;
+
+        await user.save();
+
+        return user;
+    }
+}
+
+async function editName(userParam) {
+    const user = await User.findOne({email : userParam.email});
+
+    if (!user) {
+        throw 'Usuario no encontrado';
+    }
+
+    if (user && bcrypt.compareSync(userParam.password, user.hash)) {
+
+        user.firstName = userParam.firstName;
+        user.lastName = userParam.lastName;
+
+        await user.save();
+
+        return user;
+    }
 }
 
