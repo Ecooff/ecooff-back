@@ -5,6 +5,7 @@ const stockService = require('./stock.service');
 //routes
 router.post('/create', create);
 router.get('/', getAll);
+router.get('/:id', getById);
 router.get('/getBySubcategory', getBySubcategory);
 router.get('/getByProvider', getByProvider);
 router.get('/getByProvSubcat', getByProvSubcat);
@@ -24,6 +25,12 @@ function create(req, res, next) {
 function getAll(req, res, next) {
     stockService.getAll()
         .then(stock => res.json(stock))
+        .catch(err => next(err));
+}
+
+function getById(req, res, next) {
+    stockService.getById(req.params.id)
+        .then(stock => stock ? res.json(stock) : res.sendStatus(404))
         .catch(err => next(err));
 }
 

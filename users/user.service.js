@@ -39,7 +39,7 @@ async function authenticate({ email, password }) {
             return {verified: user.verified};
         }   
 
-        const token = jwt.sign({ sub: user.id }, config.secret, { expiresIn: '90d' });
+        const token = jwt.sign({ sub: user.id }, config.secret, { expiresIn: '30d' });
         return {
             ...user.toJSON(),
             token
@@ -61,8 +61,15 @@ async function retrieveUser(token) {
             }
         });
         user = await User.findOne({ _id : ObjectId(id) });
+
+        const newToken = jwt.sign({ sub: user.id }, config.secret, { expiresIn: '30d' });
+        return {
+            ...user.toJSON(),
+            newToken
+        };
+    } else {
+        throw 'Token invalido';
     }
-    return user;
 }
 
 

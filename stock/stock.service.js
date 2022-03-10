@@ -2,10 +2,12 @@ const db = require('_helpers/db');
 const Stock = db.Stock;
 const User = db.User;
 const userService = require('../users/user.service');
+const ObjectId = require('mongodb').ObjectId;
 
 module.exports = {
     create,
     getAll,
+    getById,
     getBySubcategory,
     getByProvider,
     getByProvSubcat,
@@ -22,6 +24,10 @@ async function create(userParam) {
 
 async function getAll() {
     return await Stock.find();
+}
+
+async function getById(id) {
+    return await Stock.findById(ObjectId(id));
 }
 
 async function getBySubcategory(subcat) {

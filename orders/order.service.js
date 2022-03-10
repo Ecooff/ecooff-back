@@ -8,6 +8,7 @@ const ObjectId = require('mongodb').ObjectId;
 module.exports = {
     create,
     getAll,
+    getById,
     changeStatus,
     cancelOrder,
     getByUserId
@@ -65,6 +66,10 @@ async function create (token) {
 
 async function getAll() {
     return await Order.find();
+}
+
+async function getById(id) {
+    return await Order.findById(ObjectId(id));
 }
 
 async function changeStatus(userParam) {

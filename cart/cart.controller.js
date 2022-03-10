@@ -6,6 +6,7 @@ const cartService = require('./cart.service');
 router.post('/create', create);
 router.post('/addToCart', addToCart);
 router.get('/', getAll);
+router.get('/:id', getById);
 router.put('/deleteItem', deleteItem);
 router.delete('/deleteCart', deleteCart);
 
@@ -20,6 +21,12 @@ function create(req, res, next) {
 function getAll(req, res, next) {
     cartService.getAll()
         .then(cart => res.json(cart))
+        .catch(err => next(err));
+}
+
+function getById(req, res, next) {
+    cartService.getById(req.params.id)
+        .then(cart => cart ? res.json(cart) : res.sendStatus(404))
         .catch(err => next(err));
 }
 

@@ -1,12 +1,15 @@
 const db = require('_helpers/db');
 const config = require('config.json');
 const jwt = require('jsonwebtoken');
+//const { ObjectId } = require('mongoose');
+const ObjectId = require('mongodb').ObjectId;
 const Cart = db.Cart;
 
 module.exports = {
     addToCart,
     create,
     getAll,
+    getById,
     deleteItem,
     deleteCart
 };
@@ -19,6 +22,10 @@ async function create (userParam) {
 
 async function getAll() {
     return await Cart.find();
+}
+
+async function getById(id) {
+    return await Cart.findById(ObjectId(id));
 }
 
 async function addToCart(token, userParam) {
@@ -102,16 +109,13 @@ async function deleteItem(token, userParam) {
         });
     }
 
-    let cart = await Cart.findOne({userId: userId});
+    let cart = await Cart.findOne({userId});
 
-    console.log(cart.products);
-    console.log('!!!!!!!!!!!!!!!!!!!!!')
+    console.log(userParam.id);
 
-    cart.products.id(userParam.productId).delete();
+    cart.products.pull({ _id: userParam.id });
 
     await cart.save();
-
-    console.log(cart.products);
 
     return cart;
 }
