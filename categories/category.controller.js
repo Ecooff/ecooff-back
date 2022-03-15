@@ -4,6 +4,7 @@ const categoryService = require('./category.service');
 
 //routes
 router.post('/create', create);
+router.get('/getSubcat', getSubcat);
 router.get('/', getAll);
 router.get('/:id', getById);
 
@@ -14,6 +15,12 @@ module.exports = router;
 function create(req, res, next) {
     categoryService.create(req.body)
         .then(() => res.json({}))
+        .catch(err => next(err));
+}
+
+function getSubcat(req, res, next) {
+    categoryService.getSubcat()
+        .then(allSubcats => allSubcats ? res.json(allSubcats) : res.sendStatus(404))
         .catch(err => next(err));
 }
 

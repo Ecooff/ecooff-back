@@ -11,6 +11,7 @@ const schema = new Schema({
     postDate: {type: Date, default: Date.now},
     stock: {type: Number, required: true},
     img: {type: String},
+    providerId: {type: String},
     providerName: {type: String},
     providerBranch: {type: String},
     branchGeo: {type: String}

@@ -7,9 +7,9 @@ const ObjectId = require('mongodb').ObjectId;
 
 module.exports = {
     create,
+    inProgress,
     getAll,
     getById,
-    inProgress,
     changeStatus,
     cancelOrder,
     getByUserId
@@ -65,6 +65,12 @@ async function create (token) {
     }
 }
 
+async function inProgress() {
+    let orders = await Order.find({ status : 'In Progress' });
+
+    return orders;
+}
+
 async function getAll() {
     return await Order.find();
 }
@@ -107,11 +113,3 @@ async function getByUserId(userParam) {
     return orders;
 }
 
-async function inProgress() {
-    console.log('here');
-    //let orders = await Order.find({ status : 'In Progress' });
-
-    //console.log(orders);
-
-    //return orders;
-}

@@ -4,9 +4,9 @@ const orderService = require('./order.service');
 
 //routes
 router.post('/create', create);
+router.get('/inProgress', inProgress);
 router.get('/', getAll);
 router.get('/:id', getById);
-router.get('/inProgress', inProgress);
 router.put('/changeStatus', changeStatus);
 router.delete('/cancelOrder', cancelOrder);
 router.get('/getByUserId', getByUserId);

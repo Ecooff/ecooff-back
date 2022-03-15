@@ -8,6 +8,7 @@ module.exports = {
     create,
     getAll,
     getById,
+    partialMatch,
     getBySubcategory,
     getByProvider,
     getByProvSubcat,
@@ -31,16 +32,21 @@ async function getById(id) {
     return await Stock.findById(ObjectId(id));
 }
 
+async function partialMatch(search) {
+    return await Stock.find({ title: {"$regex" : search, "$options" : "i"}})
+}
+
 async function getBySubcategory(subcat) {
+    
     return await Stock.find({ subcategory : subcat });
 }
 
 async function getByProvider(prov) {
-    return await Stock.find({ providerName : prov });
+    return await Stock.find({ providerId : prov });
 }
 
 async function getByProvSubcat({prov, subcat}) {
-    return await Stock.find({providerName : prov, subcategory: subcat});
+    return await Stock.find({providerId : prov, subcategory: subcat});
 }
 
 async function getByCategory(cat) {
@@ -60,7 +66,6 @@ async function forYou(req){  //emprolijar con casos puntuales
         return b.count - a.count;
     });
 
-    // console.log(favs);
     return new Promise(function(resolve, reject) {
         favs.forEach((item, i) => {
             favItems = getBySubcategory(item.subcategoryId).then(function(result) {

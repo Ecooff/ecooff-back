@@ -3,6 +3,7 @@ const Category = db.Category;
 
 module.exports = {
     create,
+    getSubcat,
     getAll,
     getById
 };
@@ -15,6 +16,17 @@ async function create(userParam) {
     const category = new Category(userParam);
 
     await category.save();
+}
+
+async function getSubcat() {
+    const allCats = await Category.find();
+    const allSubcats = [];
+
+    allCats.forEach((item) => {
+        allSubcats.push(item.subcategories)
+    });
+
+    return allSubcats;
 }
 
 async function getAll() {

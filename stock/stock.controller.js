@@ -6,10 +6,11 @@ const stockService = require('./stock.service');
 router.post('/create', create);
 router.get('/', getAll);
 router.get('/:id', getById);
-router.get('/getBySubcategory', getBySubcategory);
-router.get('/getByProvider', getByProvider);
-router.get('/getByProvSubcat', getByProvSubcat);
-router.get('/getByCategory', getByCategory);
+router.get('/partialMatch/:search', partialMatch);
+router.get('/getBySubcategory/:subcat', getBySubcategory);
+router.get('/getByProvider/:provId', getByProvider);
+router.get('/getByProvSubcat/:provId/:subcat', getByProvSubcat);
+router.get('/getByCategory/:cat', getByCategory);
 router.get('/closeToExp', closeToExp);
 router.get('/forYou', forYou);
 
@@ -35,26 +36,32 @@ function getById(req, res, next) {
         .catch(err => next(err));
 }
 
+function partialMatch(req, res, next) {
+    stockService.partialMatch(req.params.search)
+        .then(stock => stock ? res.json(stock) : res.sendStatus(404))
+        .catch(err => next(err));
+}
+
 function getBySubcategory(req, res, next) {
-    stockService.getBySubcategory(req.body.subcat)
+    stockService.getBySubcategory(req.params.subcat)
         .then(stock => stock ? res.json(stock) : res.status(404).json({ message: 'no existen productos en esa subcategoria' }))
         .catch(err => next(err));
 }
 
 function getByProvider(req, res, next) {
-    stockService.getByProvider(req.body.prov)
+    stockService.getByProvider(req.params.provId)
         .then(stock => stock ? res.json(stock) : res.status(404).json({ message: 'no existen productos de ese proveedor' }))
         .catch(err => next(err));
 }
 
 function getByProvSubcat(req, res, next) {
-    stockService.getByProvSubcat(req.body)
+    stockService.getByProvSubcat(req.params)
         .then(stock => stock ? res.json(stock) : res.status(404).json({ message: 'no existen productos en esa subcategoria de ese proveedor' }))
         .catch(err => next(err));
 }
 
 function getByCategory(req, res, next) {
-    stockService.getByCategory(req.body.cat)
+    stockService.getByCategory(req.params.cat)
         .then(stock => stock ? res.json(stock) : res.status(404).json({ message: 'no existen productos en esa subcategoria' }))
         .catch(err => next(err));
 }
@@ -65,7 +72,7 @@ function closeToExp(req, res, next) {
         .catch(err => next(err));
 }
 
-function forYou(req, res, next) {  //a completar
+function forYou(req, res, next) {
     stockService.forYou(req.headers.authorization.split(' ')[1])
         .then(stock => stock ? res.json(stock) : res.status(404).json({ message: 'Aún no tienes suficientes compras para que te recomendemos productos' }))
         .catch(err => next(err));
