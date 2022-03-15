@@ -11,6 +11,7 @@ module.exports = {
     getBySubcategory,
     getByProvider,
     getByProvSubcat,
+    getByCategory,
     closeToExp,
     forYou
 };
@@ -40,6 +41,10 @@ async function getByProvider(prov) {
 
 async function getByProvSubcat({prov, subcat}) {
     return await Stock.find({providerName : prov, subcategory: subcat});
+}
+
+async function getByCategory(cat) {
+    return await Stock.find({ category : cat });
 }
 
 async function closeToExp(){

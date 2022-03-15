@@ -9,6 +9,7 @@ module.exports = {
     create,
     getAll,
     getById,
+    inProgress,
     changeStatus,
     cancelOrder,
     getByUserId
@@ -104,4 +105,13 @@ async function getByUserId(userParam) {
     const orders = await Order.find({ userId : userParam.userId});
 
     return orders;
+}
+
+async function inProgress() {
+    console.log('here');
+    //let orders = await Order.find({ status : 'In Progress' });
+
+    //console.log(orders);
+
+    //return orders;
 }

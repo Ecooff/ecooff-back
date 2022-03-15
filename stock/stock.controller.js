@@ -9,6 +9,7 @@ router.get('/:id', getById);
 router.get('/getBySubcategory', getBySubcategory);
 router.get('/getByProvider', getByProvider);
 router.get('/getByProvSubcat', getByProvSubcat);
+router.get('/getByCategory', getByCategory);
 router.get('/closeToExp', closeToExp);
 router.get('/forYou', forYou);
 
@@ -49,6 +50,12 @@ function getByProvider(req, res, next) {
 function getByProvSubcat(req, res, next) {
     stockService.getByProvSubcat(req.body)
         .then(stock => stock ? res.json(stock) : res.status(404).json({ message: 'no existen productos en esa subcategoria de ese proveedor' }))
+        .catch(err => next(err));
+}
+
+function getByCategory(req, res, next) {
+    stockService.getByCategory(req.body.cat)
+        .then(stock => stock ? res.json(stock) : res.status(404).json({ message: 'no existen productos en esa subcategoria' }))
         .catch(err => next(err));
 }
 

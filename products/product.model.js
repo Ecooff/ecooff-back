@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 const schema = new Schema({
     title: {type: String, required: true, unique: true},
+    category: {type: String},
     subcategory: {type: String},
     description: {type: String},
     listPrice: {type: Number},

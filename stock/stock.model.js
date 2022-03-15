@@ -3,7 +3,8 @@ const Schema = mongoose.Schema;
 
 const schema = new Schema({
     title: {type: String, required: true},
-    productId: {type: String, required: true},
+    modelId: {type: String, required: true},
+    category: {type: String},
     subcategory: {type: String},
     expPrice: {type: Number},
     expDate: {type: Date},

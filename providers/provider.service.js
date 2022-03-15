@@ -1,10 +1,12 @@
 const db = require('_helpers/db');
 const res = require('express/lib/response');
 const Provider = db.Provider;
+const ObjectId = require('mongodb').ObjectId;
 
 module.exports = {
     create,
     getAll,
+    getById,
     getProviders
 };
 
@@ -20,6 +22,10 @@ async function create(userParam) {
 
 async function getAll() {
     return await Provider.find();
+}
+
+async function getById(id) {
+    return await Provider.findById(ObjectId(id));
 }
 
 async function getProviders() {

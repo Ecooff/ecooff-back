@@ -6,6 +6,7 @@ const orderService = require('./order.service');
 router.post('/create', create);
 router.get('/', getAll);
 router.get('/:id', getById);
+router.get('/inProgress', inProgress);
 router.put('/changeStatus', changeStatus);
 router.delete('/cancelOrder', cancelOrder);
 router.get('/getByUserId', getByUserId);
@@ -27,6 +28,12 @@ function getAll(req, res, next) {
 function getById(req, res, next) {
     orderService.getById(req.params.id)
         .then(order => order ? res.json(order) : res.sendStatus(404))
+        .catch(err => next(err));
+}
+
+function inProgress(req, res, next) {
+    orderService.inProgress()
+        .then(orders => res.json(orders))
         .catch(err => next(err));
 }
 
