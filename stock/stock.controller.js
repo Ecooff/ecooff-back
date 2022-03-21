@@ -5,14 +5,14 @@ const stockService = require('./stock.service');
 //routes
 router.post('/create', create);
 router.get('/', getAll);
+router.get('/closeToExp', closeToExp);
+router.get('/forYou', forYou);
 router.get('/:id', getById);
 router.get('/partialMatch/:search', partialMatch);
 router.get('/getBySubcategory/:subcat', getBySubcategory);
 router.get('/getByProvider/:provId', getByProvider);
 router.get('/getByProvSubcat/:provId/:subcat', getByProvSubcat);
 router.get('/getByCategory/:cat', getByCategory);
-router.get('/closeToExp', closeToExp);
-router.get('/forYou', forYou);
 
 module.exports = router;
 
