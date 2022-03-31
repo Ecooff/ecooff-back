@@ -6,9 +6,10 @@ const schema = new Schema({
     products: [
         {
             productId: {type: String},
+            providerId: {type: String},
             quantity: {type: Number},
             name: {type: String},
-            price: {type: Number},
+            price: {type: Number}
         }
     ],
 });

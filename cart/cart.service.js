@@ -43,6 +43,7 @@ async function addToCart(token, userParam) {
     }
 
     let productId = userParam.productId;
+    let providerId = userParam.providerId;
     let quantity = userParam.quantity;
     let name = userParam.name;
     let price = userParam.price;
@@ -66,7 +67,7 @@ async function addToCart(token, userParam) {
 
             } else {
 
-                cart.products.push({ productId, quantity, name, price });
+                cart.products.push({ productId, providerId, quantity, name, price });
 
             }
             cart = await cart.save();
@@ -81,7 +82,7 @@ async function addToCart(token, userParam) {
         } else {
             const newCart = await Cart.create({
                 userId,
-                products: [{ productId, quantity, name, price }]
+                products: [{ productId, providerId, quantity, name, price }]
               });
 
                 if(lengthBool) {

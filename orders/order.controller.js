@@ -6,10 +6,10 @@ const orderService = require('./order.service');
 router.post('/create', create);
 router.get('/inProgress', inProgress);
 router.get('/', getAll);
-router.get('/:id', getById);
 router.put('/changeStatus', changeStatus);
 router.delete('/cancelOrder', cancelOrder);
 router.get('/getByUserId', getByUserId);
+router.get('/:id', getById);
 
 module.exports = router;
 

@@ -45,8 +45,10 @@ async function getByProvider(prov) {
     return await Stock.find({ providerId : prov });
 }
 
-async function getByProvSubcat({prov, subcat}) {
-    return await Stock.find({providerId : prov, subcategory: subcat});
+async function getByProvSubcat({provId, subcat}) {
+    console.log(provId);
+
+    return await Stock.find({providerId : provId, subcategory: subcat});
 }
 
 async function getByCategory(cat) {

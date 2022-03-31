@@ -3,6 +3,7 @@ const config = require('config.json');
 const jwt = require('jsonwebtoken');
 const Order = db.Order;
 const Cart = db.Cart;
+const Stock = db.Stock;
 const ObjectId = require('mongodb').ObjectId;
 
 module.exports = {
@@ -16,11 +17,15 @@ module.exports = {
 };
 
 async function create (token) {
+
     let userId = '';
     let productId = '';
-    let quantity = '';
+    let providerId = '';
+    let quantity;
     let name = '';
-    let price = '';
+    let price;
+    let actualStock;
+
     if (token) {
         
         jwt.verify(token, config.secret, (err, decoded) => {
@@ -35,21 +40,50 @@ async function create (token) {
 
     try {
         let cart = await Cart.findOne({userId: userId});
-        let products = cart.products;
 
         if(cart){
+
+            let products = cart.products;
             let order = new Order;
 
             order.userId = userId;
 
-            products.forEach((item) => {
+            products.forEach(async (item) => {
 
                 productId = item.productId;
+                providerId = item.providerId;
                 quantity = item.quantity;
                 name = item.name;
-                price = item.price;
 
-                order.products.push({ productId, quantity, name, price });
+                let itemIndex = order.bags.findIndex(p => p.providerId == providerId);
+
+                if (itemIndex > -1) {
+
+                    let existingBag = order.bags[itemIndex];
+                    existingBag.products.push({ productId, quantity, name });
+
+                }   else {
+
+                    let newBag = order.bags;
+                    console.log(newBag);
+                    console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+                    newBag.providerId = providerId;
+                    newBag.products.push({ productId, quantity, name });
+
+                }
+
+                let stock = await Stock.findOne({_id : ObjectId(productId)});
+
+                actualStock = Number(stock.stock);
+
+                console.log(actualStock);
+
+                actualStock = actualStock - Number(quantity);
+
+                stock.stock = actualStock;
+
+                await stock.save();
+
             })
 
             order = await order.save();
@@ -57,15 +91,20 @@ async function create (token) {
             await Cart.deleteOne({_id : ObjectId(cart.id)});
 
             return order;
+
         } else {
-            throw 'El carrito esta vacio'
+
+            throw 'El carrito esta vacio';
+
         }
     } catch(err) {
+
         console.log(err);
+        
     }
 }
 
-async function inProgress() {
+async function inProgress() {  //hacer para los otros estados tmb, y que traiga el user address a traves del user id
     let orders = await Order.find({ status : 'In Progress' });
 
     return orders;
@@ -112,4 +151,5 @@ async function getByUserId(userParam) {
 
     return orders;
 }
+
 
