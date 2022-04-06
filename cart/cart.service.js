@@ -4,28 +4,23 @@ const jwt = require('jsonwebtoken');
 //const { ObjectId } = require('mongoose');
 const ObjectId = require('mongodb').ObjectId;
 const Cart = db.Cart;
+const Stock = db.Stock;
 
 module.exports = {
     addToCart,
     create,
-    getAll,
-    getById,
     deleteItem,
-    deleteCart
+    deleteCart,
+    openCart,
+    concat,
+    getAll,
+    getById    
 };
 
 async function create (userParam) {
     const cart = new Cart(userParam);
 
     await cart.save();
-}
-
-async function getAll() {
-    return await Cart.find();
-}
-
-async function getById(id) {
-    return await Cart.findById(ObjectId(id));
 }
 
 async function addToCart(token, userParam) {
@@ -138,4 +133,54 @@ async function deleteCart(token) {
     await Cart.deleteOne({userId: userId});
 
     return;
+}
+
+async function openCart(token) {
+
+    let userId = '';
+    if (token) {
+        
+        jwt.verify(token, config.secret, (err, decoded) => {
+            if (err){
+                console.log(err.message);
+                throw 'error';
+            } else {
+                userId = decoded.sub;
+            }
+        });
+    }
+
+    const cart = await Cart.findOne({ userId }, ['products', '-_id']);
+
+    let products = cart.products;
+
+    let finalArray = [];
+
+    for(const product of products) {
+
+        let concatArray = await concat(product)
+
+        finalArray.push(concatArray)
+
+    }
+
+    return finalArray;
+}
+
+async function concat(product) {
+
+    let fetchData = await Stock.findOne({ _id: ObjectId(product.productId) }, ['img', 'expDate', '-_id']);
+
+    let concat = {img: fetchData.img, name: product.name, quantity: product.quantity, price: product.price, date: fetchData.expDate};
+
+    return concat;
+
+}
+
+async function getAll() {
+    return await Cart.find();
+}
+
+async function getById(id) {
+    return await Cart.findById(ObjectId(id));
 }

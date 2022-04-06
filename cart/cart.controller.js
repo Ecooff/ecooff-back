@@ -5,28 +5,17 @@ const cartService = require('./cart.service');
 //routes
 router.post('/create', create);
 router.post('/addToCart', addToCart);
-router.get('/', getAll);
-router.get('/:id', getById);
 router.put('/deleteItem', deleteItem);
 router.delete('/deleteCart', deleteCart);
+router.get('/openCart', openCart);
+router.get('/', getAll);
+router.get('/:id', getById);
 
 module.exports = router;
 
 function create(req, res, next) {
     cartService.create(req.body)
         .then(() => res.json({}))
-        .catch(err => next(err));
-}
-
-function getAll(req, res, next) {
-    cartService.getAll()
-        .then(cart => res.json(cart))
-        .catch(err => next(err));
-}
-
-function getById(req, res, next) {
-    cartService.getById(req.params.id)
-        .then(cart => cart ? res.json(cart) : res.sendStatus(404))
         .catch(err => next(err));
 }
 
@@ -45,5 +34,23 @@ function deleteItem(req, res, next) {
 function deleteCart(req, res, next) {
     cartService.deleteCart(req.headers.authorization.split(' ')[1])
         .then(() => res.json({}))
+        .catch(err => next(err));
+}
+
+function openCart(req, res, next) {
+    cartService.openCart(req.headers.authorization.split(' ')[1])
+        .then(cart => cart ? res.json(cart) : res.status(404).json({ message: 'No se pudo recuperar el carrito' }))
+        .catch(err => next(err));
+}
+
+function getAll(req, res, next) {
+    cartService.getAll()
+        .then(cart => res.json(cart))
+        .catch(err => next(err));
+}
+
+function getById(req, res, next) {
+    cartService.getById(req.params.id)
+        .then(cart => cart ? res.json(cart) : res.sendStatus(404))
         .catch(err => next(err));
 }
