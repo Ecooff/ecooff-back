@@ -6,14 +6,7 @@ const schema = new Schema({
     status: {type: String, default: 'Pending'},
     bags:[
         {
-            providerId: {type: String},
-            products: [
-                {
-                    productId: {type: String},
-                    quantity: {type: Number},
-                    name: {type: String}
-                }
-            ]
+            bagId: {type: String}
         }
     ]
 });

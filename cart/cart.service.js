@@ -1,7 +1,6 @@
 const db = require('_helpers/db');
 const config = require('config.json');
 const jwt = require('jsonwebtoken');
-//const { ObjectId } = require('mongoose');
 const ObjectId = require('mongodb').ObjectId;
 const Cart = db.Cart;
 const Stock = db.Stock;

@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 const Order = db.Order;
 const Cart = db.Cart;
 const Stock = db.Stock;
+const Bag = db.Bag;
 const ObjectId = require('mongodb').ObjectId;
 
 module.exports = {
@@ -23,7 +24,6 @@ async function create (token) {
     let providerId = '';
     let quantity;
     let name = '';
-    let price;
     let actualStock;
 
     if (token) {
@@ -39,7 +39,7 @@ async function create (token) {
     }
 
     try {
-        let cart = await Cart.findOne({userId: userId});
+        let cart = await Cart.findOne({ userId: userId });
 
         if(cart){
 
@@ -55,18 +55,19 @@ async function create (token) {
                 quantity = item.quantity;
                 name = item.name;
 
-                let itemIndex = order.bags.findIndex(p => p.providerId == providerId);
+                let itemIndex = bag.findIndex(p => p.providerId == providerId);
 
                 if (itemIndex > -1) {
 
-                    let existingBag = order.bags[itemIndex];
-                    existingBag.products.push({ productId, quantity, name });
+                    // bag.products.push({ productId, quantity, name });
+                    // await bag.save();
+
+                    // let existingBag = order.bags[itemIndex];
+                    // existingBag.products.push({ productId, quantity, name });
 
                 }   else {
 
-                    let newBag = order.bags;
-                    console.log(newBag);
-                    console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+                    let newBag = new Bag;
                     newBag.providerId = providerId;
                     newBag.products.push({ productId, quantity, name });
 
