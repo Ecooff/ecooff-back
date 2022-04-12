@@ -16,6 +16,7 @@ async function create(userParam) {
     const category = new Category(userParam);
 
     await category.save();
+    return category;
 }
 
 async function getSubcat() {

@@ -4,6 +4,7 @@ const stockService = require('./stock.service');
 
 //routes
 router.post('/create', create);
+router.put('/updateStock', updateStock);
 router.get('/', getAll);
 router.get('/closeToExp', closeToExp);
 router.get('/forYou', forYou);
@@ -20,7 +21,13 @@ module.exports = router;
 
 function create(req, res, next) {
     stockService.create(req.body)
-        .then(() => res.json({}))
+        .then(stock => stock ? res.json(stock) : res.sendStatus(404))
+        .catch(err => next(err));
+}
+
+function updateStock(req, res, next) {
+    stockService.updateStock(req.body)
+        .then(stock => stock ? res.json(stock) : res.sendStatus(404))
         .catch(err => next(err));
 }
 

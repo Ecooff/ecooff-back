@@ -1,5 +1,6 @@
 const db = require('_helpers/db');
 const Product = db.Product;
+const Category = db.Category;
 
 module.exports = {
     create,
@@ -8,13 +9,41 @@ module.exports = {
 };
 
 async function create(userParam) {
-    if (await Product.findOne({ title: userParam.title })) {
+
+    if (await Product.findOne({ name: userParam.name })) {
         throw 'Ese producto ya existe';
     }
 
-    const product = new Product(userParam);
+    let category = await Category.findOne({ 'subcategories._id': userParam.subcatId })
 
-    await product.save();
+    if (category) {
+
+        const product = new Product;
+
+        product.name = userParam.name;
+        product.description = userParam.description;
+        product.listPrice = userParam.listPrice;
+        product.img = userParam.img;
+        product.allergenics = userParam.allergenics;
+
+        product.category = category.category
+
+        let subcategories = category.subcategories;
+
+        for (const subcategory of subcategories) {
+
+            if (subcategory._id == userParam.subcatId) product.subcategory = subcategory.subcategory;
+
+        }
+
+        await product.save();
+        return product;
+
+    } else {
+
+        throw 'no existe una subcategoria con ese ID';
+
+    }
 }
 
 async function getAll() {

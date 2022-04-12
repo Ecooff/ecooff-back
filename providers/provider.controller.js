@@ -14,7 +14,7 @@ module.exports = router;
 
 function create(req, res, next) {
     providerService.create(req.body)
-        .then(() => res.json({}))
+        .then(provider => provider ? res.json(provider) : res.sendStatus(404))
         .catch(err => next(err));
 }
 

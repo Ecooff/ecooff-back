@@ -13,7 +13,7 @@ module.exports = router;
 
 function create(req, res, next) {
     productService.create(req.body)
-        .then(() => res.json({}))
+        .then(product => product ? res.json(product) : res.sendStatus(404))
         .catch(err => next(err));
 }
 

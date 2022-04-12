@@ -5,12 +5,13 @@ const ObjectId = require('mongodb').ObjectId;
 const Bag = db.Bag;
 
 module.exports = {
-    create
+    create,
+    getAll
 };
 
-async function create (providerId, userId, productId, quantity, name) {
-
-    let bag = await Bag.findOne({ providerId, userId });
+async function create (orderId, providerId, productId, quantity, name) {  //pasar orderId, providerId, productId, quantity, name
+    
+    let bag = await Bag.findOne({ orderId, providerId });
 
     if(bag) {
 
@@ -19,13 +20,19 @@ async function create (providerId, userId, productId, quantity, name) {
     } else {
 
         bag = new Bag;
+        bag.orderId = orderId;
         bag.providerId = providerId;
-        bag.userId = userId;
         bag.products.push({ productId, quantity, name });
 
     }
 
     await bag.save();
-    return bag;
+    return bag._id;
+
+}
+
+async function getAll() {
+
+    return await Bag.find();
 
 }

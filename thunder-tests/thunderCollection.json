@@ -1,0 +1,66 @@
+[
+  {
+    "_id": "98a363dc-de21-4b56-bae4-0f2d420adcb1",
+    "colName": "ecooff",
+    "created": "2022-04-07T13:47:58.746Z",
+    "sortNum": 20000,
+    "folders": [
+      {
+        "_id": "a95fc31f-e6c8-4a5c-8727-f3d529f23bde",
+        "name": "users",
+        "containerId": "",
+        "created": "2022-04-07T13:47:58.748Z",
+        "sortNum": 5000
+      },
+      {
+        "_id": "39f02f71-41b6-4c2d-b18e-9a6e373f0c62",
+        "name": "categories",
+        "containerId": "",
+        "created": "2022-04-07T13:47:58.748Z",
+        "sortNum": 10000
+      },
+      {
+        "_id": "09a65096-c0e9-486d-8185-f5a096828ac7",
+        "name": "providers",
+        "containerId": "",
+        "created": "2022-04-07T13:47:58.748Z",
+        "sortNum": 30000
+      },
+      {
+        "_id": "1942bf9a-7998-4723-9c79-854fbd6c18f8",
+        "name": "products",
+        "containerId": "",
+        "created": "2022-04-07T13:47:58.748Z",
+        "sortNum": 40000
+      },
+      {
+        "_id": "a47753ba-2e6a-4c80-8024-2b9b98474fac",
+        "name": "stock",
+        "containerId": "",
+        "created": "2022-04-07T13:47:58.748Z",
+        "sortNum": 50000
+      },
+      {
+        "_id": "5ba10001-5de1-4193-ac04-73d9c14900d4",
+        "name": "cart",
+        "containerId": "",
+        "created": "2022-04-07T13:47:58.748Z",
+        "sortNum": 60000
+      },
+      {
+        "_id": "36061380-c6de-4df5-9342-94fbd96aaa05",
+        "name": "orders",
+        "containerId": "",
+        "created": "2022-04-07T13:47:58.748Z",
+        "sortNum": 70000
+      },
+      {
+        "_id": "4ddb7ac9-f958-441a-a065-42f78b85d7d9",
+        "name": "bags",
+        "containerId": "",
+        "created": "2022-04-07T13:47:58.748Z",
+        "sortNum": 80000
+      }
+    ]
+  }
+]

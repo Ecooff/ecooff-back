@@ -1,11 +1,12 @@
 const db = require('_helpers/db');
-const Stock = db.Stock;
-const User = db.User;
-const userService = require('../users/user.service');
 const ObjectId = require('mongodb').ObjectId;
+const Stock = db.Stock;
+const Product = db.Product;
+const Provider = db.Provider;
 
 module.exports = {
     create,
+    updateStock,
     getAll,
     getById,
     partialMatch,
@@ -19,9 +20,58 @@ module.exports = {
 
 async function create(userParam) {
 
-    const stock = new Stock(userParam);
+    const stock = new Stock;
+
+    stock.expPrice = userParam.expPrice;
+    stock.expDate = userParam.expDate;
+    stock.stock = userParam.stock;
+
+    let model = await Product.findOne({ _id: userParam.modelId });
+
+    if (model) {
+
+        stock.modelId = model._id;
+        stock.name = model.name;
+        stock.category = model.category;
+        stock.subcategory = model.subcategory;
+        stock.description = model.description;
+        stock.listPrice = model.listPrice;
+        stock.img = model.img;
+
+    } else {
+
+        throw 'no se encontro el modelo de producto';
+
+    }
+
+    
+    let provider = await Provider.findOne({ _id: userParam.providerId})
+
+    if (provider) {
+
+        stock.providerId = provider._id;
+        stock.providerName = provider.name;
+
+    } else {
+
+        throw 'no existe un proveedor con ese ID';
+    }
+
 
     await stock.save();
+
+    return stock;
+}
+
+async function updateStock (userParam) {
+
+    const stock = await Stock.findOne({ _id : userParam.id });
+
+    stock.stock = userParam.newStock;
+
+    await stock.save();
+    return stock;
+
 }
 
 async function getAll() {
@@ -33,7 +83,7 @@ async function getById(id) {
 }
 
 async function partialMatch(search) {
-    return await Stock.find({ title: {"$regex" : search, "$options" : "i"}})
+    return await Stock.find({ name: {"$regex" : search, "$options" : "i"}})
 }
 
 async function getBySubcategory(subcat) {
@@ -79,7 +129,6 @@ async function forYou(req){  //emprolijar con casos puntuales
             })
 
         });
-    })
-               
+    })       
 }
 
