@@ -118,6 +118,8 @@ async function create (token) {
 
 async function visualizeOrder(id) {
 
+    console.log(id);
+
     let order = await Order.findOne({ _id: id });
 
     if (order) {
