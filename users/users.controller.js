@@ -16,6 +16,10 @@ router.get('/serverAlive', (req, res) => {
 // routes
 router.post('/authenticate', authenticate);
 router.get('/retrieveUser', retrieveUser);
+router.post('/addAddress', addAddress);
+router.put('/changeDefaultAddress/:id', changeDefaultAddress);
+router.get('/getUserAddresses', getUserAddresses);
+router.delete('/deleteAddress/:id', deleteAddress);
 router.post('/register', register);
 router.get('/', getAll);
 router.get('/:id', getById);
@@ -42,6 +46,30 @@ function authenticate(req, res, next) {
 function retrieveUser (req, res, next) {
     userService.retrieveUser(req.headers.authorization.split(' ')[1])
         .then(user => user ? res.json(user) : res.status(400).json({ message: 'no se pudo recuperar la sesion' }))
+        .catch(err => next(err));
+}
+
+function addAddress(req, res, next) {
+    userService.addAddress(req.headers.authorization.split(' ')[1], req.body)
+        .then(user => user ? res.json(user) : res.status(400).json({ message: 'No se pudo agregar la direccion' }))
+        .catch(err => next(err));
+}
+
+function changeDefaultAddress(req, res, next) {
+    userService.changeDefaultAddress(req.headers.authorization.split(' ')[1], req.params.id)
+        .then(user => user ? res.json(user) : res.status(400).json({ message: 'No se pudo cambiar la direccion predeterminada' }))
+        .catch(err => next(err));
+}
+
+function getUserAddresses(req, res, next) {
+    userService.getUserAddresses(req.headers.authorization.split(' ')[1])
+        .then(addresses => addresses ? res.json(addresses) : res.status(400).json({ message: 'No se pudo visualizar las direcciones' }))
+        .catch(err => next(err));
+}
+
+function deleteAddress(req, res, next){
+    userService.deleteAddress(req.headers.authorization.split(' ')[1], req.params.id)
+        .then(addresses => addresses ? res.json(addresses) : res.status(400).json({ message: 'No se pudo eliminar la direccion' }))
         .catch(err => next(err));
 }
 

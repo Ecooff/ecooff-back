@@ -1,19 +1,19 @@
-﻿const express = require('express');
-const config = require('config.json');
+﻿const config = require('config.json');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const crypto = require("crypto");
 const db = require('_helpers/db');
-//const res = require('express/lib/response');
 const User = db.User;
 const sendEmail = require('_helpers/send-email');
-const res = require('express/lib/response');
-const { getMaxListeners } = require('process');
 const ObjectId = require('mongodb').ObjectId;
 
 module.exports = {
     authenticate,
     retrieveUser,
+    addAddress,
+    changeDefaultAddress,
+    getUserAddresses,
+    deleteAddress,
     getAll,
     getById,
     create,
@@ -72,7 +72,147 @@ async function retrieveUser(token) {
     }
 }
 
+//ADDRESSES
 
+async function addAddress(token, userParam) {
+
+    let id = '';
+    let user = '';
+
+    if (token) {
+        
+        jwt.verify(token, config.secret, (err, decoded) => {
+            if (err){
+                console.log(err.message);
+                throw 'error';
+            } else {
+                id = decoded.sub;
+            }
+        });
+    }
+
+    user = await User.findOne({ _id : ObjectId(id) });
+    
+    let defaultAddress = false;
+    let street = '';
+    let streetNumber = Number;
+    let floor = Number;
+    let door = '';
+    let CP = Number;
+
+    if (user.addresses.length > 0) {
+
+        street = userParam.street;
+        streetNumber = userParam.streetNumber;
+        floor = userParam.floor;
+        door = userParam.door;
+        CP = userParam.CP;
+
+        user.addresses.push( { street, streetNumber, floor, door, CP });
+
+    } else {
+
+        defaultAddress = true;
+        street = userParam.street;
+        streetNumber = userParam.streetNumber;
+        floor = userParam.floor;
+        door = userParam.door;
+        CP = userParam.CP;
+
+        user.addresses.push( { defaultAddress, street, streetNumber, floor, door, CP });
+
+    }
+
+    await user.save();
+
+    const address = user.addresses[user.addresses.length - 1];
+
+    return address;
+
+}
+
+async function changeDefaultAddress(token, id) {
+
+    let userId = '';
+
+    if (token) {
+        
+        jwt.verify(token, config.secret, (err, decoded) => {
+            if (err){
+                console.log(err.message);
+                throw 'error';
+            } else {
+                userId = decoded.sub;
+            }
+        });
+    }
+
+    await User.updateOne({ _id : userId, 'addresses.defaultAddress': 'true'}, { '$set': {
+        'addresses.$.defaultAddress': 'false'
+    }});
+
+    await User.updateOne({ 'addresses._id' : id  }, { '$set' : {
+        'addresses.$.defaultAddress': 'true',
+    }});
+
+    const user = await User.find({ _id : userId });
+
+    return user;
+}
+
+async function getUserAddresses(token) {
+
+    let userId = '';
+
+    if (token) {
+        
+        jwt.verify(token, config.secret, (err, decoded) => {
+            if (err){
+                console.log(err.message);
+                throw 'error';
+            } else {
+                userId = decoded.sub;
+            }
+        });
+    }
+
+    const addresses = await User.find({ _id : ObjectId(userId) }, ['addresses', '-_id']);
+
+    if (addresses) {
+
+        return addresses;
+
+    }
+
+}
+
+async function deleteAddress(token, id) {
+
+    let userId = '';
+
+    if (token) {
+        
+        jwt.verify(token, config.secret, (err, decoded) => {
+            if (err){
+                console.log(err.message);
+                throw 'error';
+            } else {
+                userId = decoded.sub;
+            }
+        });
+    }
+
+    const user = await User.findOne({ _id : userId });
+
+    user.addresses.pull(id);
+
+    await user.save();
+
+    return user.addresses;
+
+}
+
+//GET ALL / GET BY ID
 
 async function getAll() {
     return await User.find();

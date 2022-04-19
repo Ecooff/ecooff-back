@@ -16,6 +16,16 @@ const schema = new Schema({
             count: {type: Number}
         }
     ],
+    addresses: [
+        {
+            defaultAddress: {type: Boolean, default: false},
+            street: {type: String, required: true},
+            streetNumber: {type: Number, required: true},
+            floor: {type: Number},
+            door: {type: String},
+            CP: {type: Number, required: true}
+        }
+    ]
 });
 
 schema.set('toJSON', {
