@@ -273,7 +273,7 @@ async function resendVerify({ emailParam }) {
 }
 
 async function verifyEmail({ token }) {
-    const user = await db.User.findOne({ verificationToken: token });
+    const user = await db.User.findOne({ verificationToken: token }, ['-favorites', '-addresses']);
 
     if (!user) throw 'Usuario no encontrado/token invalido';
 
@@ -281,7 +281,15 @@ async function verifyEmail({ token }) {
     user.verificationToken = undefined;
 
     await user.save();
-    return {...user.toJSON()};
+
+    const newToken = jwt.sign({ sub: user.id }, config.secret, { expiresIn: '30d' });
+        return {
+            ...user.toJSON(),
+            newToken
+        };
+
+
+    //return {...user.toJSON()};
     
 }
 
