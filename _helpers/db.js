@@ -1,7 +1,7 @@
 const config = require('config.json');
 const mongoose = require('mongoose');
 const connectionOptions = { useCreateIndex: true, useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false };
-mongoose.connect("mongodb://localhost/ecooff" || config.connectionString, connectionOptions);
+mongoose.connect("mongodb+srv://ecooffAdmin:vD9uJTn3@cluster0.jm6mh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority" || config.connectionString, connectionOptions);
 mongoose.Promise = global.Promise;
 
 module.exports = {
