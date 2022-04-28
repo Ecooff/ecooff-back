@@ -102,10 +102,10 @@ async function addAddress(token, userParam) {
 
     if (user.addresses.length > 0) {
 
-        street = userParam.street;
-        streetNumber = userParam.streetNumber;
-        floor = userParam.floor;
-        door = userParam.door;
+        street = userParam.calle;
+        streetNumber = userParam.numero;
+        floor = userParam.piso;
+        door = userParam.timbre;
         CP = userParam.CP;
 
         user.addresses.push( { street, streetNumber, floor, door, CP });
