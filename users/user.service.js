@@ -113,10 +113,10 @@ async function addAddress(token, userParam) {
     } else {
 
         defaultAddress = true;
-        street = userParam.street;
-        streetNumber = userParam.streetNumber;
-        floor = userParam.floor;
-        door = userParam.door;
+        street = userParam.calle;
+        streetNumber = userParam.numero;
+        floor = userParam.piso;
+        door = userParam.timbre;
         CP = userParam.CP;
 
         user.addresses.push( { defaultAddress, street, streetNumber, floor, door, CP });
