@@ -924,11 +924,11 @@
     "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
     "containerId": "de9c8a35-ae0b-48e0-9c35-e120ff306512",
     "name": "register",
-    "url": "http://localhost:3000/api/users/register",
+    "url": "https://ecooff.herokuapp.com/api/users/register",
     "method": "POST",
     "sortNum": 10000,
     "created": "2022-04-18T17:43:56.911Z",
-    "modified": "2022-04-22T16:33:51.441Z",
+    "modified": "2022-04-28T14:32:02.961Z",
     "headers": [],
     "params": [],
     "body": {
