@@ -27,7 +27,7 @@ app.use('/api/orders', require('./orders/order.controller'));
 app.use(errorHandler);
 
 // start server
-const port = 3000;
+const port = process.env.PORT || 80;
 const server = app.listen(port, function () {
     console.log('Server running on port ' + port);
 });
