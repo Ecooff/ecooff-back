@@ -100,12 +100,14 @@ async function addAddress(token, userParam) {
     let door = '';
     let CP = Number;
 
+    console.log('here');
+
     if (user.addresses.length > 0) {
 
-        street = userParam.calle;
-        streetNumber = userParam.numero;
-        floor = userParam.piso;
-        door = userParam.timbre;
+        street = userParam.street;
+        streetNumber = userParam.streetNumber;
+        floor = userParam.floor;
+        door = userParam.door;
         CP = userParam.CP;
 
         user.addresses.push( { street, streetNumber, floor, door, CP });
@@ -113,10 +115,10 @@ async function addAddress(token, userParam) {
     } else {
 
         defaultAddress = true;
-        street = userParam.calle;
-        streetNumber = userParam.numero;
-        floor = userParam.piso;
-        door = userParam.timbre;
+        street = userParam.street;
+        streetNumber = userParam.streetNumber;
+        floor = userParam.floor;
+        door = userParam.door;
         CP = userParam.CP;
 
         user.addresses.push( { defaultAddress, street, streetNumber, floor, door, CP });
@@ -372,6 +374,7 @@ async function editName(userParam) {
         await user.save();
 
         return user;
+    } else {
+        throw 'contraseña invalida';
     }
 }
-

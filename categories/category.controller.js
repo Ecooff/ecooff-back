@@ -14,7 +14,7 @@ module.exports = router;
 
 function create(req, res, next) {
     categoryService.create(req.body)
-        .then(() => res.json({}))
+        .then(category => category ? res.json(category) : res.sendStatus(404))
         .catch(err => next(err));
 }
 

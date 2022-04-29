@@ -924,11 +924,11 @@
     "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
     "containerId": "de9c8a35-ae0b-48e0-9c35-e120ff306512",
     "name": "register",
-    "url": "https://ecooff.herokuapp.com/api/users/register",
+    "url": "http://localhost:3000/api/users/register",
     "method": "POST",
     "sortNum": 10000,
     "created": "2022-04-18T17:43:56.911Z",
-    "modified": "2022-04-28T14:50:03.629Z",
+    "modified": "2022-04-29T13:02:31.465Z",
     "headers": [],
     "params": [],
     "body": {
@@ -943,16 +943,16 @@
     "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
     "containerId": "de9c8a35-ae0b-48e0-9c35-e120ff306512",
     "name": "verify email",
-    "url": "https://ecooff.herokuapp.com/api/users/verifyEmail",
+    "url": "http://localhost:3000/api/users/verifyEmail",
     "method": "POST",
     "sortNum": 20000,
     "created": "2022-04-18T17:43:56.912Z",
-    "modified": "2022-04-28T15:15:02.129Z",
+    "modified": "2022-04-29T14:41:14.624Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"token\" : \"c5e2\"\n}",
+      "raw": "{\n    \"token\" : \"2b31\"\n}",
       "form": []
     },
     "auth": {
@@ -965,11 +965,11 @@
     "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
     "containerId": "de9c8a35-ae0b-48e0-9c35-e120ff306512",
     "name": "resendVerify",
-    "url": "https://ecooff.herokuapp.com/api/users/resendVerify",
+    "url": "http://localhost:3000/api/users/resendVerify",
     "method": "POST",
-    "sortNum": 30000,
+    "sortNum": 21250,
     "created": "2022-04-18T17:43:56.913Z",
-    "modified": "2022-04-28T15:05:15.443Z",
+    "modified": "2022-04-29T14:41:18.954Z",
     "headers": [],
     "params": [],
     "body": {
@@ -984,16 +984,16 @@
     "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
     "containerId": "de9c8a35-ae0b-48e0-9c35-e120ff306512",
     "name": "authenticate",
-    "url": "https://ecooff.herokuapp.com/api/users/authenticate",
+    "url": "http://localhost:3000/api/users/authenticate",
     "method": "POST",
-    "sortNum": 40000,
+    "sortNum": 22500,
     "created": "2022-04-18T17:43:56.914Z",
-    "modified": "2022-04-28T15:05:20.261Z",
+    "modified": "2022-04-29T14:44:39.187Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"email\": \"lopezlandosebastian2@gmail.com\",\n    \"password\": \"12345\"\n}",
+      "raw": "{\n    \"email\": \"lopezlandosebastiann@gmail.com\",\n    \"password\": \"123456\"\n}",
       "form": []
     },
     "auth": {
@@ -1007,16 +1007,16 @@
     "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
     "containerId": "de9c8a35-ae0b-48e0-9c35-e120ff306512",
     "name": "server alive",
-    "url": "https://ecooff.herokuapp.com/api/users/serverAlive",
+    "url": "http://localhost:3000/api/users/serverAlive",
     "method": "GET",
     "sortNum": 50000,
     "created": "2022-04-18T17:43:56.915Z",
-    "modified": "2022-04-28T15:05:23.206Z",
+    "modified": "2022-04-29T14:42:34.064Z",
     "headers": [],
     "params": [],
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MWZjNTJhY2MzNzg3YjAxNDBmYTI4MmEiLCJpYXQiOjE2NDM5MjYyMzIsImV4cCI6MTY1MTcwMjIzMn0.YytpoHzgVI056D1CKf44cfFFfHlc0MXcFgqsxnp93Ew"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
     },
     "tests": []
   },
@@ -1025,11 +1025,11 @@
     "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
     "containerId": "de9c8a35-ae0b-48e0-9c35-e120ff306512",
     "name": "forgotPwRequest",
-    "url": "https://ecooff.herokuapp.com/api/users/forgotPasswordRequest",
+    "url": "http://localhost:3000/api/users/forgotPasswordRequest",
     "method": "POST",
     "sortNum": 60000,
     "created": "2022-04-18T17:43:56.916Z",
-    "modified": "2022-04-28T15:05:26.065Z",
+    "modified": "2022-04-29T13:03:47.163Z",
     "headers": [],
     "params": [],
     "body": {
@@ -1047,16 +1047,16 @@
     "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
     "containerId": "de9c8a35-ae0b-48e0-9c35-e120ff306512",
     "name": "forgotPwTokenOnly",
-    "url": "https://ecooff.herokuapp.com/api/users/forgotPasswordTokenOnly",
+    "url": "http://localhost:3000/api/users/forgotPasswordTokenOnly",
     "method": "POST",
     "sortNum": 70000,
     "created": "2022-04-18T17:43:56.917Z",
-    "modified": "2022-04-28T15:05:29.273Z",
+    "modified": "2022-04-29T14:43:10.769Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"token\": \"ad362d\"\n}",
+      "raw": "{\n    \"token\": \"54e0\"\n}",
       "form": []
     },
     "tests": []
@@ -1066,11 +1066,11 @@
     "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
     "containerId": "ddd5298b-a0c4-4722-9f9a-7c8a60924110",
     "name": "create",
-    "url": "https://ecooff.herokuapp.com/api/categories/create",
+    "url": "http://localhost:3000/api/categories/create",
     "method": "POST",
     "sortNum": 70000,
     "created": "2022-04-18T17:43:56.918Z",
-    "modified": "2022-04-28T15:06:00.249Z",
+    "modified": "2022-04-29T14:47:47.044Z",
     "headers": [],
     "params": [],
     "body": {
@@ -1080,7 +1080,7 @@
     },
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjBjMTZjM2IxNWMzOTQzZjhhZjliM2EiLCJpYXQiOjE2NDQ5NTk0NDcsImV4cCI6MTY1MjczNTQ0N30.0q-KZwiXH_mHIDxIDfTG-J0BI_PwwwCOMM9q6vOdiHI"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
     },
     "tests": []
   },
@@ -1089,21 +1089,21 @@
     "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
     "containerId": "c7d91ad0-6e6a-435e-be26-30d52a9572d5",
     "name": "create",
-    "url": "https://ecooff.herokuapp.com/api/providers/create",
+    "url": "http://localhost:3000/api/providers/create",
     "method": "POST",
     "sortNum": 80000,
     "created": "2022-04-18T17:43:56.919Z",
-    "modified": "2022-04-28T15:06:18.036Z",
+    "modified": "2022-04-29T14:48:09.089Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"provider\": \"Disco\",\n    \"img\": \"foto.jpg\",\n    \"branchOffices\": [\n        {\n            \"branch\": \"prueba1\",\n            \"address\":\"avenida 123\"\n        },\n        {\n            \"branch\": \"prueba2\",\n            \"address\":\"calle 123\"\n        }\n    ]\n}",
+      "raw": "{\n    \"name\": \"Coto\",\n    \"img\": \"foto.jpg\"\n}",
       "form": []
     },
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjBhNzEzZGNjZDJmOTUzNzQ3MDQ3OWMiLCJpYXQiOjE2NDQ4NjY2NDEsImV4cCI6MTY1MjY0MjY0MX0.P3mrA8gRPwxQX3194welzrXFomY78yZpyo6z0glGi9w"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
     },
     "tests": []
   },
@@ -1112,16 +1112,16 @@
     "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
     "containerId": "de9c8a35-ae0b-48e0-9c35-e120ff306512",
     "name": "forgotPasswordUpdate",
-    "url": "https://ecooff.herokuapp.com/api/users/forgotPasswordUpdate",
+    "url": "http://localhost:3000/api/users/forgotPasswordUpdate",
     "method": "PUT",
     "sortNum": 80000,
     "created": "2022-04-18T17:43:56.920Z",
-    "modified": "2022-04-28T15:05:32.002Z",
+    "modified": "2022-04-29T14:43:16.886Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"token\": \"ad362d\",\n    \"pw\": \"123456\",\n    \"confirmPw\": \"123456\"\n}",
+      "raw": "{\n    \"token\": \"54e0\",\n    \"pw\": \"123456\",\n    \"confirmPw\": \"123456\"\n}",
       "form": []
     },
     "tests": []
@@ -1131,21 +1131,21 @@
     "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
     "containerId": "32121056-75ad-4fa4-84a6-95673e25e89b",
     "name": "create",
-    "url": "https://ecooff.herokuapp.com/api/products/create",
+    "url": "http://localhost:3000/api/products/create",
     "method": "POST",
     "sortNum": 90000,
     "created": "2022-04-18T17:43:56.921Z",
-    "modified": "2022-04-28T15:06:32.249Z",
+    "modified": "2022-04-29T14:49:03.381Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"title\": \"oreos\",\n    \"subcategory\": \"galles 1\",\n    \"description\": \"desc\",\n    \"listPrice\": \"100\",\n    \"img\": \"oreo.jpg\",\n    \"allergenics\": [\n        {\n            \"vegan\": \"true\",\n            \"celiac\":\"false\"\n        }    \n    ]\n}",
+      "raw": "{\n    \"name\": \"sprite\",\n    \"description\": \"desc\",\n    \"listPrice\": \"100\",\n    \"img\": \"sprite.jpg\",\n    \"allergenics\": [\n        {\n            \"vegan\": \"true\",\n            \"celiac\":\"false\"\n        }    \n    ],\n    \"subcatId\": \"626bfa938bcd732ba07fdc82\"\n}",
       "form": []
     },
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjA1NjZjMWMyZGQ4ZDM4MTQ1M2VkMjYiLCJpYXQiOjE2NDQ1MjQzNDgsImV4cCI6MTY1MjMwMDM0OH0.oZ4K-ddhf7Ub_b5Yd2u6OUGOjs9NuEIRkrRuZGVfKCU"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
     },
     "tests": []
   },
@@ -1154,21 +1154,21 @@
     "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
     "containerId": "24299490-c118-4f0d-ba1a-8dfa50f1ee1f",
     "name": "create",
-    "url": "https://ecooff.herokuapp.com/api/stock/create",
+    "url": "http://localhost:3000/api/stock/create",
     "method": "POST",
     "sortNum": 100000,
     "created": "2022-04-18T17:43:56.922Z",
-    "modified": "2022-04-28T15:06:43.457Z",
+    "modified": "2022-04-29T14:52:07.023Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"title\": \"mal\",\n    \"modelId\": \"123\",\n    \"category\": \"amalamal\",\n    \"subcategory\": \"amal123\",\n    \"expPrice\": \"80\",\n    \"expDate\": \"2022-02-20\",\n    \"stock\":\"10\",\n    \"providerId\": \"620bca54f3607b203099985f\",\n    \"providerName\" : \"amal\",\n    \"providerBranch\" : \"2\",\n    \"branchGeo\" : \"ba\"\n}",
+      "raw": "{\n    \"expPrice\": 80,\n    \"expDate\": \"2022-04-20\",\n    \"stock\":10,\n    \"modelId\": \"626bfb55c388d351d4a61fa6\",\n    \"providerId\": \"626bfaa90e93122ca46f07d4\"\n}",
       "form": []
     },
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjBiZmQ3ZmJjNjFhZTIwMDg4NWRmYzEiLCJpYXQiOjE2NDQ5NTMwMTQsImV4cCI6MTY1MjcyOTAxNH0.cFF1HTRnSFmOPvSuS2i-wxzSAVIoqHzm6z4GWNoduZ4"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
     },
     "tests": []
   },
@@ -1177,16 +1177,16 @@
     "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
     "containerId": "24299490-c118-4f0d-ba1a-8dfa50f1ee1f",
     "name": "getAll",
-    "url": "https://ecooff.herokuapp.com/api/stock/",
+    "url": "http://localhost:3000/api/stock/",
     "method": "GET",
     "sortNum": 110000,
     "created": "2022-04-18T17:43:56.923Z",
-    "modified": "2022-04-28T15:06:45.840Z",
+    "modified": "2022-04-29T14:52:14.242Z",
     "headers": [],
     "params": [],
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjBiZmQ3ZmJjNjFhZTIwMDg4NWRmYzEiLCJpYXQiOjE2NDQ5NTMwMTQsImV4cCI6MTY1MjcyOTAxNH0.cFF1HTRnSFmOPvSuS2i-wxzSAVIoqHzm6z4GWNoduZ4"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
     },
     "tests": []
   },
@@ -1195,11 +1195,11 @@
     "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
     "containerId": "32121056-75ad-4fa4-84a6-95673e25e89b",
     "name": "getAll",
-    "url": "https://ecooff.herokuapp.com/api/products/",
+    "url": "http://localhost:3000/api/products/",
     "method": "GET",
     "sortNum": 120000,
     "created": "2022-04-18T17:43:56.924Z",
-    "modified": "2022-04-28T15:06:35.629Z",
+    "modified": "2022-04-29T13:04:41.983Z",
     "headers": [],
     "params": [],
     "auth": {
@@ -1213,11 +1213,11 @@
     "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
     "containerId": "c7d91ad0-6e6a-435e-be26-30d52a9572d5",
     "name": "getAll",
-    "url": "https://ecooff.herokuapp.com/api/providers/",
+    "url": "http://localhost:3000/api/providers/",
     "method": "GET",
     "sortNum": 130000,
     "created": "2022-04-18T17:43:56.925Z",
-    "modified": "2022-04-28T15:06:20.070Z",
+    "modified": "2022-04-29T13:04:30.484Z",
     "headers": [],
     "params": [],
     "auth": {
@@ -1231,11 +1231,11 @@
     "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
     "containerId": "ddd5298b-a0c4-4722-9f9a-7c8a60924110",
     "name": "getAll",
-    "url": "https://ecooff.herokuapp.com/api/categories/",
+    "url": "http://localhost:3000/api/categories/",
     "method": "GET",
     "sortNum": 140000,
     "created": "2022-04-18T17:43:56.926Z",
-    "modified": "2022-04-28T15:06:06.044Z",
+    "modified": "2022-04-29T13:04:17.263Z",
     "headers": [],
     "params": [],
     "auth": {
@@ -1249,16 +1249,16 @@
     "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
     "containerId": "de9c8a35-ae0b-48e0-9c35-e120ff306512",
     "name": "getAll",
-    "url": "https://ecooff.herokuapp.com/api/users/",
+    "url": "http://localhost:3000/api/users/",
     "method": "GET",
     "sortNum": 150000,
     "created": "2022-04-18T17:43:56.927Z",
-    "modified": "2022-04-28T15:15:37.181Z",
+    "modified": "2022-04-29T14:42:45.612Z",
     "headers": [],
     "params": [],
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZhYTk5Yjc1YmY1YTAwMTYwOGZiYzAiLCJpYXQiOjE2NTExNTg5MDIsImV4cCI6MTY1Mzc1MDkwMn0.eUJE0sMQpVsPfJ9XWGk_JXDNCvfA79SkiWp8RN6utbk"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
     },
     "tests": []
   },
@@ -1267,11 +1267,11 @@
     "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
     "containerId": "de9c8a35-ae0b-48e0-9c35-e120ff306512",
     "name": "get by id",
-    "url": "https://ecooff.herokuapp.com/api/users/620bd2bbba1ecb447c65adac",
+    "url": "http://localhost:3000/api/users/620bd2bbba1ecb447c65adac",
     "method": "GET",
     "sortNum": 170000,
     "created": "2022-04-18T17:43:56.928Z",
-    "modified": "2022-04-28T15:05:37.741Z",
+    "modified": "2022-04-29T13:03:58.887Z",
     "headers": [],
     "params": [],
     "auth": {
@@ -1285,16 +1285,16 @@
     "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
     "containerId": "24299490-c118-4f0d-ba1a-8dfa50f1ee1f",
     "name": "getBySubcategory",
-    "url": "https://ecooff.herokuapp.com/api/stock/getBySubcategory/subcat1",
+    "url": "http://localhost:3000/api/stock/getBySubcategory/sprite",
     "method": "GET",
     "sortNum": 180000,
     "created": "2022-04-18T17:43:56.929Z",
-    "modified": "2022-04-28T15:06:48.157Z",
+    "modified": "2022-04-29T14:52:24.069Z",
     "headers": [],
     "params": [],
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjBjMTZjM2IxNWMzOTQzZjhhZjliM2EiLCJpYXQiOjE2NDQ5NTk0NDcsImV4cCI6MTY1MjczNTQ0N30.0q-KZwiXH_mHIDxIDfTG-J0BI_PwwwCOMM9q6vOdiHI"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
     },
     "tests": []
   },
@@ -1303,11 +1303,11 @@
     "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
     "containerId": "24299490-c118-4f0d-ba1a-8dfa50f1ee1f",
     "name": "getByProvider",
-    "url": "https://ecooff.herokuapp.com/api/stock/getByProvider/620bca54f3607b203099985f",
+    "url": "http://localhost:3000/api/stock/getByProvider/626bfaa90e93122ca46f07d4",
     "method": "GET",
     "sortNum": 190000,
     "created": "2022-04-18T17:43:56.930Z",
-    "modified": "2022-04-28T15:06:50.646Z",
+    "modified": "2022-04-29T14:52:40.271Z",
     "headers": [],
     "params": [],
     "body": {
@@ -1317,7 +1317,7 @@
     },
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjBjMTZjM2IxNWMzOTQzZjhhZjliM2EiLCJpYXQiOjE2NDQ5NTk0NDcsImV4cCI6MTY1MjczNTQ0N30.0q-KZwiXH_mHIDxIDfTG-J0BI_PwwwCOMM9q6vOdiHI"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
     },
     "tests": []
   },
@@ -1326,11 +1326,11 @@
     "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
     "containerId": "24299490-c118-4f0d-ba1a-8dfa50f1ee1f",
     "name": "getByProvSubcat",
-    "url": "https://ecooff.herokuapp.com/api/stock/getByProvSubcat/620bca54f3607b203099985f/amal123",
+    "url": "http://localhost:3000/api/stock/getByProvSubcat/626bfaa90e93122ca46f07d4/sprite",
     "method": "GET",
     "sortNum": 200000,
     "created": "2022-04-18T17:43:56.931Z",
-    "modified": "2022-04-28T15:06:53.223Z",
+    "modified": "2022-04-29T14:53:08.803Z",
     "headers": [],
     "params": [],
     "body": {
@@ -1340,7 +1340,7 @@
     },
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjBjMTZjM2IxNWMzOTQzZjhhZjliM2EiLCJpYXQiOjE2NDQ5NTk0NDcsImV4cCI6MTY1MjczNTQ0N30.0q-KZwiXH_mHIDxIDfTG-J0BI_PwwwCOMM9q6vOdiHI"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
     },
     "tests": []
   },
@@ -1349,16 +1349,16 @@
     "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
     "containerId": "24299490-c118-4f0d-ba1a-8dfa50f1ee1f",
     "name": "closeToExp",
-    "url": "https://ecooff.herokuapp.com/api/stock/closeToExp",
+    "url": "http://localhost:3000/api/stock/closeToExp",
     "method": "GET",
     "sortNum": 210000,
     "created": "2022-04-18T17:43:56.932Z",
-    "modified": "2022-04-28T15:06:55.800Z",
+    "modified": "2022-04-29T14:53:14.833Z",
     "headers": [],
     "params": [],
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjBjMTZjM2IxNWMzOTQzZjhhZjliM2EiLCJpYXQiOjE2NDQ5NTk0NDcsImV4cCI6MTY1MjczNTQ0N30.0q-KZwiXH_mHIDxIDfTG-J0BI_PwwwCOMM9q6vOdiHI"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
     },
     "tests": []
   },
@@ -1367,11 +1367,11 @@
     "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
     "containerId": "24299490-c118-4f0d-ba1a-8dfa50f1ee1f",
     "name": "forYou",
-    "url": "https://ecooff.herokuapp.com/api/stock/forYou",
+    "url": "http://localhost:3000/api/stock/forYou",
     "method": "GET",
     "sortNum": 220000,
     "created": "2022-04-18T17:43:56.933Z",
-    "modified": "2022-04-28T15:06:58.987Z",
+    "modified": "2022-04-29T14:53:23.328Z",
     "headers": [],
     "params": [],
     "body": {
@@ -1381,7 +1381,7 @@
     },
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjBiZmQ3ZmJjNjFhZTIwMDg4NWRmYzEiLCJpYXQiOjE2NDQ5NTMwMTQsImV4cCI6MTY1MjcyOTAxNH0.cFF1HTRnSFmOPvSuS2i-wxzSAVIoqHzm6z4GWNoduZ4"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
     },
     "tests": []
   },
@@ -1390,11 +1390,11 @@
     "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
     "containerId": "de9c8a35-ae0b-48e0-9c35-e120ff306512",
     "name": "retrieveUser",
-    "url": "https://ecooff.herokuapp.com/api/users/retrieveUser",
+    "url": "http://localhost:3000/api/users/retrieveUser",
     "method": "GET",
     "sortNum": 240000,
     "created": "2022-04-18T17:43:56.934Z",
-    "modified": "2022-04-28T15:05:40.275Z",
+    "modified": "2022-04-29T13:04:02.096Z",
     "headers": [],
     "params": [],
     "auth": {
@@ -1408,44 +1408,21 @@
     "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
     "containerId": "1abe0c6e-6188-41d9-be76-f4c456c8f424",
     "name": "addToCart",
-    "url": "https://ecooff.herokuapp.com/api/cart/addToCart",
+    "url": "http://localhost:3000/api/cart/addToCart",
     "method": "POST",
     "sortNum": 250000,
     "created": "2022-04-18T17:43:56.935Z",
-    "modified": "2022-04-28T15:07:12.512Z",
+    "modified": "2022-04-29T15:00:55.965Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"productId\" : \"5\",\n    \"quantity\": \"2\",\n    \"name\": \"producto5.2\",\n    \"price\": \"40\",\n    \"length\": \"false\"\n}",
+      "raw": "{\n    \"productId\" : \"626bfb97c388d351d4a61fa8\",\n    \"quantity\": \"7\",\n    \"length\": \"false\"\n}",
       "form": []
     },
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjYyZDhlZmVhM2I4MjU0NDhhM2NiMTkiLCJpYXQiOjE2NTA2NDUyMzksImV4cCI6MTY1MzIzNzIzOX0.VEPjdN7m5JdbJjp7AxvNtAQvIDj0iv16kUGZD1VgdHk"
-    },
-    "tests": []
-  },
-  {
-    "_id": "45f23566-fa54-4be9-b704-895169c11447",
-    "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
-    "containerId": "1abe0c6e-6188-41d9-be76-f4c456c8f424",
-    "name": "create",
-    "url": "https://ecooff.herokuapp.com/api/cart/create",
-    "method": "POST",
-    "sortNum": 260000,
-    "created": "2022-04-18T17:43:56.936Z",
-    "modified": "2022-04-28T15:07:15.198Z",
-    "headers": [],
-    "params": [],
-    "body": {
-      "type": "json",
-      "raw": "{\n    \"userId\": \"620bd2bbba1ecb447c65adac\",\n    \"products\" : [\n        {\n            \"productId\" : \"1\",\n            \"quantity\" : \"1\",\n            \"name\" : \"producto1\",\n            \"price\" : \"10\"\n        }    \n    ]\n}",
-      "form": []
-    },
-    "auth": {
-      "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjBiZmQ3ZmJjNjFhZTIwMDg4NWRmYzEiLCJpYXQiOjE2NDQ5NTMwMTQsImV4cCI6MTY1MjcyOTAxNH0.cFF1HTRnSFmOPvSuS2i-wxzSAVIoqHzm6z4GWNoduZ4"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
     },
     "tests": []
   },
@@ -1454,16 +1431,16 @@
     "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
     "containerId": "1abe0c6e-6188-41d9-be76-f4c456c8f424",
     "name": "getAll",
-    "url": "https://ecooff.herokuapp.com/api/cart/",
+    "url": "http://localhost:3000/api/cart/",
     "method": "GET",
     "sortNum": 270000,
     "created": "2022-04-18T17:43:56.937Z",
-    "modified": "2022-04-28T15:07:18.232Z",
+    "modified": "2022-04-29T14:56:15.833Z",
     "headers": [],
     "params": [],
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjBiZmQ3ZmJjNjFhZTIwMDg4NWRmYzEiLCJpYXQiOjE2NDQ5NTMwMTQsImV4cCI6MTY1MjcyOTAxNH0.cFF1HTRnSFmOPvSuS2i-wxzSAVIoqHzm6z4GWNoduZ4"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
     },
     "tests": []
   },
@@ -1472,16 +1449,16 @@
     "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
     "containerId": "d613ecd3-b2c9-4a35-b915-7fbb994ff9c7",
     "name": "create",
-    "url": "https://ecooff.herokuapp.com/api/orders/create",
+    "url": "http://localhost:3000/api/orders/create",
     "method": "POST",
     "sortNum": 280000,
     "created": "2022-04-18T17:43:56.938Z",
-    "modified": "2022-04-28T15:07:31.300Z",
+    "modified": "2022-04-29T15:01:05.000Z",
     "headers": [],
     "params": [],
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjBiZDJiYmJhMWVjYjQ0N2M2NWFkYWMiLCJpYXQiOjE2NDYzNDI0ODYsImV4cCI6MTY1NDExODQ4Nn0.hzsTr1pSti4pvCNQV7U9OVqBEYwSsTRBecTA09k3J_o"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
     },
     "tests": []
   },
@@ -1490,16 +1467,16 @@
     "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
     "containerId": "d613ecd3-b2c9-4a35-b915-7fbb994ff9c7",
     "name": "getAll",
-    "url": "https://ecooff.herokuapp.com/api/orders/",
+    "url": "http://localhost:3000/api/orders/",
     "method": "GET",
     "sortNum": 290000,
     "created": "2022-04-18T17:43:56.939Z",
-    "modified": "2022-04-28T15:07:34.248Z",
+    "modified": "2022-04-29T15:08:25.383Z",
     "headers": [],
     "params": [],
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjBiZmQ3ZmJjNjFhZTIwMDg4NWRmYzEiLCJpYXQiOjE2NDQ5NTMwMTQsImV4cCI6MTY1MjcyOTAxNH0.cFF1HTRnSFmOPvSuS2i-wxzSAVIoqHzm6z4GWNoduZ4"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
     },
     "tests": []
   },
@@ -1508,21 +1485,21 @@
     "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
     "containerId": "d613ecd3-b2c9-4a35-b915-7fbb994ff9c7",
     "name": "changeStatus",
-    "url": "https://ecooff.herokuapp.com/api/orders/changeStatus",
+    "url": "http://localhost:3000/api/orders/changeStatus",
     "method": "PUT",
     "sortNum": 300000,
     "created": "2022-04-18T17:43:56.940Z",
-    "modified": "2022-04-28T15:07:37.039Z",
+    "modified": "2022-04-29T15:19:24.746Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"statusCode\": \"2\",\n    \"id\": \"62212c48c58e7553f88d2edd\"\n}",
+      "raw": "{\n    \"statusCode\": \"2\",\n    \"id\": \"626c00b15a78d452d49bad9e\"\n}",
       "form": []
     },
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjBiZmQ3ZmJjNjFhZTIwMDg4NWRmYzEiLCJpYXQiOjE2NDQ5NTMwMTQsImV4cCI6MTY1MjcyOTAxNH0.cFF1HTRnSFmOPvSuS2i-wxzSAVIoqHzm6z4GWNoduZ4"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
     },
     "tests": []
   },
@@ -1531,21 +1508,21 @@
     "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
     "containerId": "de9c8a35-ae0b-48e0-9c35-e120ff306512",
     "name": "editEmail",
-    "url": "https://ecooff.herokuapp.com/api/users/editEmail",
+    "url": "http://localhost:3000/api/users/editEmail",
     "method": "PUT",
     "sortNum": 310000,
     "created": "2022-04-18T17:43:56.941Z",
-    "modified": "2022-04-28T15:05:43.158Z",
+    "modified": "2022-04-29T14:43:55.345Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"oldEmail\": \"lopezlandosss3@gmail.com\",\n    \"newEmail\": \"lopezlando3@gmail.com\",\n    \"password\": \"123456\"\n}",
+      "raw": "{\n    \"oldEmail\": \"lopezlandosebastian@gmail.com\",\n    \"newEmail\": \"lopezlandosebastiann@gmail.com\",\n    \"password\": \"123456\"\n}",
       "form": []
     },
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjI5MDZiZWYyOWQxZTJmZjA5OTEzNzIiLCJpYXQiOjE2NDY4NTU5NzYsImV4cCI6MTY1NDYzMTk3Nn0.kRnfFut9L1Lhvv3f_NY6FR7Kuf-rs9i3juk9OTYinJY"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
     },
     "tests": []
   },
@@ -1554,21 +1531,16 @@
     "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
     "containerId": "1abe0c6e-6188-41d9-be76-f4c456c8f424",
     "name": "deleteItem",
-    "url": "https://ecooff.herokuapp.com/api/cart/deleteItem",
+    "url": "http://localhost:3000/api/cart/deleteItem/626bfb97c388d351d4a61fa8a",
     "method": "PUT",
     "sortNum": 320000,
     "created": "2022-04-18T17:43:56.942Z",
-    "modified": "2022-04-28T15:07:20.744Z",
+    "modified": "2022-04-29T15:01:18.961Z",
     "headers": [],
     "params": [],
-    "body": {
-      "type": "json",
-      "raw": "{\n    \"productId\": \"5\"\n}",
-      "form": []
-    },
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjI5MDZiZWYyOWQxZTJmZjA5OTEzNzIiLCJpYXQiOjE2NDY4NTU5NzYsImV4cCI6MTY1NDYzMTk3Nn0.kRnfFut9L1Lhvv3f_NY6FR7Kuf-rs9i3juk9OTYinJY"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
     },
     "tests": []
   },
@@ -1577,11 +1549,11 @@
     "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
     "containerId": "1abe0c6e-6188-41d9-be76-f4c456c8f424",
     "name": "deleteCart",
-    "url": "https://ecooff.herokuapp.com/api/cart/deleteCart",
+    "url": "http://localhost:3000/api/cart/deleteCart",
     "method": "DELETE",
     "sortNum": 330000,
     "created": "2022-04-18T17:43:56.943Z",
-    "modified": "2022-04-28T15:07:23.973Z",
+    "modified": "2022-04-29T15:00:19.875Z",
     "headers": [],
     "params": [],
     "body": {
@@ -1591,7 +1563,7 @@
     },
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjI5MDZiZWYyOWQxZTJmZjA5OTEzNzIiLCJpYXQiOjE2NDY4NTU5NzYsImV4cCI6MTY1NDYzMTk3Nn0.kRnfFut9L1Lhvv3f_NY6FR7Kuf-rs9i3juk9OTYinJY"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
     },
     "tests": []
   },
@@ -1600,21 +1572,21 @@
     "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
     "containerId": "de9c8a35-ae0b-48e0-9c35-e120ff306512",
     "name": "editName",
-    "url": "https://ecooff.herokuapp.com/api/users/editName",
+    "url": "http://localhost:3000/api/users/editName",
     "method": "PUT",
     "sortNum": 340000,
     "created": "2022-04-18T17:43:56.944Z",
-    "modified": "2022-04-28T15:05:45.910Z",
+    "modified": "2022-04-29T14:47:25.666Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"email\": \"lopezlandosss3@gmail.com\",\n    \"firstName\" : \"edit3\",\n    \"lastName\": \"edit4\",\n    \"password\": \"12345\"\n}",
+      "raw": "{\n    \"email\": \"lopezlandosebastiann@gmail.com\",\n    \"firstName\" : \"edit3\",\n    \"lastName\": \"edit4\",\n    \"password\": \"123456\"\n}",
       "form": []
     },
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjI5MDZiZWYyOWQxZTJmZjA5OTEzNzIiLCJpYXQiOjE2NDY4NTU5NzYsImV4cCI6MTY1NDYzMTk3Nn0.kRnfFut9L1Lhvv3f_NY6FR7Kuf-rs9i3juk9OTYinJY"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDM0NzksImV4cCI6MTY1MzgzNTQ3OX0.qnRVdYr0WuZZSZnjLCF_bPMD7IN1YBw_zAcUVekDgA8"
     },
     "tests": []
   },
@@ -1623,11 +1595,11 @@
     "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
     "containerId": "d613ecd3-b2c9-4a35-b915-7fbb994ff9c7",
     "name": "cancelOrder",
-    "url": "https://ecooff.herokuapp.com/api/orders/cancelOrder",
+    "url": "http://localhost:3000/api/orders/cancelOrder",
     "method": "DELETE",
     "sortNum": 350000,
     "created": "2022-04-18T17:43:56.945Z",
-    "modified": "2022-04-28T15:07:39.702Z",
+    "modified": "2022-04-29T13:05:50.877Z",
     "headers": [],
     "params": [],
     "body": {
@@ -1646,21 +1618,16 @@
     "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
     "containerId": "d613ecd3-b2c9-4a35-b915-7fbb994ff9c7",
     "name": "getByUserId",
-    "url": "https://ecooff.herokuapp.com/api/orders/getByUserId",
+    "url": "http://localhost:3000/api/orders/getByUserId/626bf8f465840e1dc42531ab",
     "method": "GET",
     "sortNum": 360000,
     "created": "2022-04-18T17:43:56.946Z",
-    "modified": "2022-04-28T15:07:42.497Z",
+    "modified": "2022-04-29T15:20:31.881Z",
     "headers": [],
     "params": [],
-    "body": {
-      "type": "json",
-      "raw": "{\n    \"userId\":\"620bfd7fbc61ae200885dfc1\"\n}",
-      "form": []
-    },
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjBiZmQ3ZmJjNjFhZTIwMDg4NWRmYzEiLCJpYXQiOjE2NDQ5NTMwMTQsImV4cCI6MTY1MjcyOTAxNH0.cFF1HTRnSFmOPvSuS2i-wxzSAVIoqHzm6z4GWNoduZ4"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
     },
     "tests": []
   },
@@ -1669,16 +1636,16 @@
     "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
     "containerId": "24299490-c118-4f0d-ba1a-8dfa50f1ee1f",
     "name": "getByCategory",
-    "url": "https://ecooff.herokuapp.com/api/stock/getByCategory/amalamal",
+    "url": "http://localhost:3000/api/stock/getByCategory/gaseosas",
     "method": "GET",
     "sortNum": 370000,
     "created": "2022-04-18T17:43:56.947Z",
-    "modified": "2022-04-28T15:07:01.630Z",
+    "modified": "2022-04-29T14:53:32.711Z",
     "headers": [],
     "params": [],
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjBjMTZjM2IxNWMzOTQzZjhhZjliM2EiLCJpYXQiOjE2NDQ5NTk0NDcsImV4cCI6MTY1MjczNTQ0N30.0q-KZwiXH_mHIDxIDfTG-J0BI_PwwwCOMM9q6vOdiHI"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
     },
     "tests": []
   },
@@ -1687,11 +1654,11 @@
     "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
     "containerId": "ddd5298b-a0c4-4722-9f9a-7c8a60924110",
     "name": "getById",
-    "url": "https://ecooff.herokuapp.com/api/categories/622fa6d6679d6a36402ddfa6",
+    "url": "http://localhost:3000/api/categories/622fa6d6679d6a36402ddfa6",
     "method": "GET",
     "sortNum": 380000,
     "created": "2022-04-18T17:43:56.949Z",
-    "modified": "2022-04-28T15:06:09.099Z",
+    "modified": "2022-04-29T13:04:19.905Z",
     "headers": [],
     "params": [],
     "auth": {
@@ -1705,11 +1672,11 @@
     "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
     "containerId": "c7d91ad0-6e6a-435e-be26-30d52a9572d5",
     "name": "getById",
-    "url": "https://ecooff.herokuapp.com/api/providers/620bca54f3607b203099985f",
+    "url": "http://localhost:3000/api/providers/620bca54f3607b203099985f",
     "method": "GET",
     "sortNum": 390000,
     "created": "2022-04-18T17:43:56.950Z",
-    "modified": "2022-04-28T15:06:23.800Z",
+    "modified": "2022-04-29T13:04:32.973Z",
     "headers": [],
     "params": [],
     "auth": {
@@ -1723,11 +1690,11 @@
     "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
     "containerId": "32121056-75ad-4fa4-84a6-95673e25e89b",
     "name": "getById",
-    "url": "https://ecooff.herokuapp.com/api/products/622fa712679d6a36402ddfa9",
+    "url": "http://localhost:3000/api/products/622fa712679d6a36402ddfa9",
     "method": "GET",
     "sortNum": 400000,
     "created": "2022-04-18T17:43:56.951Z",
-    "modified": "2022-04-28T15:06:38.315Z",
+    "modified": "2022-04-29T13:04:44.669Z",
     "headers": [],
     "params": [],
     "auth": {
@@ -1741,16 +1708,16 @@
     "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
     "containerId": "24299490-c118-4f0d-ba1a-8dfa50f1ee1f",
     "name": "getById",
-    "url": "https://ecooff.herokuapp.com/api/stock/620bcf0e3a67412d384fb642",
+    "url": "http://localhost:3000/api/stock/626bfb97c388d351d4a61fa8",
     "method": "GET",
     "sortNum": 410000,
     "created": "2022-04-18T17:43:56.952Z",
-    "modified": "2022-04-28T15:07:04.142Z",
+    "modified": "2022-04-29T14:53:45.542Z",
     "headers": [],
     "params": [],
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjBiZmQ3ZmJjNjFhZTIwMDg4NWRmYzEiLCJpYXQiOjE2NDQ5NTMwMTQsImV4cCI6MTY1MjcyOTAxNH0.cFF1HTRnSFmOPvSuS2i-wxzSAVIoqHzm6z4GWNoduZ4"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
     },
     "tests": []
   },
@@ -1759,16 +1726,16 @@
     "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
     "containerId": "1abe0c6e-6188-41d9-be76-f4c456c8f424",
     "name": "getById",
-    "url": "https://ecooff.herokuapp.com/api/cart/6230ea0d8785dc28400444d0",
+    "url": "http://localhost:3000/api/cart/6230ea0d8785dc28400444d0",
     "method": "GET",
     "sortNum": 420000,
     "created": "2022-04-18T17:43:56.953Z",
-    "modified": "2022-04-28T15:07:27.092Z",
+    "modified": "2022-04-29T15:00:34.754Z",
     "headers": [],
     "params": [],
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjBiZmQ3ZmJjNjFhZTIwMDg4NWRmYzEiLCJpYXQiOjE2NDQ5NTMwMTQsImV4cCI6MTY1MjcyOTAxNH0.cFF1HTRnSFmOPvSuS2i-wxzSAVIoqHzm6z4GWNoduZ4"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
     },
     "tests": []
   },
@@ -1777,16 +1744,16 @@
     "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
     "containerId": "d613ecd3-b2c9-4a35-b915-7fbb994ff9c7",
     "name": "getById",
-    "url": "https://ecooff.herokuapp.com/api/orders/62212c48c58e7553f88d2edd",
+    "url": "http://localhost:3000/api/orders/626c00b15a78d452d49bad9e",
     "method": "GET",
     "sortNum": 430000,
     "created": "2022-04-18T17:43:56.954Z",
-    "modified": "2022-04-28T15:07:44.812Z",
+    "modified": "2022-04-29T15:20:40.818Z",
     "headers": [],
     "params": [],
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjBiZmQ3ZmJjNjFhZTIwMDg4NWRmYzEiLCJpYXQiOjE2NDQ5NTMwMTQsImV4cCI6MTY1MjcyOTAxNH0.cFF1HTRnSFmOPvSuS2i-wxzSAVIoqHzm6z4GWNoduZ4"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
     },
     "tests": []
   },
@@ -1795,16 +1762,16 @@
     "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
     "containerId": "d613ecd3-b2c9-4a35-b915-7fbb994ff9c7",
     "name": "inProgress",
-    "url": "https://ecooff.herokuapp.com/api/orders/inProgress",
+    "url": "http://localhost:3000/api/orders/inProgress",
     "method": "GET",
     "sortNum": 440000,
     "created": "2022-04-18T17:43:56.955Z",
-    "modified": "2022-04-28T15:07:47.171Z",
+    "modified": "2022-04-29T15:18:45.040Z",
     "headers": [],
     "params": [],
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjBiZmQ3ZmJjNjFhZTIwMDg4NWRmYzEiLCJpYXQiOjE2NDQ5NTMwMTQsImV4cCI6MTY1MjcyOTAxNH0.cFF1HTRnSFmOPvSuS2i-wxzSAVIoqHzm6z4GWNoduZ4"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
     },
     "tests": []
   },
@@ -1813,16 +1780,16 @@
     "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
     "containerId": "24299490-c118-4f0d-ba1a-8dfa50f1ee1f",
     "name": "partialMatch",
-    "url": "https://ecooff.herokuapp.com/api/stock/partialMatch/prod",
+    "url": "http://localhost:3000/api/stock/partialMatch/sp",
     "method": "GET",
     "sortNum": 450000,
     "created": "2022-04-18T17:43:56.956Z",
-    "modified": "2022-04-28T15:07:06.827Z",
+    "modified": "2022-04-29T14:54:36.710Z",
     "headers": [],
     "params": [],
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjU3MjAxN2I4MWJjMTBmYTQ4YzczM2QiLCJpYXQiOjE2NTAzMDM5NjUsImV4cCI6MTY1Mjg5NTk2NX0.Ctx2Mro3pdOX2IyBtC4GLmgnPO6cKLGuCFmT6BXr0A4"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
     },
     "tests": []
   },
@@ -1831,11 +1798,11 @@
     "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
     "containerId": "ddd5298b-a0c4-4722-9f9a-7c8a60924110",
     "name": "getSubcat",
-    "url": "https://ecooff.herokuapp.com/api/categories/getSubcat",
+    "url": "http://localhost:3000/api/categories/getSubcat",
     "method": "GET",
     "sortNum": 460000,
     "created": "2022-04-18T17:43:56.957Z",
-    "modified": "2022-04-28T15:06:11.394Z",
+    "modified": "2022-04-29T13:04:22.265Z",
     "headers": [],
     "params": [],
     "auth": {
@@ -1849,21 +1816,21 @@
     "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
     "containerId": "de9c8a35-ae0b-48e0-9c35-e120ff306512",
     "name": "addAddress",
-    "url": "https://ecooff.herokuapp.com/users/addAddress",
+    "url": "http://localhost:3000/api/users/addAddress",
     "method": "POST",
     "sortNum": 25000,
     "created": "2022-04-18T17:44:03.471Z",
-    "modified": "2022-04-28T15:15:54.982Z",
+    "modified": "2022-04-29T14:43:28.726Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"calle\": \"calle\",\n    \"numero\": 123,\n    \"piso\": 4,\n    \"timbre\": \"D\",\n    \"CP\": 5001\n}",
+      "raw": "{\n    \"street\": \"calle 1\",\n    \"streetNumber\": 123,\n    \"floor\": 4,\n    \"door\": \"D\",\n    \"CP\": 5001\n}",
       "form": []
     },
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZhYTk5Yjc1YmY1YTAwMTYwOGZiYzAiLCJpYXQiOjE2NTExNTg5MDIsImV4cCI6MTY1Mzc1MDkwMn0.eUJE0sMQpVsPfJ9XWGk_JXDNCvfA79SkiWp8RN6utbk"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
     },
     "tests": []
   },
@@ -1872,16 +1839,16 @@
     "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
     "containerId": "de9c8a35-ae0b-48e0-9c35-e120ff306512",
     "name": "changeDefaultAddress",
-    "url": "https://ecooff.herokuapp.com/api/users/changeDefaultAddress/625efeda48cdcc31584a3072",
+    "url": "http://localhost:3000/api/users/changeDefaultAddress/626bf92cda543353c445e7d5",
     "method": "PUT",
     "sortNum": 27500,
     "created": "2022-04-18T18:00:43.685Z",
-    "modified": "2022-04-28T15:05:03.607Z",
+    "modified": "2022-04-29T14:42:02.417Z",
     "headers": [],
     "params": [],
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjVlZmVjNDViNGJmMjRkYWM1MDM1NGYiLCJpYXQiOjE2NTAzOTI3NzgsImV4cCI6MTY1Mjk4NDc3OH0.KpCiJ5SlaMXUEcxJwMvQFrpWrPjGkdMEYNmlLImbDV0"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
     },
     "tests": []
   },
@@ -1890,16 +1857,16 @@
     "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
     "containerId": "de9c8a35-ae0b-48e0-9c35-e120ff306512",
     "name": "getUserAddresses",
-    "url": "https://ecooff.herokuapp.com/api/users/getUserAddresses",
+    "url": "http://localhost:3000/api/users/getUserAddresses",
     "method": "GET",
     "sortNum": 28750,
     "created": "2022-04-19T14:09:40.564Z",
-    "modified": "2022-04-28T15:05:07.291Z",
+    "modified": "2022-04-29T14:42:09.731Z",
     "headers": [],
     "params": [],
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjYyZDhlZmVhM2I4MjU0NDhhM2NiMTkiLCJpYXQiOjE2NTA2NDUyMzksImV4cCI6MTY1MzIzNzIzOX0.VEPjdN7m5JdbJjp7AxvNtAQvIDj0iv16kUGZD1VgdHk"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
     },
     "tests": []
   },
@@ -1908,16 +1875,1093 @@
     "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
     "containerId": "de9c8a35-ae0b-48e0-9c35-e120ff306512",
     "name": "deleteAddress",
-    "url": "https://ecooff.herokuapp.com/api/users/deleteAddress/625efed6eac86d4db04b7eaf",
+    "url": "http://localhost:3000/api/users/deleteAddress/626bf92887fb2a52382ce49f",
     "method": "DELETE",
     "sortNum": 29375,
     "created": "2022-04-19T18:37:54.867Z",
-    "modified": "2022-04-28T15:05:11.782Z",
+    "modified": "2022-04-29T14:42:26.596Z",
     "headers": [],
     "params": [],
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjVlZmVjNDViNGJmMjRkYWM1MDM1NGYiLCJpYXQiOjE2NTAzOTI3NzgsImV4cCI6MTY1Mjk4NDc3OH0.KpCiJ5SlaMXUEcxJwMvQFrpWrPjGkdMEYNmlLImbDV0"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
+    },
+    "tests": []
+  },
+  {
+    "_id": "979e9abb-a664-4de6-832e-22a44eac5ee5",
+    "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
+    "containerId": "1abe0c6e-6188-41d9-be76-f4c456c8f424",
+    "name": "openCart",
+    "url": "http://localhost:3000/api/cart/openCart",
+    "method": "GET",
+    "sortNum": 470000,
+    "created": "2022-04-29T14:05:38.535Z",
+    "modified": "2022-04-29T14:59:50.390Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
+    },
+    "tests": []
+  },
+  {
+    "_id": "e829492d-9b93-4596-9e0b-ad8d3613bddd",
+    "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
+    "containerId": "d613ecd3-b2c9-4a35-b915-7fbb994ff9c7",
+    "name": "openOrder",
+    "url": "http://localhost:3000/api/orders/openOrder/626c00b15a78d452d49bad9e",
+    "method": "GET",
+    "sortNum": 450000,
+    "created": "2022-04-29T14:31:47.972Z",
+    "modified": "2022-04-29T15:17:46.374Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
+    },
+    "tests": []
+  },
+  {
+    "_id": "7300692f-3584-4655-bbc5-4012b86d145e",
+    "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
+    "containerId": "5545eca0-e4af-4e5a-a1ae-85c68e7bffb3",
+    "name": "getAll",
+    "url": "http://localhost:3000/api/bags/",
+    "method": "GET",
+    "sortNum": 490000,
+    "created": "2022-04-29T14:38:51.386Z",
+    "modified": "2022-04-29T15:09:59.903Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
+    },
+    "tests": []
+  },
+  {
+    "_id": "96eabc2f-c358-49f9-ac72-58b8648cf21d",
+    "colId": "66d181f0-a800-4ebe-a6eb-f9b48d04d14f",
+    "containerId": "aecb4c72-6375-477c-8b48-44c8f3020414",
+    "name": "register",
+    "url": "https://ecooff.herokuapp.com/api/users/register",
+    "method": "POST",
+    "sortNum": 10000,
+    "created": "2022-04-29T15:22:13.173Z",
+    "modified": "2022-04-29T15:22:42.395Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"firstName\": \"name\",\n    \"lastName\": \"lastname\",\n    \"password\": \"12345\",\n    \"email\": \"lopezlandosebastian@gmail.com\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "909252e4-67a7-4cef-ac8c-6c8b2789624c",
+    "colId": "66d181f0-a800-4ebe-a6eb-f9b48d04d14f",
+    "containerId": "aecb4c72-6375-477c-8b48-44c8f3020414",
+    "name": "verify email",
+    "url": "https://ecooff.herokuapp.com/api/users/verifyEmail",
+    "method": "POST",
+    "sortNum": 20000,
+    "created": "2022-04-29T15:22:13.174Z",
+    "modified": "2022-04-29T15:22:46.538Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"token\" : \"2b31\"\n}",
+      "form": []
+    },
+    "auth": {
+      "type": "bearer"
+    },
+    "tests": []
+  },
+  {
+    "_id": "fb1fb1ba-a16a-4975-872c-401abedb8dca",
+    "colId": "66d181f0-a800-4ebe-a6eb-f9b48d04d14f",
+    "containerId": "aecb4c72-6375-477c-8b48-44c8f3020414",
+    "name": "resendVerify",
+    "url": "https://ecooff.herokuapp.com/api/users/resendVerify",
+    "method": "POST",
+    "sortNum": 21250,
+    "created": "2022-04-29T15:22:13.175Z",
+    "modified": "2022-04-29T15:22:48.701Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"emailParam\": \"lopezlandosebastian@gmail.com\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "e748a512-0425-49b9-979f-ccfe58e39e0f",
+    "colId": "66d181f0-a800-4ebe-a6eb-f9b48d04d14f",
+    "containerId": "aecb4c72-6375-477c-8b48-44c8f3020414",
+    "name": "authenticate",
+    "url": "https://ecooff.herokuapp.com/api/users/authenticate",
+    "method": "POST",
+    "sortNum": 22500,
+    "created": "2022-04-29T15:22:13.176Z",
+    "modified": "2022-04-29T15:22:54.578Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"email\": \"lopezlandosebastiann@gmail.com\",\n    \"password\": \"123456\"\n}",
+      "form": []
+    },
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjBiZmQ3ZmJjNjFhZTIwMDg4NWRmYzEiLCJpYXQiOjE2NDQ5NTk0MDksImV4cCI6MTY1MjczNTQwOX0.4pBCt11wv80kdzyvXynVgpAppxoacrEujiGgsOtpkC0"
+    },
+    "tests": []
+  },
+  {
+    "_id": "e8adee01-b1b0-485f-98e5-a8898381d8ef",
+    "colId": "66d181f0-a800-4ebe-a6eb-f9b48d04d14f",
+    "containerId": "aecb4c72-6375-477c-8b48-44c8f3020414",
+    "name": "addAddress",
+    "url": "https://ecooff.herokuapp.com/api/users/addAddress",
+    "method": "POST",
+    "sortNum": 25000,
+    "created": "2022-04-29T15:22:13.177Z",
+    "modified": "2022-04-29T15:22:56.977Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"street\": \"calle 1\",\n    \"streetNumber\": 123,\n    \"floor\": 4,\n    \"door\": \"D\",\n    \"CP\": 5001\n}",
+      "form": []
+    },
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
+    },
+    "tests": []
+  },
+  {
+    "_id": "a9f8843f-14c4-49ab-a186-2bf40f63f4ba",
+    "colId": "66d181f0-a800-4ebe-a6eb-f9b48d04d14f",
+    "containerId": "aecb4c72-6375-477c-8b48-44c8f3020414",
+    "name": "changeDefaultAddress",
+    "url": "https://ecooff.herokuapp.com/api/users/changeDefaultAddress/626bf92cda543353c445e7d5",
+    "method": "PUT",
+    "sortNum": 27500,
+    "created": "2022-04-29T15:22:13.178Z",
+    "modified": "2022-04-29T15:22:59.816Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
+    },
+    "tests": []
+  },
+  {
+    "_id": "39c1f72b-6292-4efd-a130-c975923ad862",
+    "colId": "66d181f0-a800-4ebe-a6eb-f9b48d04d14f",
+    "containerId": "aecb4c72-6375-477c-8b48-44c8f3020414",
+    "name": "getUserAddresses",
+    "url": "https://ecooff.herokuapp.com/api/users/getUserAddresses",
+    "method": "GET",
+    "sortNum": 28750,
+    "created": "2022-04-29T15:22:13.179Z",
+    "modified": "2022-04-29T15:23:02.634Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
+    },
+    "tests": []
+  },
+  {
+    "_id": "fcc8e450-b8b7-4071-8266-35a60e0fd35e",
+    "colId": "66d181f0-a800-4ebe-a6eb-f9b48d04d14f",
+    "containerId": "aecb4c72-6375-477c-8b48-44c8f3020414",
+    "name": "deleteAddress",
+    "url": "https://ecooff.herokuapp.com/api/users/deleteAddress/626bf92887fb2a52382ce49f",
+    "method": "DELETE",
+    "sortNum": 29375,
+    "created": "2022-04-29T15:22:13.180Z",
+    "modified": "2022-04-29T15:23:05.494Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
+    },
+    "tests": []
+  },
+  {
+    "_id": "7b9a8334-7b78-4bbe-9122-f8e418cbd70b",
+    "colId": "66d181f0-a800-4ebe-a6eb-f9b48d04d14f",
+    "containerId": "aecb4c72-6375-477c-8b48-44c8f3020414",
+    "name": "server alive",
+    "url": "https://ecooff.herokuapp.com/api/users/serverAlive",
+    "method": "GET",
+    "sortNum": 50000,
+    "created": "2022-04-29T15:22:13.181Z",
+    "modified": "2022-04-29T15:23:08.312Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
+    },
+    "tests": []
+  },
+  {
+    "_id": "0fddada1-d2a1-4bfa-8bba-7a7e70e477ef",
+    "colId": "66d181f0-a800-4ebe-a6eb-f9b48d04d14f",
+    "containerId": "aecb4c72-6375-477c-8b48-44c8f3020414",
+    "name": "forgotPwRequest",
+    "url": "https://ecooff.herokuapp.com/api/users/forgotPasswordRequest",
+    "method": "POST",
+    "sortNum": 60000,
+    "created": "2022-04-29T15:22:13.182Z",
+    "modified": "2022-04-29T15:23:12.630Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"email\" : \"lopezlandosebastian@gmail.com\"\n}",
+      "form": []
+    },
+    "auth": {
+      "type": "bearer"
+    },
+    "tests": []
+  },
+  {
+    "_id": "1ad638f6-3b05-4083-8528-d38be982642e",
+    "colId": "66d181f0-a800-4ebe-a6eb-f9b48d04d14f",
+    "containerId": "aecb4c72-6375-477c-8b48-44c8f3020414",
+    "name": "forgotPwTokenOnly",
+    "url": "https://ecooff.herokuapp.com/api/users/forgotPasswordTokenOnly",
+    "method": "POST",
+    "sortNum": 70000,
+    "created": "2022-04-29T15:22:13.183Z",
+    "modified": "2022-04-29T15:23:15.793Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"token\": \"54e0\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "be77dc37-6e45-4797-b63c-4ba55aeb6fb5",
+    "colId": "66d181f0-a800-4ebe-a6eb-f9b48d04d14f",
+    "containerId": "c963cd69-6051-45aa-9344-f48922b619dc",
+    "name": "create",
+    "url": "https://ecooff.herokuapp.com/api/categories/create",
+    "method": "POST",
+    "sortNum": 70000,
+    "created": "2022-04-29T15:22:13.184Z",
+    "modified": "2022-04-29T15:23:37.470Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"category\": \"gaseosas\",\n    \"img\": \"foto.jpg\",\n    \"subcategories\": [\n        {\n            \"subcategory\": \"coca\",\n            \"img\": \"foto.jpg\"\n        },\n        {\n            \"subcategory\": \"sprite\",\n            \"img\": \"foto.jpg\"\n        }\n    ]\n}",
+      "form": []
+    },
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
+    },
+    "tests": []
+  },
+  {
+    "_id": "31240ed2-b904-4db4-a7c9-c3786aebb77f",
+    "colId": "66d181f0-a800-4ebe-a6eb-f9b48d04d14f",
+    "containerId": "99d7789a-2636-4da9-ad15-d3a13829a85c",
+    "name": "create",
+    "url": "https://ecooff.herokuapp.com/api/providers/create",
+    "method": "POST",
+    "sortNum": 80000,
+    "created": "2022-04-29T15:22:13.185Z",
+    "modified": "2022-04-29T15:23:48.019Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"name\": \"Coto\",\n    \"img\": \"foto.jpg\"\n}",
+      "form": []
+    },
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
+    },
+    "tests": []
+  },
+  {
+    "_id": "0ce6d1b6-6248-432d-b2b4-d98377e136b2",
+    "colId": "66d181f0-a800-4ebe-a6eb-f9b48d04d14f",
+    "containerId": "aecb4c72-6375-477c-8b48-44c8f3020414",
+    "name": "forgotPasswordUpdate",
+    "url": "https://ecooff.herokuapp.com/api/users/forgotPasswordUpdate",
+    "method": "PUT",
+    "sortNum": 80000,
+    "created": "2022-04-29T15:22:13.186Z",
+    "modified": "2022-04-29T15:23:18.349Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"token\": \"54e0\",\n    \"pw\": \"123456\",\n    \"confirmPw\": \"123456\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "1be698eb-d3a5-486b-a044-7a91e6b6144b",
+    "colId": "66d181f0-a800-4ebe-a6eb-f9b48d04d14f",
+    "containerId": "45a2de6d-c18e-442d-a357-e2931fe5936d",
+    "name": "create",
+    "url": "https://ecooff.herokuapp.com/api/products/create",
+    "method": "POST",
+    "sortNum": 90000,
+    "created": "2022-04-29T15:22:13.187Z",
+    "modified": "2022-04-29T15:23:57.779Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"name\": \"sprite\",\n    \"description\": \"desc\",\n    \"listPrice\": \"100\",\n    \"img\": \"sprite.jpg\",\n    \"allergenics\": [\n        {\n            \"vegan\": \"true\",\n            \"celiac\":\"false\"\n        }    \n    ],\n    \"subcatId\": \"626bfa938bcd732ba07fdc82\"\n}",
+      "form": []
+    },
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
+    },
+    "tests": []
+  },
+  {
+    "_id": "d4a3dd78-6d48-4943-add4-606407e1b257",
+    "colId": "66d181f0-a800-4ebe-a6eb-f9b48d04d14f",
+    "containerId": "446caea1-a0f4-424b-a7e9-f557d7af02d6",
+    "name": "create",
+    "url": "https://ecooff.herokuapp.com/api/stock/create",
+    "method": "POST",
+    "sortNum": 100000,
+    "created": "2022-04-29T15:22:13.188Z",
+    "modified": "2022-04-29T15:24:06.905Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"expPrice\": 80,\n    \"expDate\": \"2022-04-20\",\n    \"stock\":10,\n    \"modelId\": \"626bfb55c388d351d4a61fa6\",\n    \"providerId\": \"626bfaa90e93122ca46f07d4\"\n}",
+      "form": []
+    },
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
+    },
+    "tests": []
+  },
+  {
+    "_id": "6a58dd8c-91cc-4da1-b7f4-6b389cc22816",
+    "colId": "66d181f0-a800-4ebe-a6eb-f9b48d04d14f",
+    "containerId": "446caea1-a0f4-424b-a7e9-f557d7af02d6",
+    "name": "getAll",
+    "url": "https://ecooff.herokuapp.com/api/stock/",
+    "method": "GET",
+    "sortNum": 110000,
+    "created": "2022-04-29T15:22:13.189Z",
+    "modified": "2022-04-29T15:24:08.939Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
+    },
+    "tests": []
+  },
+  {
+    "_id": "a2ff443a-dbcc-4cf8-bf95-543f1c25a901",
+    "colId": "66d181f0-a800-4ebe-a6eb-f9b48d04d14f",
+    "containerId": "45a2de6d-c18e-442d-a357-e2931fe5936d",
+    "name": "getAll",
+    "url": "https://ecooff.herokuapp.com/api/products/",
+    "method": "GET",
+    "sortNum": 120000,
+    "created": "2022-04-29T15:22:13.190Z",
+    "modified": "2022-04-29T15:24:00.074Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjMwZGJiODFjNDkwMzIyODBlNWVhNTYiLCJpYXQiOjE2NDczNjkxNTgsImV4cCI6MTY0OTk2MTE1OH0.qltoY1AH-znQ9gXhTbGt0EzhAhlRyAuqg0mq96IfY9w"
+    },
+    "tests": []
+  },
+  {
+    "_id": "0ef0cc98-78c8-473c-9e5d-50dd2424821c",
+    "colId": "66d181f0-a800-4ebe-a6eb-f9b48d04d14f",
+    "containerId": "99d7789a-2636-4da9-ad15-d3a13829a85c",
+    "name": "getAll",
+    "url": "https://ecooff.herokuapp.com/api/providers/",
+    "method": "GET",
+    "sortNum": 130000,
+    "created": "2022-04-29T15:22:13.191Z",
+    "modified": "2022-04-29T15:23:51.272Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjBjMTZjM2IxNWMzOTQzZjhhZjliM2EiLCJpYXQiOjE2NDQ5NTk0NDcsImV4cCI6MTY1MjczNTQ0N30.0q-KZwiXH_mHIDxIDfTG-J0BI_PwwwCOMM9q6vOdiHI"
+    },
+    "tests": []
+  },
+  {
+    "_id": "e5d23ca7-7322-4866-b831-74892c2fe7cb",
+    "colId": "66d181f0-a800-4ebe-a6eb-f9b48d04d14f",
+    "containerId": "c963cd69-6051-45aa-9344-f48922b619dc",
+    "name": "getAll",
+    "url": "https://ecooff.herokuapp.com/api/categories/",
+    "method": "GET",
+    "sortNum": 140000,
+    "created": "2022-04-29T15:22:13.192Z",
+    "modified": "2022-04-29T15:23:39.785Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjBjMTZjM2IxNWMzOTQzZjhhZjliM2EiLCJpYXQiOjE2NDQ5NTk0NDcsImV4cCI6MTY1MjczNTQ0N30.0q-KZwiXH_mHIDxIDfTG-J0BI_PwwwCOMM9q6vOdiHI"
+    },
+    "tests": []
+  },
+  {
+    "_id": "0638354c-cfec-4b24-8a39-6316b40757e4",
+    "colId": "66d181f0-a800-4ebe-a6eb-f9b48d04d14f",
+    "containerId": "aecb4c72-6375-477c-8b48-44c8f3020414",
+    "name": "getAll",
+    "url": "https://ecooff.herokuapp.com/api/users/",
+    "method": "GET",
+    "sortNum": 150000,
+    "created": "2022-04-29T15:22:13.193Z",
+    "modified": "2022-04-29T15:23:21.447Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
+    },
+    "tests": []
+  },
+  {
+    "_id": "860dd796-6ca6-42a0-8765-769862a0cff4",
+    "colId": "66d181f0-a800-4ebe-a6eb-f9b48d04d14f",
+    "containerId": "aecb4c72-6375-477c-8b48-44c8f3020414",
+    "name": "get by id",
+    "url": "https://ecooff.herokuapp.com/api/users/620bd2bbba1ecb447c65adac",
+    "method": "GET",
+    "sortNum": 170000,
+    "created": "2022-04-29T15:22:13.194Z",
+    "modified": "2022-04-29T15:23:24.722Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjBiZmQ3ZmJjNjFhZTIwMDg4NWRmYzEiLCJpYXQiOjE2NDQ5NTMwMTQsImV4cCI6MTY1MjcyOTAxNH0.cFF1HTRnSFmOPvSuS2i-wxzSAVIoqHzm6z4GWNoduZ4"
+    },
+    "tests": []
+  },
+  {
+    "_id": "90aade1d-b865-4e94-abc1-75a278cd503e",
+    "colId": "66d181f0-a800-4ebe-a6eb-f9b48d04d14f",
+    "containerId": "446caea1-a0f4-424b-a7e9-f557d7af02d6",
+    "name": "getBySubcategory",
+    "url": "https://ecooff.herokuapp.com/api/stock/getBySubcategory/sprite",
+    "method": "GET",
+    "sortNum": 180000,
+    "created": "2022-04-29T15:22:13.195Z",
+    "modified": "2022-04-29T15:24:10.972Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
+    },
+    "tests": []
+  },
+  {
+    "_id": "adc2f91c-fccc-4662-ae81-407363121046",
+    "colId": "66d181f0-a800-4ebe-a6eb-f9b48d04d14f",
+    "containerId": "446caea1-a0f4-424b-a7e9-f557d7af02d6",
+    "name": "getByProvider",
+    "url": "https://ecooff.herokuapp.com/api/stock/getByProvider/626bfaa90e93122ca46f07d4",
+    "method": "GET",
+    "sortNum": 190000,
+    "created": "2022-04-29T15:22:13.196Z",
+    "modified": "2022-04-29T15:24:13.137Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"prov\": \"coto\"\n}",
+      "form": []
+    },
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
+    },
+    "tests": []
+  },
+  {
+    "_id": "efd7f970-6ed4-48d9-bafd-d1a654ed26ae",
+    "colId": "66d181f0-a800-4ebe-a6eb-f9b48d04d14f",
+    "containerId": "446caea1-a0f4-424b-a7e9-f557d7af02d6",
+    "name": "getByProvSubcat",
+    "url": "https://ecooff.herokuapp.com/api/stock/getByProvSubcat/626bfaa90e93122ca46f07d4/sprite",
+    "method": "GET",
+    "sortNum": 200000,
+    "created": "2022-04-29T15:22:13.197Z",
+    "modified": "2022-04-29T15:24:15.235Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"prov\": \"coto\",\n    \"subcat\": \"subcat1\"\n}",
+      "form": []
+    },
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
+    },
+    "tests": []
+  },
+  {
+    "_id": "bf47e37e-4835-459e-9c8a-6c9f1548b46f",
+    "colId": "66d181f0-a800-4ebe-a6eb-f9b48d04d14f",
+    "containerId": "446caea1-a0f4-424b-a7e9-f557d7af02d6",
+    "name": "closeToExp",
+    "url": "https://ecooff.herokuapp.com/api/stock/closeToExp",
+    "method": "GET",
+    "sortNum": 210000,
+    "created": "2022-04-29T15:22:13.198Z",
+    "modified": "2022-04-29T15:24:17.748Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
+    },
+    "tests": []
+  },
+  {
+    "_id": "c8be7549-04d5-4364-b0c5-7ae01d732a01",
+    "colId": "66d181f0-a800-4ebe-a6eb-f9b48d04d14f",
+    "containerId": "446caea1-a0f4-424b-a7e9-f557d7af02d6",
+    "name": "forYou",
+    "url": "https://ecooff.herokuapp.com/api/stock/forYou",
+    "method": "GET",
+    "sortNum": 220000,
+    "created": "2022-04-29T15:22:13.199Z",
+    "modified": "2022-04-29T15:24:20.694Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"jwtParam\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjBiZmQ3ZmJjNjFhZTIwMDg4NWRmYzEiLCJpYXQiOjE2NDQ5NTMwMTQsImV4cCI6MTY1MjcyOTAxNH0.cFF1HTRnSFmOPvSuS2i-wxzSAVIoqHzm6z4GWNoduZ4\"\n}",
+      "form": []
+    },
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
+    },
+    "tests": []
+  },
+  {
+    "_id": "88defa53-14ea-40de-95b7-ad6bd3bac055",
+    "colId": "66d181f0-a800-4ebe-a6eb-f9b48d04d14f",
+    "containerId": "aecb4c72-6375-477c-8b48-44c8f3020414",
+    "name": "retrieveUser",
+    "url": "https://ecooff.herokuapp.com/api/users/retrieveUser",
+    "method": "GET",
+    "sortNum": 240000,
+    "created": "2022-04-29T15:22:13.200Z",
+    "modified": "2022-04-29T15:23:27.211Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjMwZGJiODFjNDkwMzIyODBlNWVhNTYiLCJpYXQiOjE2NDczNjkxNTgsImV4cCI6MTY0OTk2MTE1OH0.qltoY1AH-znQ9gXhTbGt0EzhAhlRyAuqg0mq96IfY9w"
+    },
+    "tests": []
+  },
+  {
+    "_id": "82b6d438-9822-4ca6-a24a-cefdd8ee4a6e",
+    "colId": "66d181f0-a800-4ebe-a6eb-f9b48d04d14f",
+    "containerId": "4a795b71-a416-4edd-a21f-f66c445fa3ae",
+    "name": "addToCart",
+    "url": "https://ecooff.herokuapp.com/api/cart/addToCart",
+    "method": "POST",
+    "sortNum": 250000,
+    "created": "2022-04-29T15:22:13.201Z",
+    "modified": "2022-04-29T15:24:31.916Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"productId\" : \"626bfb97c388d351d4a61fa8\",\n    \"quantity\": \"7\",\n    \"length\": \"false\"\n}",
+      "form": []
+    },
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
+    },
+    "tests": []
+  },
+  {
+    "_id": "f106900b-be39-4746-9b75-0e8bf5f409a7",
+    "colId": "66d181f0-a800-4ebe-a6eb-f9b48d04d14f",
+    "containerId": "4a795b71-a416-4edd-a21f-f66c445fa3ae",
+    "name": "getAll",
+    "url": "https://ecooff.herokuapp.com/api/cart/",
+    "method": "GET",
+    "sortNum": 270000,
+    "created": "2022-04-29T15:22:13.202Z",
+    "modified": "2022-04-29T15:24:34.254Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
+    },
+    "tests": []
+  },
+  {
+    "_id": "933ddbfa-1e12-43ed-9045-fc725c63c5b7",
+    "colId": "66d181f0-a800-4ebe-a6eb-f9b48d04d14f",
+    "containerId": "a9346759-6d4e-452c-acaf-f4ba16a623b4",
+    "name": "create",
+    "url": "https://ecooff.herokuapp.com/api/orders/create",
+    "method": "POST",
+    "sortNum": 280000,
+    "created": "2022-04-29T15:22:13.203Z",
+    "modified": "2022-04-29T15:24:51.259Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
+    },
+    "tests": []
+  },
+  {
+    "_id": "121626e9-b0e7-4bd1-813f-741d5c1919f2",
+    "colId": "66d181f0-a800-4ebe-a6eb-f9b48d04d14f",
+    "containerId": "a9346759-6d4e-452c-acaf-f4ba16a623b4",
+    "name": "getAll",
+    "url": "https://ecooff.herokuapp.com/api/orders/",
+    "method": "GET",
+    "sortNum": 290000,
+    "created": "2022-04-29T15:22:13.204Z",
+    "modified": "2022-04-29T15:24:53.269Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
+    },
+    "tests": []
+  },
+  {
+    "_id": "47ecaa6b-e60f-433a-8ff6-2ad6381b9574",
+    "colId": "66d181f0-a800-4ebe-a6eb-f9b48d04d14f",
+    "containerId": "a9346759-6d4e-452c-acaf-f4ba16a623b4",
+    "name": "changeStatus",
+    "url": "https://ecooff.herokuapp.com/api/orders/changeStatus",
+    "method": "PUT",
+    "sortNum": 300000,
+    "created": "2022-04-29T15:22:13.205Z",
+    "modified": "2022-04-29T15:24:55.500Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"statusCode\": \"2\",\n    \"id\": \"626c00b15a78d452d49bad9e\"\n}",
+      "form": []
+    },
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
+    },
+    "tests": []
+  },
+  {
+    "_id": "44fb94f3-5feb-4f6b-8e0a-691fc8d760bd",
+    "colId": "66d181f0-a800-4ebe-a6eb-f9b48d04d14f",
+    "containerId": "aecb4c72-6375-477c-8b48-44c8f3020414",
+    "name": "editEmail",
+    "url": "https://ecooff.herokuapp.com/api/users/editEmail",
+    "method": "PUT",
+    "sortNum": 310000,
+    "created": "2022-04-29T15:22:13.206Z",
+    "modified": "2022-04-29T15:23:29.703Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"oldEmail\": \"lopezlandosebastian@gmail.com\",\n    \"newEmail\": \"lopezlandosebastiann@gmail.com\",\n    \"password\": \"123456\"\n}",
+      "form": []
+    },
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
+    },
+    "tests": []
+  },
+  {
+    "_id": "cfbda2ea-3c6b-43e2-a0b8-b037fce901b2",
+    "colId": "66d181f0-a800-4ebe-a6eb-f9b48d04d14f",
+    "containerId": "4a795b71-a416-4edd-a21f-f66c445fa3ae",
+    "name": "deleteItem",
+    "url": "https://ecooff.herokuapp.com/api/cart/deleteItem/626bfb97c388d351d4a61fa8a",
+    "method": "PUT",
+    "sortNum": 320000,
+    "created": "2022-04-29T15:22:13.207Z",
+    "modified": "2022-04-29T15:24:36.418Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
+    },
+    "tests": []
+  },
+  {
+    "_id": "ff96abb5-e83f-4ab9-9c9c-2d348779acbf",
+    "colId": "66d181f0-a800-4ebe-a6eb-f9b48d04d14f",
+    "containerId": "4a795b71-a416-4edd-a21f-f66c445fa3ae",
+    "name": "deleteCart",
+    "url": "https://ecooff.herokuapp.com/api/cart/deleteCart",
+    "method": "DELETE",
+    "sortNum": 330000,
+    "created": "2022-04-29T15:22:13.208Z",
+    "modified": "2022-04-29T15:24:38.605Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"id\": \"622921257ec4b748f0194503\"\n}",
+      "form": []
+    },
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
+    },
+    "tests": []
+  },
+  {
+    "_id": "15b484eb-31d8-440e-8231-0a83d1b57fbc",
+    "colId": "66d181f0-a800-4ebe-a6eb-f9b48d04d14f",
+    "containerId": "aecb4c72-6375-477c-8b48-44c8f3020414",
+    "name": "editName",
+    "url": "https://ecooff.herokuapp.com/api/users/editName",
+    "method": "PUT",
+    "sortNum": 340000,
+    "created": "2022-04-29T15:22:13.209Z",
+    "modified": "2022-04-29T15:23:31.955Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"email\": \"lopezlandosebastiann@gmail.com\",\n    \"firstName\" : \"edit3\",\n    \"lastName\": \"edit4\",\n    \"password\": \"123456\"\n}",
+      "form": []
+    },
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDM0NzksImV4cCI6MTY1MzgzNTQ3OX0.qnRVdYr0WuZZSZnjLCF_bPMD7IN1YBw_zAcUVekDgA8"
+    },
+    "tests": []
+  },
+  {
+    "_id": "a4efa6f7-25c7-4ee3-916a-1273a324bdcb",
+    "colId": "66d181f0-a800-4ebe-a6eb-f9b48d04d14f",
+    "containerId": "a9346759-6d4e-452c-acaf-f4ba16a623b4",
+    "name": "cancelOrder",
+    "url": "https://ecooff.herokuapp.com/api/orders/cancelOrder",
+    "method": "DELETE",
+    "sortNum": 350000,
+    "created": "2022-04-29T15:22:13.210Z",
+    "modified": "2022-04-29T15:24:57.511Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"id\" : \"62212c48c58e7553f88d2edd\"\n}",
+      "form": []
+    },
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjBiZmQ3ZmJjNjFhZTIwMDg4NWRmYzEiLCJpYXQiOjE2NDQ5NTMwMTQsImV4cCI6MTY1MjcyOTAxNH0.cFF1HTRnSFmOPvSuS2i-wxzSAVIoqHzm6z4GWNoduZ4"
+    },
+    "tests": []
+  },
+  {
+    "_id": "a709ec90-5e86-4df3-a7ba-48745a4233b5",
+    "colId": "66d181f0-a800-4ebe-a6eb-f9b48d04d14f",
+    "containerId": "a9346759-6d4e-452c-acaf-f4ba16a623b4",
+    "name": "getByUserId",
+    "url": "https://ecooff.herokuapp.com/api/orders/getByUserId/626bf8f465840e1dc42531ab",
+    "method": "GET",
+    "sortNum": 360000,
+    "created": "2022-04-29T15:22:13.211Z",
+    "modified": "2022-04-29T15:24:59.740Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
+    },
+    "tests": []
+  },
+  {
+    "_id": "2eb98b60-0fb1-4e9f-be73-73433f549026",
+    "colId": "66d181f0-a800-4ebe-a6eb-f9b48d04d14f",
+    "containerId": "446caea1-a0f4-424b-a7e9-f557d7af02d6",
+    "name": "getByCategory",
+    "url": "https://ecooff.herokuapp.com/api/stock/getByCategory/gaseosas",
+    "method": "GET",
+    "sortNum": 370000,
+    "created": "2022-04-29T15:22:13.212Z",
+    "modified": "2022-04-29T15:24:22.944Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
+    },
+    "tests": []
+  },
+  {
+    "_id": "2eaae719-6a36-4803-b1ca-f1a0c29586fe",
+    "colId": "66d181f0-a800-4ebe-a6eb-f9b48d04d14f",
+    "containerId": "c963cd69-6051-45aa-9344-f48922b619dc",
+    "name": "getById",
+    "url": "https://ecooff.herokuapp.com/api/categories/622fa6d6679d6a36402ddfa6",
+    "method": "GET",
+    "sortNum": 380000,
+    "created": "2022-04-29T15:22:13.213Z",
+    "modified": "2022-04-29T15:23:42.233Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjBjMTZjM2IxNWMzOTQzZjhhZjliM2EiLCJpYXQiOjE2NDQ5NTk0NDcsImV4cCI6MTY1MjczNTQ0N30.0q-KZwiXH_mHIDxIDfTG-J0BI_PwwwCOMM9q6vOdiHI"
+    },
+    "tests": []
+  },
+  {
+    "_id": "f26c76be-d605-457d-8dc5-abd37eec8281",
+    "colId": "66d181f0-a800-4ebe-a6eb-f9b48d04d14f",
+    "containerId": "99d7789a-2636-4da9-ad15-d3a13829a85c",
+    "name": "getById",
+    "url": "https://ecooff.herokuapp.com/api/providers/620bca54f3607b203099985f",
+    "method": "GET",
+    "sortNum": 390000,
+    "created": "2022-04-29T15:22:13.214Z",
+    "modified": "2022-04-29T15:23:53.524Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjBjMTZjM2IxNWMzOTQzZjhhZjliM2EiLCJpYXQiOjE2NDQ5NTk0NDcsImV4cCI6MTY1MjczNTQ0N30.0q-KZwiXH_mHIDxIDfTG-J0BI_PwwwCOMM9q6vOdiHI"
+    },
+    "tests": []
+  },
+  {
+    "_id": "149fb904-4539-4f3b-9f85-ed15a498d49c",
+    "colId": "66d181f0-a800-4ebe-a6eb-f9b48d04d14f",
+    "containerId": "45a2de6d-c18e-442d-a357-e2931fe5936d",
+    "name": "getById",
+    "url": "https://ecooff.herokuapp.com/api/products/622fa712679d6a36402ddfa9",
+    "method": "GET",
+    "sortNum": 400000,
+    "created": "2022-04-29T15:22:13.215Z",
+    "modified": "2022-04-29T15:24:02.456Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjMwZGJiODFjNDkwMzIyODBlNWVhNTYiLCJpYXQiOjE2NDczNjkxNTgsImV4cCI6MTY0OTk2MTE1OH0.qltoY1AH-znQ9gXhTbGt0EzhAhlRyAuqg0mq96IfY9w"
+    },
+    "tests": []
+  },
+  {
+    "_id": "4555400b-75e4-4562-a93d-d422f1fad973",
+    "colId": "66d181f0-a800-4ebe-a6eb-f9b48d04d14f",
+    "containerId": "446caea1-a0f4-424b-a7e9-f557d7af02d6",
+    "name": "getById",
+    "url": "https://ecooff.herokuapp.com/api/stock/626bfb97c388d351d4a61fa8",
+    "method": "GET",
+    "sortNum": 410000,
+    "created": "2022-04-29T15:22:13.216Z",
+    "modified": "2022-04-29T15:24:26.303Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
+    },
+    "tests": []
+  },
+  {
+    "_id": "d5410305-fb3e-49b1-ac55-12b2679a8249",
+    "colId": "66d181f0-a800-4ebe-a6eb-f9b48d04d14f",
+    "containerId": "4a795b71-a416-4edd-a21f-f66c445fa3ae",
+    "name": "getById",
+    "url": "https://ecooff.herokuapp.com/api/cart/6230ea0d8785dc28400444d0",
+    "method": "GET",
+    "sortNum": 420000,
+    "created": "2022-04-29T15:22:13.217Z",
+    "modified": "2022-04-29T15:24:43.648Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
+    },
+    "tests": []
+  },
+  {
+    "_id": "f7037a7d-8c14-4d6e-853f-090420eb75a5",
+    "colId": "66d181f0-a800-4ebe-a6eb-f9b48d04d14f",
+    "containerId": "a9346759-6d4e-452c-acaf-f4ba16a623b4",
+    "name": "getById",
+    "url": "https://ecooff.herokuapp.com/api/orders/626c00b15a78d452d49bad9e",
+    "method": "GET",
+    "sortNum": 430000,
+    "created": "2022-04-29T15:22:13.218Z",
+    "modified": "2022-04-29T15:25:01.926Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
+    },
+    "tests": []
+  },
+  {
+    "_id": "a201db9e-3a32-47e1-9046-1ecce050c87b",
+    "colId": "66d181f0-a800-4ebe-a6eb-f9b48d04d14f",
+    "containerId": "a9346759-6d4e-452c-acaf-f4ba16a623b4",
+    "name": "inProgress",
+    "url": "https://ecooff.herokuapp.com/api/orders/inProgress",
+    "method": "GET",
+    "sortNum": 440000,
+    "created": "2022-04-29T15:22:13.220Z",
+    "modified": "2022-04-29T15:25:06.789Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
+    },
+    "tests": []
+  },
+  {
+    "_id": "9cef0709-66be-4800-aa05-b88e6e36774d",
+    "colId": "66d181f0-a800-4ebe-a6eb-f9b48d04d14f",
+    "containerId": "446caea1-a0f4-424b-a7e9-f557d7af02d6",
+    "name": "partialMatch",
+    "url": "https://ecooff.herokuapp.com/api/stock/partialMatch/sp",
+    "method": "GET",
+    "sortNum": 450000,
+    "created": "2022-04-29T15:22:13.221Z",
+    "modified": "2022-04-29T15:24:28.554Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
+    },
+    "tests": []
+  },
+  {
+    "_id": "b5cc4c77-abbb-4875-b72e-0942997dd9b8",
+    "colId": "66d181f0-a800-4ebe-a6eb-f9b48d04d14f",
+    "containerId": "a9346759-6d4e-452c-acaf-f4ba16a623b4",
+    "name": "openOrder",
+    "url": "https://ecooff.herokuapp.com/api/orders/openOrder/626c00b15a78d452d49bad9e",
+    "method": "GET",
+    "sortNum": 450000,
+    "created": "2022-04-29T15:22:13.222Z",
+    "modified": "2022-04-29T15:25:09.234Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
+    },
+    "tests": []
+  },
+  {
+    "_id": "3faa4943-9a09-44d0-883f-f1feb5582f56",
+    "colId": "66d181f0-a800-4ebe-a6eb-f9b48d04d14f",
+    "containerId": "c963cd69-6051-45aa-9344-f48922b619dc",
+    "name": "getSubcat",
+    "url": "https://ecooff.herokuapp.com/api/categories/getSubcat",
+    "method": "GET",
+    "sortNum": 460000,
+    "created": "2022-04-29T15:22:13.223Z",
+    "modified": "2022-04-29T15:23:44.487Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjBjMTZjM2IxNWMzOTQzZjhhZjliM2EiLCJpYXQiOjE2NDQ5NTk0NDcsImV4cCI6MTY1MjczNTQ0N30.0q-KZwiXH_mHIDxIDfTG-J0BI_PwwwCOMM9q6vOdiHI"
+    },
+    "tests": []
+  },
+  {
+    "_id": "9ae7d9c1-099d-41e6-8d4c-8c61bec81f50",
+    "colId": "66d181f0-a800-4ebe-a6eb-f9b48d04d14f",
+    "containerId": "4a795b71-a416-4edd-a21f-f66c445fa3ae",
+    "name": "openCart",
+    "url": "https://ecooff.herokuapp.com/api/cart/openCart",
+    "method": "GET",
+    "sortNum": 470000,
+    "created": "2022-04-29T15:22:13.224Z",
+    "modified": "2022-04-29T15:24:46.620Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
+    },
+    "tests": []
+  },
+  {
+    "_id": "33c6fc49-6b96-4621-8228-34751b4f8a9e",
+    "colId": "66d181f0-a800-4ebe-a6eb-f9b48d04d14f",
+    "containerId": "fbb93770-f392-455e-8a07-4d37834e1dfe",
+    "name": "getAll",
+    "url": "https://ecooff.herokuapp.com/api/bags/",
+    "method": "GET",
+    "sortNum": 490000,
+    "created": "2022-04-29T15:22:13.225Z",
+    "modified": "2022-04-29T15:25:12.964Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
     },
     "tests": []
   }

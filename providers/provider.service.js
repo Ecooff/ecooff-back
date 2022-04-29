@@ -18,6 +18,7 @@ async function create(userParam) {
     const provider = new Provider(userParam);
 
     await provider.save();
+    return provider;
 }
 
 async function getAll() {

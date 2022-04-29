@@ -1,7 +1,6 @@
 const db = require('_helpers/db');
 const config = require('config.json');
 const jwt = require('jsonwebtoken');
-//const { ObjectId } = require('mongoose');
 const ObjectId = require('mongodb').ObjectId;
 const Cart = db.Cart;
 const Stock = db.Stock;
@@ -38,12 +37,28 @@ async function addToCart(token, userParam) {
     }
 
     let productId = userParam.productId;
-    let providerId = userParam.providerId;
     let quantity = userParam.quantity;
-    let name = userParam.name;
-    let price = userParam.price;
     let length = userParam.length;
+    let providerId = '';
+    let name = '';
+    let price = Number;
     let lengthBool = '';
+
+    let stock = await Stock.findOne({ _id: productId});
+
+    if(stock) {
+
+        providerId = stock.providerId;
+        name = stock.title;
+        price = stock.expPrice;
+
+    } else {
+
+        throw 'El producto seleccionado no existe';
+
+    }
+
+
     if(length){
         lengthBool = (length.toLowerCase() === 'true');
     }
