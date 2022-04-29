@@ -1951,12 +1951,12 @@
     "method": "POST",
     "sortNum": 10000,
     "created": "2022-04-29T15:22:13.173Z",
-    "modified": "2022-04-29T15:22:42.395Z",
+    "modified": "2022-04-29T15:29:18.371Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"firstName\": \"name\",\n    \"lastName\": \"lastname\",\n    \"password\": \"12345\",\n    \"email\": \"lopezlandosebastian@gmail.com\"\n}",
+      "raw": "{\n    \"firstName\": \"eco\",\n    \"lastName\": \"off\",\n    \"password\": \"Ecooff2022\",\n    \"email\": \"demo@ecooff.com\"\n}",
       "form": []
     },
     "tests": []
@@ -1970,12 +1970,12 @@
     "method": "POST",
     "sortNum": 20000,
     "created": "2022-04-29T15:22:13.174Z",
-    "modified": "2022-04-29T15:22:46.538Z",
+    "modified": "2022-04-29T15:29:25.963Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"token\" : \"2b31\"\n}",
+      "raw": "{\n    \"token\" : \"1d9b\"\n}",
       "form": []
     },
     "auth": {
@@ -2011,12 +2011,12 @@
     "method": "POST",
     "sortNum": 22500,
     "created": "2022-04-29T15:22:13.176Z",
-    "modified": "2022-04-29T15:22:54.578Z",
+    "modified": "2022-04-29T15:29:43.043Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"email\": \"lopezlandosebastiann@gmail.com\",\n    \"password\": \"123456\"\n}",
+      "raw": "{\n    \"email\": \"demo@ecooff.com\",\n    \"password\": \"Ecooff2022\"\n}",
       "form": []
     },
     "auth": {
@@ -2034,17 +2034,17 @@
     "method": "POST",
     "sortNum": 25000,
     "created": "2022-04-29T15:22:13.177Z",
-    "modified": "2022-04-29T15:22:56.977Z",
+    "modified": "2022-04-29T15:30:11.969Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"street\": \"calle 1\",\n    \"streetNumber\": 123,\n    \"floor\": 4,\n    \"door\": \"D\",\n    \"CP\": 5001\n}",
+      "raw": "{\n    \"street\": \"calle 2\",\n    \"streetNumber\": 123,\n    \"floor\": 4,\n    \"door\": \"D\",\n    \"CP\": 5001\n}",
       "form": []
     },
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZjMDQ0ZWE0YjRjNTAwMTZjOTQ0OTQiLCJpYXQiOjE2NTEyNDYxODMsImV4cCI6MTY1MzgzODE4M30.iHW3tyWRVMj82MHr77YPrdamA557olOqWLRR6V_QD24"
     },
     "tests": []
   },
@@ -2053,16 +2053,16 @@
     "colId": "66d181f0-a800-4ebe-a6eb-f9b48d04d14f",
     "containerId": "aecb4c72-6375-477c-8b48-44c8f3020414",
     "name": "changeDefaultAddress",
-    "url": "https://ecooff.herokuapp.com/api/users/changeDefaultAddress/626bf92cda543353c445e7d5",
+    "url": "https://ecooff.herokuapp.com/api/users/changeDefaultAddress/626c0484a4b4c50016c94496",
     "method": "PUT",
     "sortNum": 27500,
     "created": "2022-04-29T15:22:13.178Z",
-    "modified": "2022-04-29T15:22:59.816Z",
+    "modified": "2022-04-29T15:30:23.650Z",
     "headers": [],
     "params": [],
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZjMDQ0ZWE0YjRjNTAwMTZjOTQ0OTQiLCJpYXQiOjE2NTEyNDYxODMsImV4cCI6MTY1MzgzODE4M30.iHW3tyWRVMj82MHr77YPrdamA557olOqWLRR6V_QD24"
     },
     "tests": []
   },
@@ -2075,12 +2075,12 @@
     "method": "GET",
     "sortNum": 28750,
     "created": "2022-04-29T15:22:13.179Z",
-    "modified": "2022-04-29T15:23:02.634Z",
+    "modified": "2022-04-29T15:30:54.423Z",
     "headers": [],
     "params": [],
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZjMDQ0ZWE0YjRjNTAwMTZjOTQ0OTQiLCJpYXQiOjE2NTEyNDYxODMsImV4cCI6MTY1MzgzODE4M30.iHW3tyWRVMj82MHr77YPrdamA557olOqWLRR6V_QD24"
     },
     "tests": []
   },
@@ -2089,16 +2089,16 @@
     "colId": "66d181f0-a800-4ebe-a6eb-f9b48d04d14f",
     "containerId": "aecb4c72-6375-477c-8b48-44c8f3020414",
     "name": "deleteAddress",
-    "url": "https://ecooff.herokuapp.com/api/users/deleteAddress/626bf92887fb2a52382ce49f",
+    "url": "https://ecooff.herokuapp.com/api/users/deleteAddress/626c047fa4b4c50016c94495",
     "method": "DELETE",
     "sortNum": 29375,
     "created": "2022-04-29T15:22:13.180Z",
-    "modified": "2022-04-29T15:23:05.494Z",
+    "modified": "2022-04-29T15:31:07.538Z",
     "headers": [],
     "params": [],
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZjMDQ0ZWE0YjRjNTAwMTZjOTQ0OTQiLCJpYXQiOjE2NTEyNDYxODMsImV4cCI6MTY1MzgzODE4M30.iHW3tyWRVMj82MHr77YPrdamA557olOqWLRR6V_QD24"
     },
     "tests": []
   },
@@ -2170,17 +2170,17 @@
     "method": "POST",
     "sortNum": 70000,
     "created": "2022-04-29T15:22:13.184Z",
-    "modified": "2022-04-29T15:23:37.470Z",
+    "modified": "2022-04-29T15:33:10.289Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"category\": \"gaseosas\",\n    \"img\": \"foto.jpg\",\n    \"subcategories\": [\n        {\n            \"subcategory\": \"coca\",\n            \"img\": \"foto.jpg\"\n        },\n        {\n            \"subcategory\": \"sprite\",\n            \"img\": \"foto.jpg\"\n        }\n    ]\n}",
+      "raw": "{\n    \"category\": \"gaseosas\",\n    \"img\": \"https://cdni.russiatoday.com/actualidad/public_images/2016.02/article/56afe82bc46188be6a8b4606.jpg\",\n    \"subcategories\": [\n        {\n            \"subcategory\": \"coca-cola\",\n            \"img\": \"https://hiperlibertad.vteximg.com.br/arquivos/ids/158862-1000-1000/Gaseosa-Coca-Cola-500-Cc-COCA-COLA--------X500ML-1-3024.jpg?v=637236253684700000\"\n        },\n        {\n            \"subcategory\": \"sprite\",\n            \"img\": \"https://www.supermercedes.com.ar/napoles/wp-content/uploads/2020/04/sprite-1.5-lt-1.png\"\n        }\n    ]\n}",
       "form": []
     },
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZjMDQ0ZWE0YjRjNTAwMTZjOTQ0OTQiLCJpYXQiOjE2NTEyNDYxODMsImV4cCI6MTY1MzgzODE4M30.iHW3tyWRVMj82MHr77YPrdamA557olOqWLRR6V_QD24"
     },
     "tests": []
   },
@@ -2193,17 +2193,17 @@
     "method": "POST",
     "sortNum": 80000,
     "created": "2022-04-29T15:22:13.185Z",
-    "modified": "2022-04-29T15:23:48.019Z",
+    "modified": "2022-04-29T15:36:26.463Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"name\": \"Coto\",\n    \"img\": \"foto.jpg\"\n}",
+      "raw": "{\n    \"name\": \"Disco\",\n    \"img\": \"https://discoargentina.vtexassets.com/assets/vtex.file-manager-graphql/images/bd790034-1117-4263-90e5-04f3f5a27503___ab950355900559ccc0bc0cb131364561.png\"\n}",
       "form": []
     },
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZjMDQ0ZWE0YjRjNTAwMTZjOTQ0OTQiLCJpYXQiOjE2NTEyNDYxODMsImV4cCI6MTY1MzgzODE4M30.iHW3tyWRVMj82MHr77YPrdamA557olOqWLRR6V_QD24"
     },
     "tests": []
   },
