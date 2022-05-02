@@ -1,7 +1,4 @@
 const db = require('_helpers/db');
-const config = require('config.json');
-const jwt = require('jsonwebtoken');
-const ObjectId = require('mongodb').ObjectId;
 const Bag = db.Bag;
 
 module.exports = {
@@ -9,20 +6,20 @@ module.exports = {
     getAll
 };
 
-async function create (orderId, providerId, productId, quantity, name) {  //pasar orderId, providerId, productId, quantity, name
+async function create (orderId, providerId, productId, quantity) {  //pasar orderId, providerId, productId, quantity
     
     let bag = await Bag.findOne({ orderId, providerId });
 
     if(bag) {
 
-        bag.products.push({ productId, quantity, name });
+        bag.products.push({ productId, quantity });
 
     } else {
 
         bag = new Bag;
         bag.orderId = orderId;
         bag.providerId = providerId;
-        bag.products.push({ productId, quantity, name });
+        bag.products.push({ productId, quantity });
 
     }
 

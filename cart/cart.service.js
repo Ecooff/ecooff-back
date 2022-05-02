@@ -11,6 +11,8 @@ module.exports = {
     deleteItem,
     deleteCart,
     openCart,
+    cartLength,
+    productLength,
     concat,
     getAll,
     getById    
@@ -38,12 +40,10 @@ async function addToCart(token, userParam) {
 
     let productId = userParam.productId;
     let quantity = userParam.quantity;
-    let length = userParam.length;
     let providerId = '';
     let name = '';
     let price = Number;
-    let lengthBool = '';
-
+    
     let stock = await Stock.findOne({ _id: productId});
 
     if(stock) {
@@ -56,11 +56,6 @@ async function addToCart(token, userParam) {
 
         throw 'El producto seleccionado no existe';
 
-    }
-
-
-    if(length){
-        lengthBool = (length.toLowerCase() === 'true');
     }
 
     try {
@@ -83,23 +78,15 @@ async function addToCart(token, userParam) {
             cart = await cart.save();
 
 
-            if(lengthBool) {
-                return { productLength : cart.products.length };
-            } else {
-                return cart;
-            }
+            return cart;
         
         } else {
             const newCart = await Cart.create({
                 userId,
                 products: [{ productId, providerId, quantity, name, price }]
-              });
+            });
 
-                if(lengthBool) {
-                    return { productLength : newCart.products.length };
-                } else {
-                    return newCart;
-                }        
+            return newCart;      
         }
     } catch(err) {
         console.log(err);
@@ -168,18 +155,70 @@ async function openCart(token) {
     const cart = await Cart.findOne({ userId }, ['products', '-_id']);
 
     let products = cart.products;
+    let productArray = [];
 
-    let finalArray = [];
+    for (const product of products) {
 
-    for(const product of products) {
+        let stock = await Stock.find({ _id : product.productId });
 
-        let concatArray = await concat(product)
-
-        finalArray.push(concatArray)
+        productArray.push({ stock });
 
     }
 
-    return finalArray;
+    return productArray;
+
+}
+
+async function cartLength(token) {
+
+    let userId = '';
+    if (token) {
+        
+        jwt.verify(token, config.secret, (err, decoded) => {
+            if (err){
+                console.log(err.message);
+                throw 'error';
+            } else {
+                userId = decoded.sub;
+            }
+        });
+    }
+
+    const cart = await Cart.findOne({ userId }, ['products', '-_id']);
+
+    let products = cart.products;
+
+    return {cartLength : products.length};
+
+}
+
+async function productLength(token, productId) {
+
+    let userId = '';
+    if (token) {
+        
+        jwt.verify(token, config.secret, (err, decoded) => {
+            if (err){
+                console.log(err.message);
+                throw 'error';
+            } else {
+                userId = decoded.sub;
+            }
+        });
+    }
+
+    const cart = await Cart.findOne({ userId }, ['products', '-_id']);
+
+    let products = cart.products;
+
+    for (const product of products) {
+
+        if (product.productId == productId) return { productLength : product.quantity };
+
+    }
+
+    return { productLength : 0 };
+
 }
 
 async function concat(product) {

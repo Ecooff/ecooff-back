@@ -6,8 +6,8 @@ const Order = db.Order;
 const Cart = db.Cart;
 const Stock = db.Stock;
 const Bag = db.Bag;
+const User = db.User;
 const bagService = require('../bags/bag.service');
-const { concat } = require('../cart/cart.service');
 
 
 module.exports = {
@@ -28,7 +28,6 @@ async function create (token) {
     let productId = '';
     let providerId = '';
     let quantity;
-    let name = '';
     let actualStock;
 
     if (token) {
@@ -62,11 +61,10 @@ async function create (token) {
                 providerId = product.providerId;
                 productId = product.productId;
                 quantity = product.quantity;
-                name = product.name;
                 
                 existingBag = false;
 
-                let bag = await bagService.create(orderId, providerId, productId, quantity, name); //manda a crear nueva bag/agregar producto a una bag existente
+                let bag = await bagService.create(orderId, providerId, productId, quantity); //manda a crear nueva bag/agregar producto a una bag existente
 
                 let bagId = String(bag);
 
@@ -116,7 +114,48 @@ async function create (token) {
     }
 }
 
-async function openOrder(id) {
+async function openOrder(token, id) {
+
+    let userId = '';
+
+    if (token) {
+        
+        jwt.verify(token, config.secret, (err, decoded) => {
+            if (err){
+                console.log(err.message);
+                throw 'error';
+            } else {
+                userId = decoded.sub;
+            }
+        });
+    }
+
+    let user = await User.findOne({ _id: userId, 'addresses.defaultAddress' : true }, ['addresses', '-_id']);
+
+    let userAddress = {};
+
+    if(user) {
+
+        let addresses = user.addresses;
+
+        for (const address of addresses) {
+
+            if(address.defaultAddress) userAddress = {
+
+                street : address.street,
+                streetNumber : address.streetNumber,
+                floor : address.floor,
+                door : address.door,
+                CP : address.CP
+
+            }
+        }
+
+    } else {
+
+        throw 'error al buscar el usuario';
+
+    }
 
     let order = await Order.findOne({ _id: id });
 
@@ -140,7 +179,9 @@ async function openOrder(id) {
 
                     if (stock) {
 
-                        productArray.push({ stock });
+                        productArray.push({ name : stock.name,
+                                            quantity : product.quantity
+                         });
 
                     } else {
 
@@ -157,7 +198,10 @@ async function openOrder(id) {
             }
         }
 
-        return productArray;
+        return {
+            productArray,
+            userAddress
+        };
 
     } else {
 

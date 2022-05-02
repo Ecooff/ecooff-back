@@ -21,7 +21,7 @@ function create(req, res, next) {
 }
 
 function openOrder(req, res, next) {
-    orderService.openOrder(req.params.id)
+    orderService.openOrder(req.headers.authorization.split(' ')[1], req.params.id)
         .then(order => order ? res.json(order) : res.status(404).json({ message: 'Hubo un problema al visualizar la orden' }))
         .catch(err => next(err));
 }
