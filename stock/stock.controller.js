@@ -3,13 +3,13 @@ const router = express.Router();
 const stockService = require('./stock.service');
 
 //routes
+router.get('/partialMatch', partialMatch);
 router.post('/create', create);
 router.put('/updateStock', updateStock);
 router.get('/', getAll);
 router.get('/closeToExp', closeToExp);
 router.get('/forYou', forYou);
 router.get('/:id', getById);
-router.get('/partialMatch/:search', partialMatch);
 router.get('/getBySubcategory/:subcat', getBySubcategory);
 router.get('/getByProvider/:provId', getByProvider);
 router.get('/getByProvSubcat/:provId/:subcat', getByProvSubcat);
@@ -18,6 +18,13 @@ router.get('/getByCategory/:cat', getByCategory);
 module.exports = router;
 
 //functions
+
+function partialMatch(req, res, next) {
+    console.log('');
+    stockService.partialMatch(req.query)
+        .then(stock => stock ? res.json(stock) : res.sendStatus(404))
+        .catch(err => next(err));
+}
 
 function create(req, res, next) {
     stockService.create(req.body)
@@ -39,12 +46,6 @@ function getAll(req, res, next) {
 
 function getById(req, res, next) {
     stockService.getById(req.params.id)
-        .then(stock => stock ? res.json(stock) : res.sendStatus(404))
-        .catch(err => next(err));
-}
-
-function partialMatch(req, res, next) {
-    stockService.partialMatch(req.params.search)
         .then(stock => stock ? res.json(stock) : res.sendStatus(404))
         .catch(err => next(err));
 }

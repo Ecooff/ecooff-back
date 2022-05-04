@@ -83,8 +83,32 @@ async function getById(id) {
     return await Stock.findById(ObjectId(id));
 }
 
-async function partialMatch(search) {
-    return await Stock.find({ name: {"$regex" : search, "$options" : "i"}})
+async function partialMatch(query) {
+
+    //paso a paso:esta api es de busqueda parcial por nombre y acepta filtros fijarse aca los parametros que acepta la api. 
+    //en la request, agregar los parametros a llamar desde query. 
+    //name es obligatorio, el resto son opcionales.
+
+    let params = {
+        name: {"$regex" : query.name, "$options" : "i"}
+    }
+    
+    if(query.category){
+        params.category = query.category.toLowerCase();
+    }
+    
+    if(query.subcategory){
+        params.subcategory = query.subcategory.toLowerCase();
+    }
+    
+    if(query.providerId){
+        params.providerId = query.providerId;
+    }
+
+    return await Stock.find({
+        $and: [params]
+    }).sort({'expDate': -1})
+
 }
 
 async function getBySubcategory(subcat) {
