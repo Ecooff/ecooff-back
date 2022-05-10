@@ -90,17 +90,15 @@ async function partialMatch(query) {
     //name es obligatorio, el resto son opcionales.
 
     let params = {
-        name: {"$regex" : query.name, "$options" : "i"}
+        name: { "$regex" : query.name, "$options" : "i" }
     }
     
     if(query.category){
-        console.log(query.category);
-        params.category = query.category.toLowerCase();
+        params.category = { "$regex" : query.category, "$options" : "i" };
     }
     
     if(query.subcategory){
-        console.log(query.subcategory);
-        params.subcategory = query.subcategory.toLowerCase();
+        params.subcategory = { "$regex" : query.subcategory, "$options" : "i" };
     }
     
     if(query.providerId){

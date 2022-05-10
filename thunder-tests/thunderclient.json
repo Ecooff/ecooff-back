@@ -1780,39 +1780,38 @@
     "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
     "containerId": "24299490-c118-4f0d-ba1a-8dfa50f1ee1f",
     "name": "partialMatch",
-    "url": "http://localhost:3000/api/stock/partialMatch?name&category=Mercado",
+    "url": "http://localhost:5000/api/stock/partialMatch?name=crema&subcategory=Higiene de la piel&category=FARMACIA",
     "method": "GET",
     "sortNum": 450000,
     "created": "2022-04-18T17:43:56.956Z",
-    "modified": "2022-05-06T13:51:58.475Z",
+    "modified": "2022-05-10T14:45:29.749Z",
     "headers": [],
     "params": [
       {
         "name": "name",
-        "value": "",
+        "value": "crema",
         "isPath": false
       },
       {
         "name": "subcategory",
-        "value": "gaseosas",
-        "isDisabled": true,
+        "value": "Higiene de la piel",
         "isPath": false
       },
       {
         "name": "category",
-        "value": "Mercado",
+        "value": "FARMACIA",
         "isPath": false
       },
       {
         "name": "providerId",
-        "value": "626fe65401f2a84a346d174c",
+        "value": "627005a3e1ddea0016ca59c3",
         "isDisabled": true,
         "isPath": false
       }
     ],
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZmZTYxNmIyOWRmNjJlMjhhODdkYzYiLCJpYXQiOjE2NTE1MDczNjgsImV4cCI6MTY1NDA5OTM2OH0.Q6Nm5UK22xKLMrzCtQOhIJyVIZxAJQ2sSGV0_LeG0cA"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjcwMDQ2NWUxZGRlYTAwMTZjYTU5YjkiLCJpYXQiOjE2NTE1MDgzMzIsImV4cCI6MTY1NDEwMDMzMn0.0UnnYpFYRu1CiYtCNXgc2EajhtGvqRhiAf6em_LZbVc"
     },
     "tests": []
   },
@@ -2949,11 +2948,11 @@
     "colId": "213ec700-97d0-4188-8555-782c51d926cd",
     "containerId": "bb97506f-55ab-4faa-98a5-6f3e733785cf",
     "name": "partialMatch",
-    "url": "https://ecooff.herokuapp.com/api/stock/partialMatch?name&subcategory=Higiene de la piel",
+    "url": "https://ecooff.herokuapp.com/api/stock/partialMatch?name&category=Farmacia",
     "method": "GET",
     "sortNum": 450000,
     "created": "2022-05-02T16:12:55.901Z",
-    "modified": "2022-05-06T13:55:11.497Z",
+    "modified": "2022-05-06T14:03:51.367Z",
     "headers": [],
     "params": [
       {
@@ -2964,12 +2963,12 @@
       {
         "name": "category",
         "value": "Farmacia",
-        "isDisabled": true,
         "isPath": false
       },
       {
         "name": "subcategory",
         "value": "Higiene de la piel",
+        "isDisabled": true,
         "isPath": false
       },
       {
