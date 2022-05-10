@@ -94,10 +94,12 @@ async function partialMatch(query) {
     }
     
     if(query.category){
+        console.log(query.category);
         params.category = query.category.toLowerCase();
     }
     
     if(query.subcategory){
+        console.log(query.subcategory);
         params.subcategory = query.subcategory.toLowerCase();
     }
     
