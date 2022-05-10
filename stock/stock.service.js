@@ -52,6 +52,7 @@ async function create(userParam) {
 
         stock.providerId = provider._id;
         stock.providerName = provider.name;
+        stock.providerImg = provider.img;
 
     } else {
 

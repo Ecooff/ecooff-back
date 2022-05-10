@@ -5,7 +5,7 @@ const cartService = require('./cart.service');
 //routes
 router.post('/create', create);
 router.post('/addToCart', addToCart);
-router.put('/deleteItem', deleteItem);
+router.put('/deleteItem/:id', deleteItem);
 router.delete('/deleteCart', deleteCart);
 router.get('/openCart', openCart);
 router.get('/cartLength', cartLength);
@@ -28,7 +28,7 @@ function addToCart(req, res, next) {
 }
 
 function deleteItem(req, res, next) {
-    cartService.deleteItem(req.headers.authorization.split(' ')[1], req.body)
+    cartService.deleteItem(req.headers.authorization.split(' ')[1], req.params.id)
         .then(cart => cart ? res.json(cart) : res.status(404).json({ message: 'Hubo un problema al eliminar el producto' }))
         .catch(err => next(err));
 }

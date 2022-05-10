@@ -14,7 +14,8 @@ const schema = new Schema({
     postDate: {type: Date, default: Date.now},
     stock: {type: Number, required: true},
     providerId: {type: String},
-    providerName: {type: String}
+    providerName: {type: String},
+    providerImg: {type: String}
 });
 
 module.exports = mongoose.model('Stock', schema);

@@ -93,7 +93,7 @@ async function addToCart(token, userParam) {
     }
 }
 
-async function deleteItem(token, userParam) {
+async function deleteItem(token, id) {
     let userId = '';
     if (token) {
         
@@ -109,9 +109,9 @@ async function deleteItem(token, userParam) {
 
     let cart = await Cart.findOne({userId});
 
-    console.log(userParam.id);
+    console.log(id);
 
-    cart.products.pull({ _id: userParam.id });
+    cart.products.pull({ _id: id });
 
     await cart.save();
 
@@ -155,13 +155,23 @@ async function openCart(token) {
     const cart = await Cart.findOne({ userId }, ['products', '-_id']);
 
     let products = cart.products;
+
     let productArray = [];
 
     for (const product of products) {
 
-        let stock = await Stock.find({ _id : product.productId });
+        let stock = await Stock.findOne({ _id : product.productId });
 
-        productArray.push({ stock });
+        productArray.push({ 
+
+            id: product._id,
+            name: stock.name,
+            price: stock.expPrice,
+            img: stock.img,
+            quantity: product.quantity,
+            expirationDate: stock.expDate
+
+        });
 
     }
 
