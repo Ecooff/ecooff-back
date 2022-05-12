@@ -109,9 +109,7 @@ async function deleteItem(token, id) {
 
     let cart = await Cart.findOne({userId});
 
-    console.log(id);
-
-    cart.products.pull({ _id: id });
+    cart.products.pull({ _id : ObjectId(id) });
 
     await cart.save();
 
@@ -164,6 +162,7 @@ async function openCart(token) {
 
         productArray.push({ 
 
+            cartId: product._id,
             id: product.productId,
             name: stock.name,
             price: stock.expPrice,

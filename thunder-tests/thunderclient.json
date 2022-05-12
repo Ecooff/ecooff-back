@@ -1531,11 +1531,11 @@
     "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
     "containerId": "1abe0c6e-6188-41d9-be76-f4c456c8f424",
     "name": "deleteItem",
-    "url": "http://localhost:5000/api/cart/deleteItem/627add12667149003e9750ea",
+    "url": "http://localhost:5000/api/cart/deleteItem/627d1ff19c035508cc1209e2",
     "method": "PUT",
     "sortNum": 320000,
     "created": "2022-04-18T17:43:56.942Z",
-    "modified": "2022-05-10T22:14:35.083Z",
+    "modified": "2022-05-12T14:55:53.952Z",
     "headers": [],
     "params": [],
     "auth": {
