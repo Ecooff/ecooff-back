@@ -164,7 +164,7 @@ async function openCart(token) {
 
         productArray.push({ 
 
-            id: product._id,
+            id: product.productId,
             name: stock.name,
             price: stock.expPrice,
             img: stock.img,
