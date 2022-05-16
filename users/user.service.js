@@ -100,8 +100,6 @@ async function addAddress(token, userParam) {
     let door = '';
     let CP = Number;
 
-    console.log('here');
-
     if (user.addresses.length > 0) {
 
         street = userParam.street;

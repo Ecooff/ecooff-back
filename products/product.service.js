@@ -24,6 +24,8 @@ async function create(userParam) {
         product.description = userParam.description;
         product.listPrice = userParam.listPrice;
         product.img = userParam.img;
+        product.waterSave = userParam.waterSave;
+        product.carbonFootprint = userParam.carbonFootprint;
         product.allergenics = userParam.allergenics;
 
         product.category = category.category

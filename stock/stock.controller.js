@@ -20,7 +20,6 @@ module.exports = router;
 //functions
 
 function partialMatch(req, res, next) {
-    console.log('');
     stockService.partialMatch(req.query)
         .then(stock => stock ? res.json(stock) : res.sendStatus(404))
         .catch(err => next(err));

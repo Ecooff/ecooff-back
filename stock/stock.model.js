@@ -15,7 +15,9 @@ const schema = new Schema({
     stock: {type: Number, required: true},
     providerId: {type: String},
     providerName: {type: String},
-    providerImg: {type: String}
+    providerImg: {type: String},
+    waterSave: {type: Number},
+    carbonFootprint: {type: Number}
 });
 
 module.exports = mongoose.model('Stock', schema);

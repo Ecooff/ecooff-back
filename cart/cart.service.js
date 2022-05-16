@@ -11,6 +11,7 @@ module.exports = {
     deleteItem,
     deleteCart,
     openCart,
+    confirmCart,
     cartLength,
     productLength,
     concat,
@@ -152,29 +153,158 @@ async function openCart(token) {
 
     const cart = await Cart.findOne({ userId }, ['products', '-_id']);
 
-    let products = cart.products;
+    if (cart) {
 
-    let productArray = [];
+        let products = cart.products;
 
-    for (const product of products) {
+        let productArray = [];
 
-        let stock = await Stock.findOne({ _id : product.productId });
+        let savingsArray = [];
 
-        productArray.push({ 
+        for (const product of products) {
 
-            cartId: product._id,
-            id: product.productId,
-            name: stock.name,
-            price: stock.expPrice,
-            img: stock.img,
-            quantity: product.quantity,
-            expirationDate: stock.expDate
+            let stock = await Stock.findOne({ _id : product.productId });
 
-        });
+            productArray.push({ 
+
+                cartId: product._id,
+                id: product.productId,
+                name: stock.name,
+                price: stock.expPrice,
+                img: stock.img,
+                quantity: product.quantity,
+                expirationDate: stock.expDate
+
+            });
+
+            savingsArray.push({
+
+                waterSave: stock.waterSave,
+                carbonFootprint: stock.carbonFootprint,
+                moneySave: stock.listPrice - stock.expPrice
+
+            })
+
+        }
+
+        let waterSaveTotal = 0,
+            carbonFootprintTotal = 0,
+            moneySaveTotal = 0;
+
+        for (const savings of savingsArray) {
+
+            waterSaveTotal = waterSaveTotal + savings.waterSave;
+            carbonFootprintTotal = carbonFootprintTotal + savings.carbonFootprint;
+            moneySaveTotal = moneySaveTotal + savings.moneySave;
+
+        }
+
+        let totalSavingsArray = {};
+
+        totalSavingsArray.waterSaveTotal = waterSaveTotal;
+        totalSavingsArray.carbonFootprintTotal = carbonFootprintTotal;
+        totalSavingsArray.moneySaveTotal = moneySaveTotal;
+
+        let finalArray = {};
+
+        finalArray.listOfProducts = productArray;
+        finalArray.savings = totalSavingsArray;
+
+        return finalArray;
+
+    }   else {
+
+        throw 'El carrito esta vacio';
 
     }
+}
 
-    return productArray;
+async function confirmCart(token, userParam) {
+
+    let userId = '';
+    if (token) {
+        
+        jwt.verify(token, config.secret, (err, decoded) => {
+            if (err){
+                console.log(err.message);
+                throw 'error';
+            } else {
+                userId = decoded.sub;
+            }
+        });
+    }
+
+    const cart = await Cart.findOne({ userId }, ['products', '-_id']);
+
+    if (cart) {
+
+        let products = cart.products,
+
+            productArray = [],
+
+            savingsArray = [],
+
+            addressArray = {};
+
+            addressArray.street = userParam.street;
+            addressArray.streetNumber = userParam.streetNumber;
+            addressArray.floor = userParam.floor;
+            addressArray.door = userParam.door;
+            addressArray.CP = userParam.CP;
+
+        for (const product of products) {
+
+            let stock = await Stock.findOne({ _id : product.productId });
+
+            productArray.push({ 
+
+                name: stock.name,
+                price: stock.expPrice,
+                quantity: product.quantity
+
+            });
+
+            savingsArray.push({
+
+                waterSave: stock.waterSave,
+                carbonFootprint: stock.carbonFootprint,
+                moneySave: stock.listPrice - stock.expPrice
+
+            })
+
+        }
+
+        let waterSaveTotal = 0,
+            carbonFootprintTotal = 0,
+            moneySaveTotal = 0;
+
+        for (const savings of savingsArray) {
+
+            waterSaveTotal = waterSaveTotal + savings.waterSave;
+            carbonFootprintTotal = carbonFootprintTotal + savings.carbonFootprint;
+            moneySaveTotal = moneySaveTotal + savings.moneySave;
+
+        }
+
+        let totalSavingsArray = {};
+
+        totalSavingsArray.waterSaveTotal = waterSaveTotal;
+        totalSavingsArray.carbonFootprintTotal = carbonFootprintTotal;
+        totalSavingsArray.moneySaveTotal = moneySaveTotal;
+
+        let finalArray = {};
+
+        finalArray.listOfProducts = productArray;
+        finalArray.savings = totalSavingsArray;
+        finalArray.userAddress = addressArray;
+
+        return finalArray;
+
+    }   else {
+
+        throw 'El carrito esta vacio';
+
+    }
 
 }
 

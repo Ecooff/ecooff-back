@@ -8,6 +8,7 @@ router.post('/addToCart', addToCart);
 router.put('/deleteItem/:id', deleteItem);
 router.delete('/deleteCart', deleteCart);
 router.get('/openCart', openCart);
+router.get('/confirmCart', confirmCart);
 router.get('/cartLength', cartLength);
 router.get('/productLength/:productId', productLength);
 router.get('/', getAll);
@@ -41,6 +42,12 @@ function deleteCart(req, res, next) {
 
 function openCart(req, res, next) {
     cartService.openCart(req.headers.authorization.split(' ')[1])
+        .then(cart => cart ? res.json(cart) : res.status(404).json({ message: 'No se pudo recuperar el carrito' }))
+        .catch(err => next(err));
+}
+
+function confirmCart(req, res, next) {
+    cartService.confirmCart(req.headers.authorization.split(' ')[1], req.body)
         .then(cart => cart ? res.json(cart) : res.status(404).json({ message: 'No se pudo recuperar el carrito' }))
         .catch(err => next(err));
 }

@@ -38,6 +38,8 @@ async function create(userParam) {
         stock.description = model.description;
         stock.listPrice = model.listPrice;
         stock.img = model.img;
+        stock.waterSave = model.waterSave;
+        stock.carbonFootprint = model.carbonFootprint;
 
     } else {
 
@@ -122,8 +124,6 @@ async function getByProvider(prov) {
 }
 
 async function getByProvSubcat({provId, subcat}) {
-    console.log(provId);
-
     return await Stock.find({providerId : provId, subcategory: subcat});
 }
 
@@ -150,7 +150,6 @@ async function forYou(req){  //emprolijar con casos puntuales
                 result.forEach( item2 => {
                     listOfFavs.push(item2);
                 })
-                console.log(listOfFavs)
                 i == favs.length-1 ? resolve(listOfFavs) : null;
             })
 

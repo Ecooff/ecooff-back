@@ -8,6 +8,8 @@ const schema = new Schema({
     description: {type: String},
     listPrice: {type: Number},
     img: {type: String},
+    waterSave: {type: Number},
+    carbonFootprint: {type: Number},
     allergenics: [
         {
             vegan: {type: Boolean},
