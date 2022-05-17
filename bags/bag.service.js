@@ -6,20 +6,20 @@ module.exports = {
     getAll
 };
 
-async function create (orderId, providerId, productId, quantity) {  //pasar orderId, providerId, productId, quantity
+async function create (orderId, providerId, productId, quantity, name, img) {  //pasar orderId, providerId, productId, quantity
     
     let bag = await Bag.findOne({ orderId, providerId });
 
     if(bag) {
 
-        bag.products.push({ productId, quantity });
+        bag.products.push({ productId, quantity, name, img });
 
     } else {
 
         bag = new Bag;
         bag.orderId = orderId;
         bag.providerId = providerId;
-        bag.products.push({ productId, quantity });
+        bag.products.push({ productId, quantity, name, img });
 
     }
 

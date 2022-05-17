@@ -13,22 +13,24 @@ const bagService = require('../bags/bag.service');
 module.exports = {
     create,
     openOrder,
+    listOfOrders,
     inProgress,
     getAll,
     getById,
     changeStatus,
-    cancelOrder,
-    getByUserId
+    cancelOrder
 };
 
-async function create (token) {
+async function create (token, userParam) {
 
-    let userId = '';
-    let orderId = '';
-    let productId = '';
-    let providerId = '';
-    let quantity;
-    let actualStock;
+    let userId = '',
+        orderId = '',
+        productId = '',
+        providerId = '',
+        quantity,
+        actualStock,
+        name = '',
+        img = '';
 
     if (token) {
         
@@ -48,23 +50,74 @@ async function create (token) {
 
         if(cart){
 
-            let products = cart.products;
-            let order = new Order;
-            let orderBags = order.bags;
-            let existingBag = Boolean;
+            let products = cart.products,
+                order = new Order,
+                orderBags = order.bags,
+                existingBag = Boolean;
 
             order.userId = userId;
             orderId = order._id
+
+            let address = {};
+
+            address.street = userParam.street;
+            address.streetNumber = userParam.streetNumber;
+            address.floor = userParam.floor;
+            address.door = userParam.door;
+            address.CP = userParam.CP;
+
+            order.address = address;
+
+            let total = 0,
+                productSubtotal = 0;
 
             for (const product of products) {
 
                 providerId = product.providerId;
                 productId = product.productId;
                 quantity = product.quantity;
+
+                productSubtotal = product.price * product.quantity;
+                total = total + productSubtotal;
+
+                let stock = await Stock.findOne({_id : ObjectId(productId)});
+
+                if (stock) { //actualiza el stock de cada producto comprado. borra el objeto si se termina el stock, tira error si no hay suficiente stock
+
+                    if (stock.stock < Number(quantity)) {
+
+                        throw 'No hay suficiente stock para realizar esta compra'
+
+                    }
+
+                    if (stock.stock == Number(quantity)) {
+
+                        name = stock.name;
+                        img = stock.img;
+
+                        await Stock.deleteOne({_id : ObjectId(productId)});
+
+                    } else {
+
+                        name = stock.name;
+                        img = stock.img;
+
+                        actualStock = Number(stock.stock);
+                        actualStock = actualStock - Number(quantity);
+                        stock.stock = actualStock;
+                        await stock.save();
+
+                    }                    
+
+                } else {
+
+                    throw 'Hubo un problema al actualizar el stock del producto';
+
+                }
                 
                 existingBag = false;
 
-                let bag = await bagService.create(orderId, providerId, productId, quantity); //manda a crear nueva bag/agregar producto a una bag existente
+                let bag = await bagService.create(orderId, providerId, productId, quantity, name, img); //manda a crear nueva bag/agregar producto a una bag existente
 
                 let bagId = String(bag);
 
@@ -76,25 +129,11 @@ async function create (token) {
 
                 }
 
-                if (!existingBag) order.bags.push({ bagId })
+                if (!existingBag) order.bags.push({ bagId })    
 
-                
-
-                let stock = await Stock.findOne({_id : ObjectId(productId)});
-
-                if (stock) { //actualiza el stock de cada producto comprado
-
-                    actualStock = Number(stock.stock);
-                    actualStock = actualStock - Number(quantity);
-                    stock.stock = actualStock;
-                    await stock.save();
-
-                } else {
-
-                    console.log('el stock no fue actualizado');
-
-                }
             }
+
+            order.total = total;
 
             await order.save();
 
@@ -114,48 +153,7 @@ async function create (token) {
     }
 }
 
-async function openOrder(token, id) {
-
-    let userId = '';
-
-    if (token) {
-        
-        jwt.verify(token, config.secret, (err, decoded) => {
-            if (err){
-                console.log(err.message);
-                throw 'error';
-            } else {
-                userId = decoded.sub;
-            }
-        });
-    }
-
-    let user = await User.findOne({ _id: userId, 'addresses.defaultAddress' : true }, ['addresses', '-_id']);
-
-    let userAddress = {};
-
-    if(user) {
-
-        let addresses = user.addresses;
-
-        for (const address of addresses) {
-
-            if(address.defaultAddress) userAddress = {
-
-                street : address.street,
-                streetNumber : address.streetNumber,
-                floor : address.floor,
-                door : address.door,
-                CP : address.CP
-
-            }
-        }
-
-    } else {
-
-        throw 'error al buscar el usuario';
-
-    }
+async function openOrder(id) {
 
     let order = await Order.findOne({ _id: id });
 
@@ -175,19 +173,11 @@ async function openOrder(token, id) {
 
                 for (const product of products) {
 
-                    let stock = await Stock.findOne({ _id : product.productId }, ['name', '-_id']);
-
-                    if (stock) {
-
-                        productArray.push({ name : stock.name,
-                                            quantity : product.quantity
-                         });
-
-                    } else {
-
-                        throw 'hubo un problema al buscar los productos de las bags';
-
-                    }
+                    productArray.push({ 
+                        name : product.name,
+                        quantity : product.quantity,
+                        img : product.img
+                    });
 
                 }
 
@@ -198,8 +188,18 @@ async function openOrder(token, id) {
             }
         }
 
+        let userAddress = order.address,
+            orderId = order._id,
+            status = order.status,
+            total = order.total,
+            date = order.date;
+
         return {
+            orderId,
+            date,
+            status,
             productArray,
+            total,
             userAddress
         };
 
@@ -208,6 +208,38 @@ async function openOrder(token, id) {
         throw 'no existe una orden con ese ID';
 
     }
+}
+
+async function listOfOrders(token) {
+
+    let userId = '';
+
+    if (token) {
+        
+        jwt.verify(token, config.secret, (err, decoded) => {
+            if (err){
+                console.log(err.message);
+                throw 'error';
+            } else {
+                userId = decoded.sub;
+            }
+        });
+    }
+
+    let orderArray = [],
+        order = {};
+
+    const orders = await Order.find({ userId : userId});
+
+    for (const item of orders) {
+
+        order = await openOrder(item._id);
+
+        orderArray.push({order});
+
+    }
+
+    return orderArray;
 }
 
 async function inProgress() {  //hacer para los otros estados tmb, y que traiga el user address a traves del user id
@@ -256,12 +288,6 @@ async function cancelOrder(userParam) {
     await Order.deleteOne({_id : ObjectId(userParam.id)});
 
     return;
-}
-
-async function getByUserId(id) {
-    const orders = await Order.find({ userId : id});
-
-    return orders;
 }
 
 

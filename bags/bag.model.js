@@ -8,7 +8,8 @@ const schema = new Schema({
         {
             productId: {type: String},
             quantity: {type: Number},
-            name: {type: String}
+            name: {type: String},
+            img: {type: String}
         }
     ]
 });

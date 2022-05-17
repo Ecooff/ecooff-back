@@ -260,7 +260,8 @@ async function confirmCart(token, userParam) {
 
                 name: stock.name,
                 price: stock.expPrice,
-                quantity: product.quantity
+                quantity: product.quantity,
+                img: stock.img
 
             });
 

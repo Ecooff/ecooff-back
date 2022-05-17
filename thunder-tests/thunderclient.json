@@ -924,16 +924,16 @@
     "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
     "containerId": "de9c8a35-ae0b-48e0-9c35-e120ff306512",
     "name": "register",
-    "url": "http://localhost:3000/api/users/register",
+    "url": "http://localhost:5000/api/users/register",
     "method": "POST",
     "sortNum": 10000,
     "created": "2022-04-18T17:43:56.911Z",
-    "modified": "2022-04-29T13:02:31.465Z",
+    "modified": "2022-05-16T16:04:24.379Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"firstName\": \"name\",\n    \"lastName\": \"lastname\",\n    \"password\": \"12345\",\n    \"email\": \"lopezlandosebastian@gmail.com\"\n}",
+      "raw": "{\n    \"firstName\": \"eco\",\n    \"lastName\": \"off\",\n    \"password\": \"Ecooff2022\",\n    \"email\": \"user2@ecooff.com\"\n}",
       "form": []
     },
     "tests": []
@@ -943,16 +943,16 @@
     "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
     "containerId": "de9c8a35-ae0b-48e0-9c35-e120ff306512",
     "name": "verify email",
-    "url": "http://localhost:3000/api/users/verifyEmail",
+    "url": "http://localhost:5000/api/users/verifyEmail",
     "method": "POST",
     "sortNum": 20000,
     "created": "2022-04-18T17:43:56.912Z",
-    "modified": "2022-04-29T14:41:14.624Z",
+    "modified": "2022-05-16T16:04:33.584Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"token\" : \"2b31\"\n}",
+      "raw": "{\n    \"token\" : \"a299\"\n}",
       "form": []
     },
     "auth": {
@@ -1135,12 +1135,12 @@
     "method": "POST",
     "sortNum": 90000,
     "created": "2022-04-18T17:43:56.921Z",
-    "modified": "2022-05-04T16:31:53.381Z",
+    "modified": "2022-05-16T15:55:24.451Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"name\": \"opera\",\n    \"description\": \"desc\",\n    \"listPrice\": \"100\",\n    \"img\": \"sprite.jpg\",\n    \"allergenics\": [\n        {\n            \"vegan\": \"true\",\n            \"celiac\":\"false\"\n        }    \n    ],\n    \"subcatId\": \"6272aa3a88227c3470169af5\"\n}",
+      "raw": "{\n    \"name\": \"opera\",\n    \"description\": \"desc\",\n    \"listPrice\": \"100\",\n    \"img\": \"sprite.jpg\",\n    \"waterSave\": 20,\n    \"carbonFootprint\" : 15,\n    \"allergenics\": [\n        {\n            \"vegan\": \"true\",\n            \"celiac\":\"false\"\n        }    \n    ],\n    \"subcatId\": \"6272aa3a88227c3470169af5\"\n}",
       "form": []
     },
     "auth": {
@@ -1213,16 +1213,16 @@
     "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
     "containerId": "c7d91ad0-6e6a-435e-be26-30d52a9572d5",
     "name": "getAll",
-    "url": "http://localhost:3000/api/providers/",
+    "url": "http://localhost:5000/api/providers/",
     "method": "GET",
     "sortNum": 130000,
     "created": "2022-04-18T17:43:56.925Z",
-    "modified": "2022-05-04T15:49:00.980Z",
+    "modified": "2022-05-16T22:32:13.952Z",
     "headers": [],
     "params": [],
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZmZTYxNmIyOWRmNjJlMjhhODdkYzYiLCJpYXQiOjE2NTE1MDczNjgsImV4cCI6MTY1NDA5OTM2OH0.Q6Nm5UK22xKLMrzCtQOhIJyVIZxAJQ2sSGV0_LeG0cA"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjgyNzYwODI0OGU0MDM5NTg1NDg3MzEiLCJpYXQiOjE2NTI3MTcwNzMsImV4cCI6MTY1NTMwOTA3M30.wJ_lSVN1Ff-E_twHQg_0gzsCG6mF2xoADncQFd_YOZU"
     },
     "tests": []
   },
@@ -1390,16 +1390,16 @@
     "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
     "containerId": "de9c8a35-ae0b-48e0-9c35-e120ff306512",
     "name": "retrieveUser",
-    "url": "http://localhost:3000/api/users/retrieveUser",
+    "url": "http://localhost:5000/api/users/retrieveUser",
     "method": "GET",
     "sortNum": 240000,
     "created": "2022-04-18T17:43:56.934Z",
-    "modified": "2022-04-29T13:04:02.096Z",
+    "modified": "2022-05-16T23:37:20.422Z",
     "headers": [],
     "params": [],
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjMwZGJiODFjNDkwMzIyODBlNWVhNTYiLCJpYXQiOjE2NDczNjkxNTgsImV4cCI6MTY0OTk2MTE1OH0.qltoY1AH-znQ9gXhTbGt0EzhAhlRyAuqg0mq96IfY9w"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjgyNzYwODI0OGU0MDM5NTg1NDg3MzEiLCJpYXQiOjE2NTI3MTcwNzMsImV4cCI6MTY1NTMwOTA3M30.wJ_lSVN1Ff-E_twHQg_0gzsCG6mF2xoADncQFd_YOZU"
     },
     "tests": []
   },
@@ -1412,17 +1412,17 @@
     "method": "POST",
     "sortNum": 250000,
     "created": "2022-04-18T17:43:56.935Z",
-    "modified": "2022-05-12T14:04:26.557Z",
+    "modified": "2022-05-16T23:32:30.170Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"productId\" : \"62729d5aa243f20016a9d8c2\",\n    \"quantity\": \"7\"\n}",
+      "raw": "{\n    \"productId\" : \"627528a0df1bf100165eedb2\",\n    \"quantity\": 3\n}",
       "form": []
     },
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjcwMDQ2NWUxZGRlYTAwMTZjYTU5YjkiLCJpYXQiOjE2NTE1MDgzMzIsImV4cCI6MTY1NDEwMDMzMn0.0UnnYpFYRu1CiYtCNXgc2EajhtGvqRhiAf6em_LZbVc"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjgyNzYwODI0OGU0MDM5NTg1NDg3MzEiLCJpYXQiOjE2NTI3MTcwNzMsImV4cCI6MTY1NTMwOTA3M30.wJ_lSVN1Ff-E_twHQg_0gzsCG6mF2xoADncQFd_YOZU"
     },
     "tests": []
   },
@@ -1449,16 +1449,21 @@
     "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
     "containerId": "d613ecd3-b2c9-4a35-b915-7fbb994ff9c7",
     "name": "create",
-    "url": "http://localhost:3000/api/orders/create",
+    "url": "http://localhost:5000/api/orders/create",
     "method": "POST",
     "sortNum": 280000,
     "created": "2022-04-18T17:43:56.938Z",
-    "modified": "2022-05-02T16:05:07.286Z",
+    "modified": "2022-05-16T22:39:10.816Z",
     "headers": [],
     "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"street\": \"calle\",\n    \"streetNumber\": 123,\n    \"floor\": 3,\n    \"door\": \"3\",\n    \"CP\": 5000\n}",
+      "form": []
+    },
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZmZTYxNmIyOWRmNjJlMjhhODdkYzYiLCJpYXQiOjE2NTE1MDczNjgsImV4cCI6MTY1NDA5OTM2OH0.Q6Nm5UK22xKLMrzCtQOhIJyVIZxAJQ2sSGV0_LeG0cA"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjgyNzYwODI0OGU0MDM5NTg1NDg3MzEiLCJpYXQiOjE2NTI3MTcwNzMsImV4cCI6MTY1NTMwOTA3M30.wJ_lSVN1Ff-E_twHQg_0gzsCG6mF2xoADncQFd_YOZU"
     },
     "tests": []
   },
@@ -1467,16 +1472,16 @@
     "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
     "containerId": "d613ecd3-b2c9-4a35-b915-7fbb994ff9c7",
     "name": "getAll",
-    "url": "http://localhost:3000/api/orders/",
+    "url": "http://localhost:5000/api/orders",
     "method": "GET",
     "sortNum": 290000,
     "created": "2022-04-18T17:43:56.939Z",
-    "modified": "2022-05-02T16:05:14.041Z",
+    "modified": "2022-05-16T18:04:15.570Z",
     "headers": [],
     "params": [],
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZmZTYxNmIyOWRmNjJlMjhhODdkYzYiLCJpYXQiOjE2NTE1MDczNjgsImV4cCI6MTY1NDA5OTM2OH0.Q6Nm5UK22xKLMrzCtQOhIJyVIZxAJQ2sSGV0_LeG0cA"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjcwMDQ2NWUxZGRlYTAwMTZjYTU5YjkiLCJpYXQiOjE2NTE1MDgzMzIsImV4cCI6MTY1NDEwMDMzMn0.0UnnYpFYRu1CiYtCNXgc2EajhtGvqRhiAf6em_LZbVc"
     },
     "tests": []
   },
@@ -1504,43 +1509,20 @@
     "tests": []
   },
   {
-    "_id": "e22bddf5-3654-4dc5-b3a3-f2ca97eb077f",
-    "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
-    "containerId": "de9c8a35-ae0b-48e0-9c35-e120ff306512",
-    "name": "editEmail",
-    "url": "http://localhost:3000/api/users/editEmail",
-    "method": "PUT",
-    "sortNum": 310000,
-    "created": "2022-04-18T17:43:56.941Z",
-    "modified": "2022-04-29T14:43:55.345Z",
-    "headers": [],
-    "params": [],
-    "body": {
-      "type": "json",
-      "raw": "{\n    \"oldEmail\": \"lopezlandosebastian@gmail.com\",\n    \"newEmail\": \"lopezlandosebastiann@gmail.com\",\n    \"password\": \"123456\"\n}",
-      "form": []
-    },
-    "auth": {
-      "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
-    },
-    "tests": []
-  },
-  {
     "_id": "a7eac187-4cc1-4c7a-a774-038672eeff1c",
     "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
     "containerId": "1abe0c6e-6188-41d9-be76-f4c456c8f424",
     "name": "deleteItem",
-    "url": "http://localhost:5000/api/cart/deleteItem/627d1ff19c035508cc1209e2",
+    "url": "http://localhost:5000/api/cart/deleteItem/62827e11cf23ce31dc783e92",
     "method": "PUT",
     "sortNum": 320000,
     "created": "2022-04-18T17:43:56.942Z",
-    "modified": "2022-05-12T14:55:53.952Z",
+    "modified": "2022-05-16T16:39:19.261Z",
     "headers": [],
     "params": [],
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjcwMDQ2NWUxZGRlYTAwMTZjYTU5YjkiLCJpYXQiOjE2NTE1MDgzMzIsImV4cCI6MTY1NDEwMDMzMn0.0UnnYpFYRu1CiYtCNXgc2EajhtGvqRhiAf6em_LZbVc"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjgyNzYwODI0OGU0MDM5NTg1NDg3MzEiLCJpYXQiOjE2NTI3MTcwNzMsImV4cCI6MTY1NTMwOTA3M30.wJ_lSVN1Ff-E_twHQg_0gzsCG6mF2xoADncQFd_YOZU"
     },
     "tests": []
   },
@@ -1553,7 +1535,7 @@
     "method": "DELETE",
     "sortNum": 330000,
     "created": "2022-04-18T17:43:56.943Z",
-    "modified": "2022-05-10T17:42:58.099Z",
+    "modified": "2022-05-16T22:27:58.135Z",
     "headers": [],
     "params": [],
     "body": {
@@ -1563,7 +1545,7 @@
     },
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjcwMDQ2NWUxZGRlYTAwMTZjYTU5YjkiLCJpYXQiOjE2NTE1MDgzMzIsImV4cCI6MTY1NDEwMDMzMn0.0UnnYpFYRu1CiYtCNXgc2EajhtGvqRhiAf6em_LZbVc"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjgyNzYwODI0OGU0MDM5NTg1NDg3MzEiLCJpYXQiOjE2NTI3MTcwNzMsImV4cCI6MTY1NTMwOTA3M30.wJ_lSVN1Ff-E_twHQg_0gzsCG6mF2xoADncQFd_YOZU"
     },
     "tests": []
   },
@@ -1572,21 +1554,21 @@
     "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
     "containerId": "de9c8a35-ae0b-48e0-9c35-e120ff306512",
     "name": "editName",
-    "url": "http://localhost:3000/api/users/editName",
+    "url": "http://localhost:5000/api/users/editName",
     "method": "PUT",
     "sortNum": 340000,
     "created": "2022-04-18T17:43:56.944Z",
-    "modified": "2022-04-29T14:47:25.666Z",
+    "modified": "2022-05-16T23:46:45.632Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"email\": \"lopezlandosebastiann@gmail.com\",\n    \"firstName\" : \"edit3\",\n    \"lastName\": \"edit4\",\n    \"password\": \"123456\"\n}",
+      "raw": "{\n    \"firstName\" : \"eco2\",\n    \"lastName\": \"off2\"\n}",
       "form": []
     },
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDM0NzksImV4cCI6MTY1MzgzNTQ3OX0.qnRVdYr0WuZZSZnjLCF_bPMD7IN1YBw_zAcUVekDgA8"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjgyNzYwODI0OGU0MDM5NTg1NDg3MzEiLCJpYXQiOjE2NTI3MTcwNzMsImV4cCI6MTY1NTMwOTA3M30.wJ_lSVN1Ff-E_twHQg_0gzsCG6mF2xoADncQFd_YOZU"
     },
     "tests": []
   },
@@ -1617,17 +1599,17 @@
     "_id": "cc5eac8c-bf49-47b1-9a1d-9e1070659bb6",
     "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
     "containerId": "d613ecd3-b2c9-4a35-b915-7fbb994ff9c7",
-    "name": "getByUserId",
-    "url": "http://localhost:3000/api/orders/getByUserId/626bf8f465840e1dc42531ab",
+    "name": "listOfOrders",
+    "url": "http://localhost:5000/api/orders/listOfOrders",
     "method": "GET",
     "sortNum": 360000,
     "created": "2022-04-18T17:43:56.946Z",
-    "modified": "2022-04-29T15:20:31.881Z",
+    "modified": "2022-05-16T22:26:27.586Z",
     "headers": [],
     "params": [],
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjgyNzYwODI0OGU0MDM5NTg1NDg3MzEiLCJpYXQiOjE2NTI3MTcwNzMsImV4cCI6MTY1NTMwOTA3M30.wJ_lSVN1Ff-E_twHQg_0gzsCG6mF2xoADncQFd_YOZU"
     },
     "tests": []
   },
@@ -1919,7 +1901,25 @@
     "method": "GET",
     "sortNum": 470000,
     "created": "2022-04-29T14:05:38.535Z",
-    "modified": "2022-05-10T17:37:30.212Z",
+    "modified": "2022-05-16T16:04:46.553Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjgyNzYwODI0OGU0MDM5NTg1NDg3MzEiLCJpYXQiOjE2NTI3MTcwNzMsImV4cCI6MTY1NTMwOTA3M30.wJ_lSVN1Ff-E_twHQg_0gzsCG6mF2xoADncQFd_YOZU"
+    },
+    "tests": []
+  },
+  {
+    "_id": "e829492d-9b93-4596-9e0b-ad8d3613bddd",
+    "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
+    "containerId": "d613ecd3-b2c9-4a35-b915-7fbb994ff9c7",
+    "name": "openOrder",
+    "url": "http://localhost:5000/api/orders/openOrder/6282df189eeb604af0692dba",
+    "method": "GET",
+    "sortNum": 355000,
+    "created": "2022-04-29T14:31:47.972Z",
+    "modified": "2022-05-16T23:33:04.802Z",
     "headers": [],
     "params": [],
     "auth": {
@@ -1929,38 +1929,20 @@
     "tests": []
   },
   {
-    "_id": "e829492d-9b93-4596-9e0b-ad8d3613bddd",
-    "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
-    "containerId": "d613ecd3-b2c9-4a35-b915-7fbb994ff9c7",
-    "name": "openOrder",
-    "url": "http://localhost:3000/api/orders/openOrder/62700133e2a8084464749fad",
-    "method": "GET",
-    "sortNum": 450000,
-    "created": "2022-04-29T14:31:47.972Z",
-    "modified": "2022-05-02T16:05:24.265Z",
-    "headers": [],
-    "params": [],
-    "auth": {
-      "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZmZTYxNmIyOWRmNjJlMjhhODdkYzYiLCJpYXQiOjE2NTE1MDczNjgsImV4cCI6MTY1NDA5OTM2OH0.Q6Nm5UK22xKLMrzCtQOhIJyVIZxAJQ2sSGV0_LeG0cA"
-    },
-    "tests": []
-  },
-  {
     "_id": "7300692f-3584-4655-bbc5-4012b86d145e",
     "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
     "containerId": "5545eca0-e4af-4e5a-a1ae-85c68e7bffb3",
     "name": "getAll",
-    "url": "http://localhost:3000/api/bags/",
+    "url": "http://localhost:5000/api/bags/",
     "method": "GET",
     "sortNum": 490000,
     "created": "2022-04-29T14:38:51.386Z",
-    "modified": "2022-04-29T15:09:59.903Z",
+    "modified": "2022-05-16T23:26:49.348Z",
     "headers": [],
     "params": [],
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjcwMDQ2NWUxZGRlYTAwMTZjYTU5YjkiLCJpYXQiOjE2NTE1MDgzMzIsImV4cCI6MTY1NDEwMDMzMn0.0UnnYpFYRu1CiYtCNXgc2EajhtGvqRhiAf6em_LZbVc"
     },
     "tests": []
   },
@@ -2316,12 +2298,12 @@
     "method": "POST",
     "sortNum": 90000,
     "created": "2022-05-02T16:12:55.869Z",
-    "modified": "2022-05-04T15:34:01.071Z",
+    "modified": "2022-05-16T15:55:34.685Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"name\": \"crema de manos\",\n    \"description\": \"marca nivea\",\n    \"listPrice\": 190,\n    \"img\": \"https://images-us.nivea.com/-/media/media-center-items/b/2/a/227025-web_1010x1180_transparent_png.png\",\n    \"allergenics\": [\n        {\n            \"vegan\": false,\n            \"celiac\": false\n        }    \n    ],\n    \"subcatId\": \"62729b8fa243f20016a9d8b0\"\n}",
+      "raw": "{\n    \"name\": \"crema de manos\",\n    \"description\": \"marca nivea\",\n    \"listPrice\": 190,\n    \"img\": \"https://images-us.nivea.com/-/media/media-center-items/b/2/a/227025-web_1010x1180_transparent_png.png\",\n    \"waterSave\": 20,\n    \"carbonFootprint\" : 15,\n    \"allergenics\": [\n        {\n            \"vegan\": false,\n            \"celiac\": false\n        }    \n    ],\n    \"subcatId\": \"62729b8fa243f20016a9d8b0\"\n}",
       "form": []
     },
     "auth": {
@@ -2639,9 +2621,14 @@
     "method": "POST",
     "sortNum": 280000,
     "created": "2022-05-02T16:12:55.885Z",
-    "modified": "2022-05-02T16:34:35.163Z",
+    "modified": "2022-05-16T22:48:50.459Z",
     "headers": [],
     "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"street\": \"calle\",\n    \"streetNumber\": 123,\n    \"floor\": 3,\n    \"door\": \"3\",\n    \"CP\": 5000\n}",
+      "form": []
+    },
     "auth": {
       "type": "bearer",
       "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjcwMDQ2NWUxZGRlYTAwMTZjYTU5YjkiLCJpYXQiOjE2NTE1MDgzMzIsImV4cCI6MTY1NDEwMDMzMn0.0UnnYpFYRu1CiYtCNXgc2EajhtGvqRhiAf6em_LZbVc"
@@ -2681,29 +2668,6 @@
     "body": {
       "type": "json",
       "raw": "{\n    \"statusCode\": \"2\",\n    \"id\": \"626c00b15a78d452d49bad9e\"\n}",
-      "form": []
-    },
-    "auth": {
-      "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
-    },
-    "tests": []
-  },
-  {
-    "_id": "88d8fcc2-cbf9-401b-be87-9a3bdb96fb84",
-    "colId": "213ec700-97d0-4188-8555-782c51d926cd",
-    "containerId": "b10f670e-8dfa-4b00-b654-27415fb6edcd",
-    "name": "editEmail",
-    "url": "https://ecooff.herokuapp.com/api/users/editEmail",
-    "method": "PUT",
-    "sortNum": 310000,
-    "created": "2022-05-02T16:12:55.888Z",
-    "modified": "2022-05-02T16:14:04.183Z",
-    "headers": [],
-    "params": [],
-    "body": {
-      "type": "json",
-      "raw": "{\n    \"oldEmail\": \"lopezlandosebastian@gmail.com\",\n    \"newEmail\": \"lopezlandosebastiann@gmail.com\",\n    \"password\": \"123456\"\n}",
       "form": []
     },
     "auth": {
@@ -2762,12 +2726,12 @@
     "method": "PUT",
     "sortNum": 340000,
     "created": "2022-05-02T16:12:55.891Z",
-    "modified": "2022-05-02T16:14:06.826Z",
+    "modified": "2022-05-16T23:38:15.344Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"email\": \"lopezlandosebastiann@gmail.com\",\n    \"firstName\" : \"edit3\",\n    \"lastName\": \"edit4\",\n    \"password\": \"123456\"\n}",
+      "raw": "{\n    \"firstName\" : \"eco1\",\n    \"lastName\": \"off1\"\n}",
       "form": []
     },
     "auth": {
@@ -2796,24 +2760,6 @@
     "auth": {
       "type": "bearer",
       "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjBiZmQ3ZmJjNjFhZTIwMDg4NWRmYzEiLCJpYXQiOjE2NDQ5NTMwMTQsImV4cCI6MTY1MjcyOTAxNH0.cFF1HTRnSFmOPvSuS2i-wxzSAVIoqHzm6z4GWNoduZ4"
-    },
-    "tests": []
-  },
-  {
-    "_id": "4c028318-fa59-49ad-999c-c3f370b8074d",
-    "colId": "213ec700-97d0-4188-8555-782c51d926cd",
-    "containerId": "3d8a58ae-3ec7-474d-9ebf-47c5df14d1b2",
-    "name": "getByUserId",
-    "url": "https://ecooff.herokuapp.com/api/orders/getByUserId/626bf8f465840e1dc42531ab",
-    "method": "GET",
-    "sortNum": 360000,
-    "created": "2022-05-02T16:12:55.893Z",
-    "modified": "2022-05-02T16:15:44.603Z",
-    "headers": [],
-    "params": [],
-    "auth": {
-      "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
     },
     "tests": []
   },
@@ -2991,9 +2937,9 @@
     "name": "openOrder",
     "url": "https://ecooff.herokuapp.com/api/orders/openOrder/62700817e1ddea0016ca59d9",
     "method": "GET",
-    "sortNum": 450000,
+    "sortNum": 355000,
     "created": "2022-05-02T16:12:55.902Z",
-    "modified": "2022-05-02T16:34:47.515Z",
+    "modified": "2022-05-16T22:49:03.905Z",
     "headers": [],
     "params": [],
     "auth": {
@@ -3125,6 +3071,66 @@
     "auth": {
       "type": "bearer",
       "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
+    },
+    "tests": []
+  },
+  {
+    "_id": "300e8880-8898-42f2-9778-f21cee2814c0",
+    "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
+    "containerId": "1abe0c6e-6188-41d9-be76-f4c456c8f424",
+    "name": "confirmCart",
+    "url": "http://localhost:5000/api/cart/confirmCart",
+    "method": "GET",
+    "sortNum": 485000,
+    "created": "2022-05-16T18:16:08.806Z",
+    "modified": "2022-05-16T22:59:06.175Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"street\" : \"calle\",\n    \"streetNumber\" : 123,\n    \"floor\" : 3,\n    \"door\" : \"3\",\n    \"CP\" : 5000\n}",
+      "form": []
+    },
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjgyNzYwODI0OGU0MDM5NTg1NDg3MzEiLCJpYXQiOjE2NTI3MTcwNzMsImV4cCI6MTY1NTMwOTA3M30.wJ_lSVN1Ff-E_twHQg_0gzsCG6mF2xoADncQFd_YOZU"
+    },
+    "tests": []
+  },
+  {
+    "_id": "34b7f334-f1ed-4b11-8c44-0e04a4ec89ad",
+    "colId": "213ec700-97d0-4188-8555-782c51d926cd",
+    "containerId": "4a08970a-7215-4479-bc44-8c0be3db72c1",
+    "name": "confirmCart",
+    "url": "https://ecooff.herokuapp.com/api/cart/confirmCart",
+    "method": "GET",
+    "sortNum": 540000,
+    "created": "2022-05-16T21:37:01.882Z",
+    "modified": "2022-05-16T23:39:13.818Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"street\" : \"calle\",\n    \"streetNumber\" : 123,\n    \"floor\" : 3,\n    \"door\" : \"3\",\n    \"CP\" : 5000\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "03baff51-6bac-4f15-a495-64e672794ef7",
+    "colId": "213ec700-97d0-4188-8555-782c51d926cd",
+    "containerId": "3d8a58ae-3ec7-474d-9ebf-47c5df14d1b2",
+    "name": "listOfOrders",
+    "url": "https://ecooff.herokuapp.com/api/orders/listOfOrders",
+    "method": "GET",
+    "sortNum": 392500,
+    "created": "2022-05-16T22:52:14.122Z",
+    "modified": "2022-05-16T22:52:35.595Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjcwMDQ2NWUxZGRlYTAwMTZjYTU5YjkiLCJpYXQiOjE2NTE1MDgzMzIsImV4cCI6MTY1NDEwMDMzMn0.0UnnYpFYRu1CiYtCNXgc2EajhtGvqRhiAf6em_LZbVc"
     },
     "tests": []
   }

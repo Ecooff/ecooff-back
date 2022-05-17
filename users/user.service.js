@@ -22,7 +22,6 @@ module.exports = {
     forgotPasswordRequest,
     forgotPasswordTokenOnly,
     forgotPasswordUpdate,
-    editEmail,
     editName
 };
 
@@ -334,45 +333,30 @@ async function forgotPasswordUpdate(userParam) {
     return {user : user};
 }
 
-async function editEmail(userParam) {
-    const user = await User.findOne({email : userParam.oldEmail});
+async function editName(token, userParam) {
 
-    if (!user) {
-        throw 'Usuario no encontrado';
+    let userId = '';
+
+    if (token) {
+        
+        jwt.verify(token, config.secret, (err, decoded) => {
+            if (err){
+                console.log(err.message);
+                throw 'error';
+            } else {
+                userId = decoded.sub;
+            }
+        });
     }
 
-    if (user && bcrypt.compareSync(userParam.password, user.hash)) {
+    const user = await User.findOne({_id : userId});
 
-        const emailInUse = await User.findOne({email : userParam.newEmail});
+    if (!user) throw 'Usuario no encontrado';
 
-        if(emailInUse) {
-            throw 'El nuevo email ya esta en uso';
-        }
+    user.firstName = userParam.firstName;
+    user.lastName = userParam.lastName;
 
-        user.email = userParam.newEmail;
+    await user.save();
 
-        await user.save();
-
-        return user;
-    }
-}
-
-async function editName(userParam) {
-    const user = await User.findOne({email : userParam.email});
-
-    if (!user) {
-        throw 'Usuario no encontrado';
-    }
-
-    if (user && bcrypt.compareSync(userParam.password, user.hash)) {
-
-        user.firstName = userParam.firstName;
-        user.lastName = userParam.lastName;
-
-        await user.save();
-
-        return user;
-    } else {
-        throw 'contraseña invalida';
-    }
+    return user;
 }

@@ -28,7 +28,6 @@ router.post('/verifyEmail', verifyEmail);
 router.post('/forgotPasswordRequest', forgotPasswordRequest);
 router.post('/forgotPasswordTokenOnly', forgotPasswordTokenOnly);
 router.put('/forgotPasswordUpdate', forgotPasswordUpdate);
-router.put('/editEmail', editEmail);
 router.put('/editName', editName);
 
 
@@ -125,14 +124,8 @@ function forgotPasswordUpdate(req, res, next) {
         .catch(next);
 }
 
-function editEmail(req, res, next) {
-    userService.editEmail(req.body)
-        .then(user => user ? res.json(user) : res.status(404).json({ message: 'No se pudo actualizar el email' }))
-        .catch(next);
-}
-
 function editName(req, res, next) {
-    userService.editName(req.body)
+    userService.editName(req.headers.authorization.split(' ')[1], req.body)
         .then(user => user ? res.json(user) : res.status(404).json({ message: 'No se pudo actualizar el nombre' }))
         .catch(next);
 }
