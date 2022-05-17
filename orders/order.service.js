@@ -229,7 +229,8 @@ async function listOfOrders(token) {
     let orderArray = [],
         order = {};
 
-    const orders = await Order.find({ userId : userId});
+    const orders = await Order.find({ userId : userId}).sort('-date');
+    console.log(orders);
 
     for (const item of orders) {
 
@@ -269,13 +270,13 @@ async function changeStatus(userParam) {
     if(order) {
         switch (code) {
             case '1':
-                order.status = 'Pending'
+                order.status = 'Pendiente'
                 break;
             case '2':
-                order.status = 'In Progress'
+                order.status = 'En curso'
                 break;
             case '3':
-                order.status = 'Completed'
+                order.status = 'Completada'
                 break;
         }
 
