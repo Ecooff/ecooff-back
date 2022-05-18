@@ -1089,21 +1089,21 @@
     "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
     "containerId": "c7d91ad0-6e6a-435e-be26-30d52a9572d5",
     "name": "create",
-    "url": "http://localhost:3000/api/providers/create",
+    "url": "http://localhost:5000/api/providers/create",
     "method": "POST",
     "sortNum": 80000,
     "created": "2022-04-18T17:43:56.919Z",
-    "modified": "2022-05-04T15:49:10.975Z",
+    "modified": "2022-05-18T03:16:23.521Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"name\": \"Disco\",\n    \"img\": \"foto.jpg\"\n}",
+      "raw": "{\n    \"name\": \"Farmacity\",\n    \"img\": \"https://borealtech.com/wp-content/uploads/2019/07/Logo-Farmacity.png\"\n}",
       "form": []
     },
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZmZTYxNmIyOWRmNjJlMjhhODdkYzYiLCJpYXQiOjE2NTE1MDczNjgsImV4cCI6MTY1NDA5OTM2OH0.Q6Nm5UK22xKLMrzCtQOhIJyVIZxAJQ2sSGV0_LeG0cA"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjcwMDQ2NWUxZGRlYTAwMTZjYTU5YjkiLCJpYXQiOjE2NTE1MDgzMzIsImV4cCI6MTY1NDEwMDMzMn0.0UnnYpFYRu1CiYtCNXgc2EajhtGvqRhiAf6em_LZbVc"
     },
     "tests": []
   },
@@ -1285,11 +1285,11 @@
     "colId": "d12493c2-ab48-488b-94f4-d717fab38893",
     "containerId": "24299490-c118-4f0d-ba1a-8dfa50f1ee1f",
     "name": "getBySubcategory",
-    "url": "http://localhost:3000/api/stock/getBySubcategory/sprite",
+    "url": "http://localhost:5000/api/stock/getBySubcategory/sprite",
     "method": "GET",
     "sortNum": 180000,
     "created": "2022-04-18T17:43:56.929Z",
-    "modified": "2022-04-29T14:52:24.069Z",
+    "modified": "2022-05-18T03:27:03.595Z",
     "headers": [],
     "params": [],
     "auth": {

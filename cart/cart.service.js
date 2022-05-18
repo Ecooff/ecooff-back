@@ -173,6 +173,7 @@ async function openCart(token) {
                 price: stock.expPrice,
                 img: stock.img,
                 quantity: product.quantity,
+                stock: stock.stock,
                 expirationDate: stock.expDate
 
             });
