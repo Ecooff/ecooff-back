@@ -144,6 +144,12 @@ async function forYou(req){  //emprolijar con casos puntuales
         return b.count - a.count;
     });
 
+    if (favs.length == 0) {
+
+        return await Stock.find().limit(20);
+
+    }
+
     return new Promise(function(resolve, reject) {
         favs.forEach((item, i) => {
             favItems = getBySubcategory(item.subcategory).then(function(result) {
