@@ -86,7 +86,61 @@ async function create (token, userParam) {
 
                     if (stock.stock < Number(quantity)) {
 
-                        throw 'No hay suficiente stock para realizar esta compra'
+                        throw 'No hay suficiente stock para realizar esta compra';
+
+                    }
+
+                    let user = await User.findById(userId);
+
+                    if (user) {
+
+                        let favorites = user.favorites,
+                            favBool = false;
+
+                        if (favorites.length > 0) {
+
+                            for (const favorite of favorites) {
+
+                                if (favorite.subcategory == stock.subcategory) {
+
+                                    favorite.count++;
+                                    favBool = true;
+
+                                    await user.save();
+
+                                }
+
+                            }
+
+                            if (!favBool) {
+
+                                user.favorites.push({
+
+                                    subcategory : stock.subcategory,
+                                    count : 1
+    
+                                })
+
+                                await user.save();
+
+                            }
+
+                        } else {
+
+                            user.favorites.push({
+
+                                subcategory : stock.subcategory,
+                                count : 1
+
+                            })
+
+                            await user.save();
+
+                        }
+
+                    } else {
+
+                        throw 'Hubo un problema al recuperar el usuario';
 
                     }
 
@@ -95,7 +149,7 @@ async function create (token, userParam) {
                         name = stock.name;
                         img = stock.img;
 
-                        await Stock.deleteOne({_id : ObjectId(productId)});
+                        //await Stock.deleteOne({_id : ObjectId(productId)});
 
                     } else {
 
@@ -137,7 +191,7 @@ async function create (token, userParam) {
 
             await order.save();
 
-            await Cart.deleteOne({_id : ObjectId(cart.id)});
+            //await Cart.deleteOne({_id : ObjectId(cart.id)});
 
             return order;
 

@@ -12,7 +12,7 @@ const schema = new Schema({
     forgotPwToken: {type: String},
     favorites: [
         {
-            subcategoryId: {type: String},
+            subcategory: {type: String},
             count: {type: Number}
         }
     ],

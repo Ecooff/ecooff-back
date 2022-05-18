@@ -146,7 +146,7 @@ async function forYou(req){  //emprolijar con casos puntuales
 
     return new Promise(function(resolve, reject) {
         favs.forEach((item, i) => {
-            favItems = getBySubcategory(item.subcategoryId).then(function(result) {
+            favItems = getBySubcategory(item.subcategory).then(function(result) {
                 result.forEach( item2 => {
                     listOfFavs.push(item2);
                 })
