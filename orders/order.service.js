@@ -7,10 +7,13 @@ const Cart = db.Cart;
 const Stock = db.Stock;
 const Bag = db.Bag;
 const User = db.User;
+const Provider = db.Provider;
 const bagService = require('../bags/bag.service');
+const startOfDay = require('date-fns/startOfDay');
 
 
 module.exports = {
+    getDailyOrdersLength,
     create,
     openOrder,
     listOfOrders,
@@ -20,6 +23,110 @@ module.exports = {
     changeStatus,
     cancelOrder
 };
+
+async function getDailyOrdersLength() {
+    const orders = await Order.find({
+        $and: [
+            {status: {$in: ['Pendiente', 'Lista', 'Recogida', 'Completada']}},
+            {date: {$lt: startOfDay(new Date())}}
+        ]
+    });
+
+    let 
+        ordersLength = orders.length,
+        bagsLength = 0,
+        providersLength = 0,
+        ordersReadyLength = 0,
+        ordersRetrievedLength = 0,
+        ordersCompletedLength = 0,
+        ordersReadyPercentage = 0,
+        ordersRetrievedPercentage = 0,
+        ordersCompletedPercentage = 0,
+        bagsReadyLength = 0,
+        bagsRetrievedLength = 0,
+        bagsCompletedLength = 0,
+        bagsReadyPercentage = 0,
+        bagsRetrievedPercentage = 0,
+        bagsCompletedPercentage = 0;
+
+    if (orders) {
+
+        for (const order of orders) {
+
+            if (order.status == 'Lista') ordersReadyLength++;
+
+            if (order.status == 'Recogida') ordersRetrievedLength++;
+
+            if (order.status == 'Completada') ordersCompletedLength++;
+
+
+            let bags = order.bags;
+
+            bagsLength += bags.length;
+
+            for (const bag of bags) {
+
+                if (bag.bagStatus == 'Lista') bagsReadyLength++;
+    
+                if (bag.bagStatus == 'Recogida') bagsRetrievedLength++;
+
+                if (bag.bagStatus == 'Completada') bagsCompletedLength++;
+                
+
+                let fetchBag = await Bag.findOne({ _id: bag.bagId});
+
+                if (fetchBag) {
+
+                    let fetchBagProvider = await Provider.findOne({_id : ObjectId(fetchBag.providerId)});
+
+                    if (fetchBagProvider) {
+
+                        providersLength++;
+
+                    } else {
+
+                        throw 'Hubo un problema al buscar el proveedor de uno de los pedidos';
+
+                    }
+
+                } else {
+
+                    throw 'hubo un problema al reconocer las bags de uno de los pedidos';
+
+                }
+
+            }
+
+        }
+
+    } else {
+
+        throw 'no hay ordenes hoy'
+
+    }
+
+    ordersReadyPercentage = ordersReadyLength * 100 / ordersLength;
+    ordersRetrievedPercentage = ordersRetrievedLength * 100 / ordersLength;
+    ordersCompletedPercentage = ordersCompletedLength * 100 / ordersLength;
+    bagsReadyPercentage = bagsReadyLength * 100 / bagsLength;
+    bagsRetrievedPercentage = bagsRetrievedLength * 100 / bagsLength;
+    bagsCompletedPercentage = bagsCompletedLength * 100 / bagsLength;
+
+    return {
+
+        ordersLength,
+        providersLength,
+        bagsLength,
+        ordersReady : (parseFloat(ordersReadyPercentage + ordersRetrievedPercentage + ordersCompletedPercentage).toFixed(0)+"%"),
+        ordersRetrieved : (parseFloat(ordersRetrievedPercentage + ordersCompletedPercentage).toFixed(0)+"%"),
+        ordersCompleted : (parseFloat(ordersCompletedPercentage).toFixed(0)+"%"),
+        bagsReady : (parseFloat(bagsReadyPercentage + bagsRetrievedPercentage + bagsCompletedPercentage).toFixed(0)+"%"),
+        bagsRetrieved : (parseFloat(bagsRetrievedPercentage + bagsCompletedPercentage).toFixed(0)+"%"),
+        bagsCompleted : (parseFloat(bagsCompletedPercentage).toFixed(0)+"%")
+
+    }
+
+}
 
 async function create (token, userParam) {
 
@@ -237,7 +344,7 @@ async function openOrder(id) {
 
             } else {
 
-                throw 'hubo un problema al reconocer las bags del pedido'
+                throw 'hubo un problema al reconocer las bags del pedido';
 
             }
         }
@@ -284,7 +391,6 @@ async function listOfOrders(token) {
         order = {};
 
     const orders = await Order.find({ userId : userId}).sort('-date');
-    console.log(orders);
 
     for (const item of orders) {
 
@@ -327,9 +433,12 @@ async function changeStatus(userParam) {
                 order.status = 'Pendiente'
                 break;
             case '2':
-                order.status = 'En curso'
+                order.status = 'Lista'
                 break;
             case '3':
+                order.status = 'Recogida'
+                break;
+            case '4':
                 order.status = 'Completada'
                 break;
         }
@@ -339,10 +448,49 @@ async function changeStatus(userParam) {
     }
 }
 
+async function changeBagStatus(userParam) {
+
+    const order = await Order.findOne();
+
+}
+
+async function changeBagStatus(userParam) {
+
+    const order = await Order.findOne({_id : ObjectId(userParam.id)});
+    const code = userParam.statusCode;
+    const bags = order.bags;
+
+    if(order) {
+
+        for (const bag of bags) {
+
+        
+
+        }
+
+        switch (code) {
+            case '1':
+                order.status = 'Pendiente'
+                break;
+            case '2':
+                order.status = 'Lista'
+                break;
+            case '3':
+                order.status = 'Recogida'
+                break;
+            case '4':
+                order.status = 'Completada'
+                break;
+        }
+
+        await order.save();
+        return order;
+    }
+
+}
+
 async function cancelOrder(userParam) {
     await Order.deleteOne({_id : ObjectId(userParam.id)});
 
     return;
 }
-
-

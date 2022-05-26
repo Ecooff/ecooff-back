@@ -3,16 +3,24 @@ const router = express.Router();
 const orderService = require('./order.service');
 
 //routes
+router.get('/getDailyOrdersLength', getDailyOrdersLength);
 router.post('/create', create);
 router.get('/openOrder/:id', openOrder);
 router.get('/listOfOrders', listOfOrders);
 router.get('/inProgress', inProgress);
 router.get('/', getAll);
 router.put('/changeStatus', changeStatus);
+router.put('/changeDeliveryStatus', changeDeliveryStatus);
 router.delete('/cancelOrder', cancelOrder);
 router.get('/:id', getById);
 
 module.exports = router;
+
+function getDailyOrdersLength(req, res, next){
+    orderService.getDailyOrdersLength()
+        .then(orders => orders ? res.json(orders) : res.status(404).json({ message: 'No se pudo recuperar el length de los elementos' }))
+        .catch(next);
+}
 
 function create(req, res, next) {
     orderService.create(req.headers.authorization.split(' ')[1], req.body)
@@ -53,6 +61,12 @@ function inProgress(req, res, next) {
 function changeStatus(req, res, next) {
     orderService.changeStatus(req.body)
         .then(order => order ? res.json(order) : res.status(404).json({ message: 'No se pudo actualizar el estado' }))
+        .catch(err => next(err));
+}
+
+function changeDeliveryStatus(req, res, next) {
+    orderService.changeDeliveryStatus(req.body)
+        .then(order => order ? res.json(order) : res.status(404).json({ message: 'No se pudo actualizar el estado del envio' }))
         .catch(err => next(err));
 }
 

@@ -5,11 +5,11 @@ const schema = new Schema({
     date: {type: Date, default: Date.now},
     userId: {type: String},
     status: {type: String, default: 'Pendiente'},
-    deliveryStatus: {type: String, default: 'Pendiente'},
     total: {type: Number},
     bags:[
         {
-            bagId: {type: String}
+            bagId: {type: String},
+            bagStatus: {type: String, default: 'Pendiente'}
         }
     ],
     address:[

@@ -3158,11 +3158,11 @@
     "colId": "5b95ec91-c24b-49ae-a0b2-50fb893c3661",
     "containerId": "8d530e52-b8d8-467c-bf0c-fd3d30c162a6",
     "name": "authenticate",
-    "url": "http://localhost:5000/shipping/auth/authenticate",
+    "url": "http://localhost:5000/api/shipping/auth/authenticate",
     "method": "POST",
     "sortNum": 550000,
     "created": "2022-05-26T18:19:56.559Z",
-    "modified": "2022-05-26T18:21:33.858Z",
+    "modified": "2022-05-26T19:06:39.151Z",
     "headers": [],
     "params": [],
     "body": {
@@ -3195,11 +3195,11 @@
     "colId": "213ec700-97d0-4188-8555-782c51d926cd",
     "containerId": "d0bb62ed-6484-4004-bec1-0d440975a0d3",
     "name": "register",
-    "url": "https://ecooff.herokuapp.com/shipping/auth/register",
+    "url": "https://ecooff.herokuapp.com/api/shipping/auth/register",
     "method": "POST",
     "sortNum": 540000,
     "created": "2022-05-26T18:31:42.877Z",
-    "modified": "2022-05-26T18:31:59.595Z",
+    "modified": "2022-05-26T19:05:57.560Z",
     "headers": [],
     "params": [],
     "body": {
@@ -3214,11 +3214,11 @@
     "colId": "213ec700-97d0-4188-8555-782c51d926cd",
     "containerId": "d0bb62ed-6484-4004-bec1-0d440975a0d3",
     "name": "authenticate",
-    "url": "https://ecooff.herokuapp.com/shipping/auth/authenticate",
+    "url": "https://ecooff.herokuapp.com/api/shipping/auth/authenticate",
     "method": "POST",
     "sortNum": 550000,
     "created": "2022-05-26T18:31:42.878Z",
-    "modified": "2022-05-26T18:32:02.002Z",
+    "modified": "2022-05-26T19:06:00.767Z",
     "headers": [],
     "params": [],
     "body": {
@@ -3233,16 +3233,34 @@
     "colId": "213ec700-97d0-4188-8555-782c51d926cd",
     "containerId": "d0bb62ed-6484-4004-bec1-0d440975a0d3",
     "name": "retrieve user",
-    "url": "https://ecooff.herokuapp.com/shipping/auth/retrieveUser",
+    "url": "https://ecooff.herokuapp.com/api/shipping/auth/retrieveUser",
     "method": "GET",
     "sortNum": 560000,
     "created": "2022-05-26T18:31:42.879Z",
-    "modified": "2022-05-26T18:32:04.735Z",
+    "modified": "2022-05-26T19:06:04.321Z",
     "headers": [],
     "params": [],
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjhmYzYwM2UxNTZkYzFkMzRiMTdiMTMiLCJpYXQiOjE2NTM1ODk4NTAsImV4cCI6MTY1NjE4MTg1MH0.g8uisDJr9jZgaoMCdbgkCYFcnHItCpMksoFr4h8ljQI"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjhmYzYwM2UxNTZkYzFkMzRiMTdiMTMiLCJpYXQiOjE2NTM1OTAzMDQsImV4cCI6MTY1NjE4MjMwNH0.y_EWGAtUVhP7olvlE6_a3WdGM5R0R6mTbAN3zkY4NZQ"
+    },
+    "tests": []
+  },
+  {
+    "_id": "db6d65f4-ed1e-41e9-be21-af7d2bef3a87",
+    "colId": "5b95ec91-c24b-49ae-a0b2-50fb893c3661",
+    "containerId": "dc0b9a23-113d-4251-9064-7697b8191d4f",
+    "name": "get daily orders length",
+    "url": "http://localhost:5000/api/orders/getDailyOrdersLength",
+    "method": "GET",
+    "sortNum": 570000,
+    "created": "2022-05-26T19:45:19.949Z",
+    "modified": "2022-05-26T19:45:51.245Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjcwMDQ2NWUxZGRlYTAwMTZjYTU5YjkiLCJpYXQiOjE2NTE1MDgzMzIsImV4cCI6MTY1NDEwMDMzMn0.0UnnYpFYRu1CiYtCNXgc2EajhtGvqRhiAf6em_LZbVc"
     },
     "tests": []
   }

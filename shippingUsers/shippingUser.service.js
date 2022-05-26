@@ -25,6 +25,10 @@ async function authenticate({ email, password }) {
             ...shippingUser.toJSON(),
             token
         };
+    } else {
+
+        throw 'Usuario o contraseña incorrectos'
+
     }
 }
 
