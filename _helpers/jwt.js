@@ -17,8 +17,8 @@ function jwt() {
             '/api/users/forgotPasswordUpdate',
             '/api/users/verifyEmail',
             '/api/users/resendVerify',
-            '/shipping/auth/register',
-            '/shipping/auth/authenticate'
+            '/api/shipping/auth/register',
+            '/api/shipping/auth/authenticate'
         ]
     });
 }
