@@ -12,5 +12,6 @@ module.exports = {
     Stock: require('../stock/stock.model'),
     Cart: require('../cart/cart.model'),
     Order: require('../orders/order.model'),
-    Bag: require('../bags/bag.model')
+    Bag: require('../bags/bag.model'),
+    ShippingUser: require('../shippingUsers/shippingUser.model')
 };
