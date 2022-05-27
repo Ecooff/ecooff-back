@@ -5,6 +5,7 @@ const schema = new Schema({
     date: {type: Date, default: Date.now},
     userId: {type: String},
     status: {type: String, default: 'Pendiente'},
+    dateOfCompletion: {type:String},
     total: {type: Number},
     bags:[
         {

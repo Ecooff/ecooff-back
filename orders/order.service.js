@@ -2,15 +2,14 @@ const db = require('_helpers/db');
 const config = require('config.json');
 const jwt = require('jsonwebtoken');
 const ObjectId = require('mongodb').ObjectId;
+const bagService = require('../bags/bag.service');
+const startOfDay = require('date-fns/startOfDay');
 const Order = db.Order;
 const Cart = db.Cart;
 const Stock = db.Stock;
 const Bag = db.Bag;
 const User = db.User;
 const Provider = db.Provider;
-const bagService = require('../bags/bag.service');
-const startOfDay = require('date-fns/startOfDay');
-
 
 module.exports = {
     getDailyOrdersLength,
@@ -21,15 +20,27 @@ module.exports = {
     getAll,
     getById,
     changeStatus,
+    changeBagStatus,
     cancelOrder
 };
 
 async function getDailyOrdersLength() {
     const orders = await Order.find({
-        $and: [
-            {status: {$in: ['Pendiente', 'Lista', 'Recogida', 'Completada']}},
-            {date: {$lt: startOfDay(new Date())}}
+        $or: [
+            {
+                $and: [
+                    {status: {$in: ['Pendiente', 'Lista', 'Recogida']}},
+                    {date: {$lt: startOfDay(new Date())}}
+                ]
+            },
+            {
+                $and: [
+                    {status: 'Completada'},
+                    {dateOfCompletion: startOfDay(new Date())}
+                ]
+            }
         ]
+        
     });
 
     let 
@@ -426,20 +437,22 @@ async function getById(id) {
 async function changeStatus(userParam) {
     const order = await Order.findOne({_id : ObjectId(userParam.id)});
     const code = userParam.statusCode;
+    let bags = order.bags;
 
     if(order) {
         switch (code) {
             case '1':
-                order.status = 'Pendiente'
+                order.status = 'Lista';
+                for(const bag of bags) bag.bagStatus = 'Lista';
                 break;
             case '2':
-                order.status = 'Lista'
+                order.status = 'Recogida';
+                for(const bag of bags) bag.bagStatus = 'Recogida';
                 break;
             case '3':
-                order.status = 'Recogida'
-                break;
-            case '4':
-                order.status = 'Completada'
+                order.status = 'Completada';
+                order.dateOfCompletion = startOfDay(new Date());
+                for(const bag of bags) bag.bagStatus = 'Completada';
                 break;
         }
 
@@ -450,23 +463,11 @@ async function changeStatus(userParam) {
 
 async function changeBagStatus(userParam) {
 
-    const order = await Order.findOne();
-
-}
-
-async function changeBagStatus(userParam) {
-
     const order = await Order.findOne({_id : ObjectId(userParam.id)});
     const code = userParam.statusCode;
     const bags = order.bags;
 
     if(order) {
-
-        for (const bag of bags) {
-
-        
-
-        }
 
         switch (code) {
             case '1':

@@ -50,6 +50,7 @@ async function retrieveUser(token) {
         const newToken = jwt.sign({ sub: shippingUser.id }, config.secret, { expiresIn: '30d' });
         return {
             ...shippingUser.toJSON(),
+            token : newToken,
             newToken
         };
     } else {

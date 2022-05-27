@@ -2682,12 +2682,12 @@
     "method": "PUT",
     "sortNum": 300000,
     "created": "2022-05-26T18:19:56.535Z",
-    "modified": "2022-05-26T18:19:56.535Z",
+    "modified": "2022-05-26T22:53:52.146Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"statusCode\": \"2\",\n    \"id\": \"6282ea73d00343003e6c573f\"\n}",
+      "raw": "{\n    \"statusCode\": \"4\",\n    \"id\": \"6282ea73d00343003e6c573f\"\n}",
       "form": []
     },
     "auth": {
@@ -3177,11 +3177,11 @@
     "colId": "5b95ec91-c24b-49ae-a0b2-50fb893c3661",
     "containerId": "8d530e52-b8d8-467c-bf0c-fd3d30c162a6",
     "name": "retrieve user",
-    "url": "http://localhost:5000/shipping/auth/retrieveUser",
+    "url": "http://localhost:5000/api/shipping/auth/retrieveUser",
     "method": "GET",
     "sortNum": 560000,
     "created": "2022-05-26T18:19:56.560Z",
-    "modified": "2022-05-26T18:31:23.523Z",
+    "modified": "2022-05-26T22:40:46.889Z",
     "headers": [],
     "params": [],
     "auth": {
