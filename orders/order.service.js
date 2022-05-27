@@ -12,6 +12,7 @@ const User = db.User;
 const Provider = db.Provider;
 
 module.exports = {
+    changeBagStatus,
     getDailyOrdersLength,
     getDailyBags,
     getDeliveryScreenData,
@@ -22,9 +23,71 @@ module.exports = {
     getAll,
     getById,
     changeStatus,
-    changeBagStatus,
     cancelOrder
 };
+
+async function changeBagStatus(userParam) {
+    
+    const order = await Order.findOne({_id : ObjectId(userParam.orderId)});
+    const code = userParam.statusCode;
+    const bags = order.bags;
+    let stateChange = false;
+    let orderStatusChange = true;
+
+    if(order) {
+
+        switch (code) {
+            case '1':
+
+                for (const bag of bags) {
+
+                    if (bag.bagId == userParam.bagId) {
+                        bag.bagStatus = 'Lista';
+                        stateChange = true;
+                    }
+
+                }
+
+                if(!stateChange) throw 'bagId erroneo';
+
+                for (const bag of bags) {
+
+                    if (bag.bagStatus != 'Lista') orderStatusChange = false;
+
+                }
+
+                if (orderStatusChange) order.status = 'Lista';
+
+                break;
+            case '2':
+
+                for (const bag of bags) {
+
+                    if (bag.bagId == userParam.bagId && bag.bagStatus == 'Lista') {
+                        bag.bagStatus = 'Recogida';
+                        stateChange = true;
+                    }
+
+                }
+
+                if(!stateChange) throw 'bagId erroneo o la bag no esta lista.';
+
+                for (const bag of bags) {
+
+                    if (bag.bagStatus != 'Recogida') orderStatusChange = false;
+
+                }
+
+                if (orderStatusChange) order.status = 'Recogida';
+
+                break;
+        }
+
+        await order.save();
+        return order;
+    } else throw 'orderId erroneo';
+
+}
 
 async function getDailyOrdersLength() {
     const orders = await Order.find({
@@ -660,35 +723,6 @@ async function changeStatus(userParam) {
         await order.save();
         return order;
     }
-}
-
-async function changeBagStatus(userParam) {
-
-    const order = await Order.findOne({_id : ObjectId(userParam.id)});
-    const code = userParam.statusCode;
-    const bags = order.bags;
-
-    if(order) {
-
-        switch (code) {
-            case '1':
-                order.status = 'Pendiente'
-                break;
-            case '2':
-                order.status = 'Lista'
-                break;
-            case '3':
-                order.status = 'Recogida'
-                break;
-            case '4':
-                order.status = 'Completada'
-                break;
-        }
-
-        await order.save();
-        return order;
-    }
-
 }
 
 async function cancelOrder(userParam) {

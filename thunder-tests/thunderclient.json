@@ -2788,11 +2788,11 @@
     "colId": "5b95ec91-c24b-49ae-a0b2-50fb893c3661",
     "containerId": "dc0b9a23-113d-4251-9064-7697b8191d4f",
     "name": "openOrder",
-    "url": "http://localhost:5000/api/orders/openOrder/6282df189eeb604af0692dba",
+    "url": "http://localhost:5000/api/orders/openOrder/6282df3a9eeb604af0692dc4",
     "method": "GET",
     "sortNum": 355000,
     "created": "2022-05-26T18:19:56.540Z",
-    "modified": "2022-05-26T18:19:56.540Z",
+    "modified": "2022-05-27T21:03:40.475Z",
     "headers": [],
     "params": [],
     "auth": {
@@ -3294,6 +3294,29 @@
     "modified": "2022-05-27T20:39:53.518Z",
     "headers": [],
     "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjcwMDQ2NWUxZGRlYTAwMTZjYTU5YjkiLCJpYXQiOjE2NTE1MDgzMzIsImV4cCI6MTY1NDEwMDMzMn0.0UnnYpFYRu1CiYtCNXgc2EajhtGvqRhiAf6em_LZbVc"
+    },
+    "tests": []
+  },
+  {
+    "_id": "e4db49a9-bc5b-4447-b8dc-895d0cde86c8",
+    "colId": "5b95ec91-c24b-49ae-a0b2-50fb893c3661",
+    "containerId": "dc0b9a23-113d-4251-9064-7697b8191d4f",
+    "name": "change bag status",
+    "url": "http://localhost:5000/api/orders/changeBagStatus",
+    "method": "PUT",
+    "sortNum": 600000,
+    "created": "2022-05-27T20:49:04.546Z",
+    "modified": "2022-05-27T21:04:53.932Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"statusCode\": \"2\",\n    \"orderId\": \"6282ea2ad00343003e6c5735\",\n    \"bagId\" : \"6282ea2bd00343003e6c5737\"\n}",
+      "form": []
+    },
     "auth": {
       "type": "bearer",
       "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjcwMDQ2NWUxZGRlYTAwMTZjYTU5YjkiLCJpYXQiOjE2NTE1MDgzMzIsImV4cCI6MTY1NDEwMDMzMn0.0UnnYpFYRu1CiYtCNXgc2EajhtGvqRhiAf6em_LZbVc"
