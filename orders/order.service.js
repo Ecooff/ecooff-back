@@ -112,9 +112,9 @@ async function getDailyOrdersLength() {
         ordersLength,
         providersLength,
         bagsLength,
-        ordersReady : (parseFloat(ordersReadyPercentage + ordersRetrievedPercentage + ordersCompletedPercentage).toFixed(0)),
-        ordersRetrieved : (parseFloat(ordersRetrievedPercentage + ordersCompletedPercentage).toFixed(0)),
-        ordersCompleted : (parseFloat(ordersCompletedPercentage).toFixed(0))
+        ordersReady : Number((parseFloat(ordersReadyPercentage + ordersRetrievedPercentage + ordersCompletedPercentage).toFixed(0))),
+        ordersRetrieved : Number((parseFloat(ordersRetrievedPercentage + ordersCompletedPercentage).toFixed(0))),
+        ordersCompleted : Number((parseFloat(ordersCompletedPercentage).toFixed(0)))
 
     }
 
@@ -206,7 +206,7 @@ async function getDailyBags() {
     return {
 
         bagArray,
-        bagsReady : (parseFloat(bagsReadyPercentage).toFixed(0))
+        bagsReady : Number((parseFloat(bagsReadyPercentage).toFixed(0)))
 
     }
 
