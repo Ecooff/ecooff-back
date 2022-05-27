@@ -301,9 +301,13 @@ async function getDeliveryScreenData(status) {
 
     ordersCompletedPercentage = ordersCompletedLength * 100 / ordersLength;
 
+    if(typeof(ordersCompletedPercentage) != Number) ordersCompletedPercentage = 0;
+    if(ordersLength == null) ordersLength = 0;
+
     return {
 
         ordersCompleted : Number((parseFloat(ordersCompletedPercentage).toFixed(0))),
+        ordersLength,
         orderArray
 
     }
@@ -613,18 +617,43 @@ async function changeStatus(userParam) {
 
     if(order) {
         switch (code) {
+
             case '1':
+
+                for (const bag of bags) {
+
+                    if (bag.bagStatus != 'Lista') throw 'Todas las bolsas deben estar listas para realizar esta accion.';
+
+                }
+
                 order.status = 'Lista';
-                for(const bag of bags) bag.bagStatus = 'Lista';
                 break;
             case '2':
+                
+                for (const bag of bags) {
+
+                    if (bag.bagStatus != 'Recogida') throw 'Todas las bolsas deben estar recogidas para realizar esta accion.';
+
+                }
+
                 order.status = 'Recogida';
-                for(const bag of bags) bag.bagStatus = 'Recogida';
                 break;
             case '3':
+
+                for (const bag of bags) {
+
+                    if (bag.bagStatus != 'Recogida') throw 'Todas las bolsas deben estar recogidas para realizar esta accion.';
+
+                }
+
+                for (const bag of bags) {
+
+                    bag.bagStatus = 'Completada';
+
+                }
+
                 order.status = 'Completada';
                 order.dateOfCompletion = startOfDay(new Date());
-                for(const bag of bags) bag.bagStatus = 'Completada';
                 break;
         }
 
