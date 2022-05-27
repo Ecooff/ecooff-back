@@ -14,6 +14,7 @@ const Provider = db.Provider;
 module.exports = {
     getDailyOrdersLength,
     getDailyBags,
+    getDeliveryScreenData,
     create,
     openOrder,
     listOfOrders,
@@ -181,7 +182,7 @@ async function getDailyBags() {
                         orderId : order._id,
                         bagId : fetchBag._id,
                         productsLength : productsLength,
-                        status : bag.bagStatus,                       
+                        status : bag.bagStatus,
                         provider: [
                             {
                                 providerId : providerId,
@@ -207,6 +208,103 @@ async function getDailyBags() {
 
         bagArray,
         bagsReady : Number((parseFloat(bagsReadyPercentage).toFixed(0)))
+
+    }
+
+}
+
+async function getDeliveryScreenData(status) {
+
+    let orders = {};
+
+    if(status == 'All') { //agregar validacion para minusuclas
+
+        orders = await Order.find({
+            $or: [
+                {
+                    $and: [
+                        {status: 'Recogida'},
+                        {date: {$lt: startOfDay(new Date())}}
+                    ]
+                },
+                {
+                    $and: [
+                        {status: 'Completada'},
+                        {dateOfCompletion: startOfDay(new Date())}
+                    ]
+                }
+            ]        
+        });
+
+    } else if(status == 'Completada') {
+
+        orders = await Order.find({
+            $and: [
+                {status},
+                {dateOfCompletion: startOfDay(new Date())}
+            ]       
+        });
+
+    } else if(status == 'Recogida') {
+
+        orders = await Order.find({
+            $and: [
+                {status},
+                {date: {$lt: startOfDay(new Date())}}
+            ]       
+        });
+
+    } else throw 'estado invalido. La primer letra debe ser mayuscula, las opciones son All, Recogida y Completada.'
+
+    let 
+        ordersLength = orders.length,
+        bagsLength = 0,
+        ordersCompletedLength = 0,
+        ordersCompletedPercentage = 0;
+
+    if (!orders) throw 'no hay ordenes hoy';
+
+    let 
+        orderArray = [],
+        orderInfo = {};
+
+    for (const item of orders) {
+
+        if (item.status == 'Completada') ordersCompletedLength++;
+
+        const user = await User.findOne({_id : item.userId});
+
+        if (!user) throw 'Hubo un problema al recuperar los datos de un usuario comprador';
+
+        let bags = item.bags;
+
+        bagsLength = bags.length;
+
+        orderInfo = await openOrder(item._id);
+
+        orderArray.push({
+
+            order : [
+                {
+                    orderId : orderInfo.orderId,
+                    date : orderInfo.date,
+                    status : orderInfo.status,
+                    userAddress : orderInfo.userAddress
+                }
+            ], 
+            bagsLength,  
+            userName : user.firstName + ' ' + user.lastName
+
+        });
+
+    }
+
+    ordersCompletedPercentage = ordersCompletedLength * 100 / ordersLength;
+
+    return {
+
+        ordersCompleted : Number((parseFloat(ordersCompletedPercentage).toFixed(0))),
+        orderArray
 
     }
 
@@ -471,7 +569,8 @@ async function listOfOrders(token) {
         });
     }
 
-    let orderArray = [],
+    let 
+        orderArray = [],
         order = {};
 
     const orders = await Order.find({ userId : userId}).sort('-date');

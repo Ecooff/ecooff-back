@@ -5,6 +5,7 @@ const orderService = require('./order.service');
 //routes
 router.get('/getDailyOrdersLength', getDailyOrdersLength);
 router.get('/getDailyBags', getDailyBags);
+router.get('/getDeliveryScreenData/:status', getDeliveryScreenData);
 router.post('/create', create);
 router.get('/openOrder/:id', openOrder);
 router.get('/listOfOrders', listOfOrders);
@@ -26,6 +27,12 @@ function getDailyOrdersLength(req, res, next){
 function getDailyBags(req, res, next){
     orderService.getDailyBags()
         .then(bags => bags ? res.json(bags) : res.status(404).json({ message: 'No se pudo recuperar las bags' }))
+        .catch(next);
+}
+
+function getDeliveryScreenData(req, res, next){
+    orderService.getDeliveryScreenData(req.params.status)
+        .then(orders => orders ? res.json(orders) : res.status(404).json({ message: 'No se pudo recuperar las orders' }))
         .catch(next);
 }
 

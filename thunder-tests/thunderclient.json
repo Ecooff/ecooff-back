@@ -2682,12 +2682,12 @@
     "method": "PUT",
     "sortNum": 300000,
     "created": "2022-05-26T18:19:56.535Z",
-    "modified": "2022-05-26T22:53:52.146Z",
+    "modified": "2022-05-27T20:12:56.985Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"statusCode\": \"4\",\n    \"id\": \"6282ea73d00343003e6c573f\"\n}",
+      "raw": "{\n    \"statusCode\": \"3\",\n    \"id\": \"6282df189eeb604af0692dbb\"\n}",
       "form": []
     },
     "auth": {
@@ -3274,6 +3274,24 @@
     "sortNum": 580000,
     "created": "2022-05-27T00:35:00.075Z",
     "modified": "2022-05-27T00:35:11.066Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjcwMDQ2NWUxZGRlYTAwMTZjYTU5YjkiLCJpYXQiOjE2NTE1MDgzMzIsImV4cCI6MTY1NDEwMDMzMn0.0UnnYpFYRu1CiYtCNXgc2EajhtGvqRhiAf6em_LZbVc"
+    },
+    "tests": []
+  },
+  {
+    "_id": "84fe1de4-1c8d-4d37-806c-26d925134ec5",
+    "colId": "5b95ec91-c24b-49ae-a0b2-50fb893c3661",
+    "containerId": "dc0b9a23-113d-4251-9064-7697b8191d4f",
+    "name": "get delivery screen data",
+    "url": "http://localhost:5000/api/orders/getDeliveryScreenData/All",
+    "method": "GET",
+    "sortNum": 590000,
+    "created": "2022-05-27T19:43:21.692Z",
+    "modified": "2022-05-27T20:14:15.022Z",
     "headers": [],
     "params": [],
     "auth": {
