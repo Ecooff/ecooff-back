@@ -4,6 +4,7 @@ const orderService = require('./order.service');
 
 //routes
 router.get('/getDailyOrdersLength', getDailyOrdersLength);
+router.get('/getDailyBags', getDailyBags);
 router.post('/create', create);
 router.get('/openOrder/:id', openOrder);
 router.get('/listOfOrders', listOfOrders);
@@ -18,7 +19,13 @@ module.exports = router;
 
 function getDailyOrdersLength(req, res, next){
     orderService.getDailyOrdersLength()
-        .then(orders => orders ? res.json(orders) : res.status(404).json({ message: 'No se pudo recuperar el length de los elementos' }))
+        .then(orders => orders ? res.json(orders) : res.status(404).json({ message: 'No se pudo recuperar las orders' }))
+        .catch(next);
+}
+
+function getDailyBags(req, res, next){
+    orderService.getDailyBags()
+        .then(bags => bags ? res.json(bags) : res.status(404).json({ message: 'No se pudo recuperar las bags' }))
         .catch(next);
 }
 

@@ -13,6 +13,7 @@ const Provider = db.Provider;
 
 module.exports = {
     getDailyOrdersLength,
+    getDailyBags,
     create,
     openOrder,
     listOfOrders,
@@ -39,8 +40,7 @@ async function getDailyOrdersLength() {
                     {dateOfCompletion: startOfDay(new Date())}
                 ]
             }
-        ]
-        
+        ]        
     });
 
     let 
@@ -52,13 +52,7 @@ async function getDailyOrdersLength() {
         ordersCompletedLength = 0,
         ordersReadyPercentage = 0,
         ordersRetrievedPercentage = 0,
-        ordersCompletedPercentage = 0,
-        bagsReadyLength = 0,
-        bagsRetrievedLength = 0,
-        bagsCompletedLength = 0,
-        bagsReadyPercentage = 0,
-        bagsRetrievedPercentage = 0,
-        bagsCompletedPercentage = 0;
+        ordersCompletedPercentage = 0;
 
     if (orders) {
 
@@ -76,14 +70,7 @@ async function getDailyOrdersLength() {
             bagsLength += bags.length;
 
             for (const bag of bags) {
-
-                if (bag.bagStatus == 'Lista') bagsReadyLength++;
-    
-                if (bag.bagStatus == 'Recogida') bagsRetrievedLength++;
-
-                if (bag.bagStatus == 'Completada') bagsCompletedLength++;
                 
-
                 let fetchBag = await Bag.findOne({ _id: bag.bagId});
 
                 if (fetchBag) {
@@ -119,21 +106,107 @@ async function getDailyOrdersLength() {
     ordersReadyPercentage = ordersReadyLength * 100 / ordersLength;
     ordersRetrievedPercentage = ordersRetrievedLength * 100 / ordersLength;
     ordersCompletedPercentage = ordersCompletedLength * 100 / ordersLength;
-    bagsReadyPercentage = bagsReadyLength * 100 / bagsLength;
-    bagsRetrievedPercentage = bagsRetrievedLength * 100 / bagsLength;
-    bagsCompletedPercentage = bagsCompletedLength * 100 / bagsLength;
 
     return {
 
         ordersLength,
         providersLength,
         bagsLength,
-        ordersReady : (parseFloat(ordersReadyPercentage + ordersRetrievedPercentage + ordersCompletedPercentage).toFixed(0)+"%"),
-        ordersRetrieved : (parseFloat(ordersRetrievedPercentage + ordersCompletedPercentage).toFixed(0)+"%"),
-        ordersCompleted : (parseFloat(ordersCompletedPercentage).toFixed(0)+"%"),
-        bagsReady : (parseFloat(bagsReadyPercentage + bagsRetrievedPercentage + bagsCompletedPercentage).toFixed(0)+"%"),
-        bagsRetrieved : (parseFloat(bagsRetrievedPercentage + bagsCompletedPercentage).toFixed(0)+"%"),
-        bagsCompleted : (parseFloat(bagsCompletedPercentage).toFixed(0)+"%")
+        ordersReady : (parseFloat(ordersReadyPercentage + ordersRetrievedPercentage + ordersCompletedPercentage).toFixed(0)),
+        ordersRetrieved : (parseFloat(ordersRetrievedPercentage + ordersCompletedPercentage).toFixed(0)),
+        ordersCompleted : (parseFloat(ordersCompletedPercentage).toFixed(0))
+
+    }
+
+}
+
+async function getDailyBags() {
+
+    const orders = await Order.find({
+        $or: [
+            {
+                $and: [
+                    {status: {$in: ['Pendiente', 'Lista', 'Recogida']}},
+                    {date: {$lt: startOfDay(new Date())}}
+                ]
+            },
+            {
+                $and: [
+                    {status: 'Completada'},
+                    {dateOfCompletion: startOfDay(new Date())}
+                ]
+            }
+        ]        
+    });
+
+    let
+        bagsLength = 0,
+        bagsReadyLength = 0,
+        bagsReadyPercentage = 0,
+        bagArray = [];
+
+    if (orders) {
+
+        for (const order of orders) {
+
+            let bags = order.bags;
+
+            for (const bag of bags) {
+
+                let productsLength = 0;
+
+                bagsLength++;
+
+                if (bag.bagStatus != 'Pendiente') bagsReadyLength++;
+
+                let fetchBag = await Bag.findOne({ _id: bag.bagId});
+
+                if (fetchBag) {
+
+                    let provider = await Provider.findOne({_id : fetchBag.providerId});
+
+                    if (!provider) throw 'hubo un error al buscar los proveedores de las bags';
+
+                    let
+                        providerId = provider._id,
+                        providerName = provider.name,
+                        providerImg = provider.img,
+                        providerAddress = provider.address,
+                        products = fetchBag.products;
+
+                    for (const product of products) productsLength += product.quantity;
+
+                    bagArray.push({
+
+                        orderId : order._id,
+                        bagId : fetchBag._id,
+                        productsLength : productsLength,
+                        status : bag.bagStatus,                       
+                        provider: [
+                            {
+                                providerId : providerId,
+                                providerName : providerName,
+                                providerImg : providerImg,
+                                providerAddress : providerAddress
+                            }
+                        ]
+                        
+                    });
+
+                } else throw 'hubo un problema al reconocer las bags de uno de los pedidos';
+
+            }
+
+        }
+
+    } else throw 'no hay ordenes hoy';
+
+    bagsReadyPercentage = bagsReadyLength * 100 / bagsLength;
+
+    return {
+
+        bagArray,
+        bagsReady : (parseFloat(bagsReadyPercentage).toFixed(0))
 
     }
 
