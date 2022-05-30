@@ -268,8 +268,6 @@ async function getDailyBags() {
 
         let itemIndex = finalArray.findIndex(p => p.providerId == bag.providerId.toString());
 
-        console.log(typeof(bag.providerId), itemIndex);
-
         if(itemIndex == -1) {
 
             finalArray.push({
@@ -277,7 +275,7 @@ async function getDailyBags() {
                 providerId : bag.providerId.toString(),
                 providerName : bag.providerName,
                 providerImg : bag.providerImg,
-                providerAddress : bag.providerAddress,
+                providerAddress : bag.providerAddress[0],
                 bags: [
                     {
 
@@ -301,6 +299,36 @@ async function getDailyBags() {
 
             })
         }
+    }
+
+    let 
+        bagsLengthPerProv = 0,
+        bagsReadyLengthPerProv = 0,
+        bagsReadyPercentagePerProv = 0,
+        bagsReadyPerProv = 0;
+
+    for (const provider of finalArray) {
+
+        let bags = provider.bags;
+
+        bagsLengthPerProv = 0;
+        bagsReadyLengthPerProv = 0;
+
+
+        for (const bag of bags) {
+
+            bagsLengthPerProv++;
+
+            if (bag.status != 'Pendiente') bagsReadyLengthPerProv++;
+
+        }
+
+        bagsReadyPercentagePerProv = bagsReadyLengthPerProv * 100 / bagsLengthPerProv;
+
+        bagsReadyPerProv = Number((parseFloat(bagsReadyPercentagePerProv).toFixed(0)));
+
+        provider.bagsReady = bagsReadyPerProv;
+
     }
 
     bagsReadyPercentage = bagsReadyLength * 100 / bagsLength;
