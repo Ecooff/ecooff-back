@@ -345,18 +345,20 @@ async function getDeliveryScreenData(status) {
 
         orderInfo = await openOrder(item._id);
 
+        let userAddress = orderInfo.userAddress[0];
+
         orderArray.push({
 
-            order : [
-                {
-                    orderId : orderInfo.orderId,
-                    date : orderInfo.date,
-                    status : orderInfo.status,
-                    userAddress : orderInfo.userAddress
-                }
-            ], 
-            bagsLength,  
-            userName : user.firstName + ' ' + user.lastName
+            orderId : orderInfo.orderId,
+            date : orderInfo.date,
+            status : orderInfo.status,
+            userName : user.firstName + ' ' + user.lastName,
+            bagsLength,
+            street : userAddress.street,
+            streetNumber : userAddress.streetNumber,
+            floor : userAddress.floor,
+            door : userAddress.door,
+            CP : userAddress.CP
 
         });
 
