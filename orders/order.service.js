@@ -344,56 +344,30 @@ async function getDailyBags() {
 
 async function getDeliveryScreenData(status) {
 
-    let orders = {};
+    const orders = await Order.find({
+        $or: [
+            {
+                $and: [
+                    {status: 'Recogida'},
+                    {date: {$lt: startOfDay(new Date())}}
+                ]
+            },
+            {
+                $and: [
+                    {status: 'Completada'},
+                    {dateOfCompletion: startOfDay(new Date())}
+                ]
+            }
+        ]        
+    });
 
-    if(status == 'All') { //agregar validacion para minusuclas
-
-        orders = await Order.find({
-            $or: [
-                {
-                    $and: [
-                        {status: 'Recogida'},
-                        {date: {$lt: startOfDay(new Date())}}
-                    ]
-                },
-                {
-                    $and: [
-                        {status: 'Completada'},
-                        {dateOfCompletion: startOfDay(new Date())}
-                    ]
-                }
-            ]        
-        });
-
-    } else if(status == 'Completada') {
-
-        orders = await Order.find({
-            $and: [
-                {status : 'Completada'},
-                {dateOfCompletion: startOfDay(new Date())}
-            ]       
-        });
-
-    } else if(status == 'Recogida') {
-
-        orders = await Order.find({
-            $and: [
-                {status},
-                {date: {$lt: startOfDay(new Date())}}
-            ]       
-        });
-
-    } else throw 'estado invalido. La primer letra debe ser mayuscula, las opciones son All, Recogida y Completada.';
-
-    console.log(orders);
+    if (!orders) throw 'no hay ordenes hoy';
 
     let 
         ordersLength = orders.length,
         bagsLength = 0,
         ordersCompletedLength = 0,
         ordersCompletedPercentage = 0;
-
-    if (!orders) throw 'no hay ordenes hoy';
 
     let 
         orderArray = [],
@@ -415,21 +389,40 @@ async function getDeliveryScreenData(status) {
 
         let userAddress = orderInfo.userAddress[0];
 
-        orderArray.push({
+        if (status == 'All') {
 
-            orderId : orderInfo.orderId,
-            date : orderInfo.date,
-            status : orderInfo.status,
-            userName : user.firstName + ' ' + user.lastName,
-            bagsLength,
-            street : userAddress.street,
-            streetNumber : userAddress.streetNumber,
-            floor : userAddress.floor,
-            door : userAddress.door,
-            CP : userAddress.CP
+            orderArray.push({
 
-        });
+                orderId : orderInfo.orderId,
+                date : orderInfo.date,
+                status : orderInfo.status,
+                userName : user.firstName + ' ' + user.lastName,
+                bagsLength,
+                street : userAddress.street,
+                streetNumber : userAddress.streetNumber,
+                floor : userAddress.floor,
+                door : userAddress.door,
+                CP : userAddress.CP
+    
+            });
 
+        } else if (orderInfo.status == status) {
+
+            orderArray.push({
+
+                orderId : orderInfo.orderId,
+                date : orderInfo.date,
+                status : orderInfo.status,
+                userName : user.firstName + ' ' + user.lastName,
+                bagsLength,
+                street : userAddress.street,
+                streetNumber : userAddress.streetNumber,
+                floor : userAddress.floor,
+                door : userAddress.door,
+                CP : userAddress.CP
+    
+            });
+        }
     }
 
     ordersCompletedPercentage = ordersCompletedLength * 100 / ordersLength;
