@@ -16,6 +16,7 @@ module.exports = {
     getDailyOrdersLength,
     getDailyBags,
     getDeliveryScreenData,
+    getOrderDetail,
     create,
     openOrder,
     listOfOrders,
@@ -307,7 +308,7 @@ async function getDailyBags() {
     return {
 
         bagsReady : Number((parseFloat(bagsReadyPercentage).toFixed(0))),
-        finalArray       
+        finalArray
 
     }
 
@@ -411,6 +412,69 @@ async function getDeliveryScreenData(status) {
         ordersCompleted : Number((parseFloat(ordersCompletedPercentage).toFixed(0))),
         ordersLength,
         orderArray
+
+    }
+
+}
+
+async function getOrderDetail(id) {
+
+    let order = await Order.findOne({ _id : id });
+
+    if (!order) throw 'No existe una orden con ese ID.';
+
+    let 
+        user = await User.findOne({ _id : order.userId }),
+        bags = order.bags;
+
+    if (!user) throw 'Hubo un problema al recuperar los datos del comprador.';
+
+    let 
+        username = user.firstName + ' ' + user.lastName;
+        bagArray = [];
+
+    for (const bag of bags) {
+
+        let fetchBag = await Bag.findOne({ _id: bag.bagId });
+
+        if (!fetchBag) throw 'Hubo un problema al reconocer las bags del pedido.';
+
+        let provider = await Provider.findOne({ _id : fetchBag.providerId });
+
+        if (!provider) throw 'Hubo un problema al buscar los datos del proveedor.';
+
+        let 
+            products = fetchBag.products,
+            productArray = [];
+
+        for (const product of products) {
+
+            productArray.push({ 
+                productId : product.productId,
+                name : product.name,
+                quantity : product.quantity,
+                img : product.img
+            });
+
+        }
+
+        bagArray.push({
+            provderId : provider._id,
+            providerName : provider.name,
+            providerImg : provider.img,
+            productArray
+        });
+
+    }
+
+    return {
+
+        orderId : order.id,
+        status : order.status,
+        username,
+        userAddress : order.address[0],
+        bagArray
+        
 
     }
 

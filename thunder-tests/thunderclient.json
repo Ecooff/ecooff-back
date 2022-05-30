@@ -3322,5 +3322,23 @@
       "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjcwMDQ2NWUxZGRlYTAwMTZjYTU5YjkiLCJpYXQiOjE2NTE1MDgzMzIsImV4cCI6MTY1NDEwMDMzMn0.0UnnYpFYRu1CiYtCNXgc2EajhtGvqRhiAf6em_LZbVc"
     },
     "tests": []
+  },
+  {
+    "_id": "46e9960d-68ce-47aa-ad1f-f9a6c8566dd8",
+    "colId": "5b95ec91-c24b-49ae-a0b2-50fb893c3661",
+    "containerId": "dc0b9a23-113d-4251-9064-7697b8191d4f",
+    "name": "getOrderDetail",
+    "url": "http://localhost:5000/api/orders/getOrderDetail/6294f3ab6dd00c003eb522f4",
+    "method": "GET",
+    "sortNum": 610000,
+    "created": "2022-05-30T19:09:22.382Z",
+    "modified": "2022-05-30T19:12:41.372Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjcwMDQ2NWUxZGRlYTAwMTZjYTU5YjkiLCJpYXQiOjE2NTE1MDgzMzIsImV4cCI6MTY1NDEwMDMzMn0.0UnnYpFYRu1CiYtCNXgc2EajhtGvqRhiAf6em_LZbVc"
+    },
+    "tests": []
   }
 ]

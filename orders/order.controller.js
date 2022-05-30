@@ -7,6 +7,7 @@ router.put('/changeBagStatus', changeBagStatus);
 router.get('/getDailyOrdersLength', getDailyOrdersLength);
 router.get('/getDailyBags', getDailyBags);
 router.get('/getDeliveryScreenData/:status', getDeliveryScreenData);
+router.get('/getOrderDetail/:id', getOrderDetail);
 router.post('/create', create);
 router.get('/openOrder/:id', openOrder);
 router.get('/listOfOrders', listOfOrders);
@@ -41,6 +42,12 @@ function getDeliveryScreenData(req, res, next){
     orderService.getDeliveryScreenData(req.params.status)
         .then(orders => orders ? res.json(orders) : res.status(404).json({ message: 'No se pudo recuperar las orders' }))
         .catch(next);
+}
+
+function getOrderDetail(req, res, next) {
+    orderService.getOrderDetail(req.params.id)
+        .then(order => order ? res.json(order) : res.status(404).json({ message: 'No se pudo actualizar el estado de la bag' }))
+        .catch(err => next(err));
 }
 
 function create(req, res, next) {
