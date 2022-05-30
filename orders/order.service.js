@@ -369,7 +369,7 @@ async function getDeliveryScreenData(status) {
 
         orders = await Order.find({
             $and: [
-                {status},
+                {status : 'Completada'},
                 {dateOfCompletion: startOfDay(new Date())}
             ]       
         });
@@ -383,7 +383,9 @@ async function getDeliveryScreenData(status) {
             ]       
         });
 
-    } else throw 'estado invalido. La primer letra debe ser mayuscula, las opciones son All, Recogida y Completada.'
+    } else throw 'estado invalido. La primer letra debe ser mayuscula, las opciones son All, Recogida y Completada.';
+
+    console.log(orders);
 
     let 
         ordersLength = orders.length,
@@ -432,12 +434,12 @@ async function getDeliveryScreenData(status) {
 
     ordersCompletedPercentage = ordersCompletedLength * 100 / ordersLength;
 
-    if(typeof(ordersCompletedPercentage) != Number) ordersCompletedPercentage = 0;
+    if(typeof(ordersCompletedPercentage) != 'number') ordersCompletedPercentage = 0;
     if(ordersLength == null) ordersLength = 0;
 
     return {
 
-        ordersCompleted : Number((parseFloat(ordersCompletedPercentage).toFixed(0))),
+        ordersCompleted : ordersCompletedPercentage,
         ordersLength,
         orderArray
 
