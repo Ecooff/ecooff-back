@@ -246,14 +246,10 @@ async function getDailyBags() {
                         bagId : fetchBag._id,
                         productsLength : productsLength,
                         status : bag.bagStatus,
-                        provider: [
-                            {
-                                providerId : providerId,
-                                providerName : providerName,
-                                providerImg : providerImg,
-                                providerAddress : providerAddress
-                            }
-                        ]
+                        providerId : providerId,
+                        providerName : providerName,
+                        providerImg : providerImg,
+                        providerAddress : providerAddress
                         
                     });
 
@@ -265,12 +261,53 @@ async function getDailyBags() {
 
     } else throw 'no hay ordenes hoy';
 
+    let finalArray = [];
+
+    for (const bag of bagArray) {
+
+        let itemIndex = finalArray.findIndex(p => p.providerId == bag.providerId.toString());
+
+        console.log(typeof(bag.providerId), itemIndex);
+
+        if(itemIndex == -1) {
+
+            finalArray.push({
+
+                providerId : bag.providerId.toString(),
+                providerName : bag.providerName,
+                providerImg : bag.providerImg,
+                providerAddress : bag.providerAddress,
+                bags: [
+                    {
+
+                        orderId : bag.orderId,
+                        bagId : bag.bagId,
+                        productsLength : bag.productsLength,
+                        status : bag.status
+
+                    }
+                ]
+            })
+
+        } else {
+
+            finalArray[itemIndex].bags.push({
+
+                orderId : bag.orderId,
+                bagId : bag.bagId,
+                productsLength : bag.productsLength,
+                status : bag.status
+
+            })
+        }
+    }
+
     bagsReadyPercentage = bagsReadyLength * 100 / bagsLength;
 
     return {
 
-        bagArray,
-        bagsReady : Number((parseFloat(bagsReadyPercentage).toFixed(0)))
+        bagsReady : Number((parseFloat(bagsReadyPercentage).toFixed(0))),
+        finalArray       
 
     }
 
