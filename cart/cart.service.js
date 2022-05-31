@@ -216,7 +216,7 @@ async function openCart(token) {
     }   else {
 
         return {
-            listOfProducts:[{}],
+            listOfProducts:[],
             savings: {}
         }
 
@@ -308,7 +308,7 @@ async function confirmCart(token, userParam) {
     }   else {
 
         return {
-            listOfProducts:[{}],
+            listOfProducts:[],
             savings: {}
         }
 
