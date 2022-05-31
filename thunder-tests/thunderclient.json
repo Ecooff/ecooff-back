@@ -2701,16 +2701,16 @@
     "colId": "5b95ec91-c24b-49ae-a0b2-50fb893c3661",
     "containerId": "d035b62d-b82f-4bc9-a83d-bf11bbb7ac40",
     "name": "deleteItem",
-    "url": "http://localhost:5000/api/cart/deleteItem/62827e11cf23ce31dc783e92",
+    "url": "http://localhost:5000/api/cart/deleteItem/62729d99a243f20016a9d8c7",
     "method": "PUT",
     "sortNum": 320000,
     "created": "2022-05-26T18:19:56.536Z",
-    "modified": "2022-05-26T18:19:56.536Z",
+    "modified": "2022-05-31T18:17:51.411Z",
     "headers": [],
     "params": [],
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjgyNzYwODI0OGU0MDM5NTg1NDg3MzEiLCJpYXQiOjE2NTI3MTcwNzMsImV4cCI6MTY1NTMwOTA3M30.wJ_lSVN1Ff-E_twHQg_0gzsCG6mF2xoADncQFd_YOZU"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjcwMDQ2NWUxZGRlYTAwMTZjYTU5YjkiLCJpYXQiOjE2NTQwMTk2NzcsImV4cCI6MTY1NjYxMTY3N30.GNZpd8oYHe-c2nxogPFjB8XhPe8jHLtPRH92nRnS8d4"
     },
     "tests": []
   },
