@@ -215,7 +215,7 @@ async function openCart(token) {
 
     }   else {
 
-        throw 'El carrito esta vacio';
+        return { msg : 'El carrito esta vacio' }
 
     }
 }
@@ -304,7 +304,7 @@ async function confirmCart(token, userParam) {
 
     }   else {
 
-        throw 'El carrito esta vacio';
+        return { msg : 'El carrito esta vacio' }
 
     }
 

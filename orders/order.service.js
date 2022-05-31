@@ -197,7 +197,7 @@ async function create (token, userParam) {
 
         } else {
 
-            throw 'El carrito esta vacio';
+            return { msg : 'El carrito esta vacio' }
 
         }
     } catch(err) {
