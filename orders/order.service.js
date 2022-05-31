@@ -185,24 +185,55 @@ async function getDailyOrdersLength() {
 
 }
 
-async function getDailyBags() {
+async function getDailyBags(code) {
 
-    const orders = await Order.find({
-        $or: [
-            {
+    let orders;
+
+    console.log(code)
+
+    switch(code) {
+
+        case '0':
+            orders = await Order.find({
+                $or: [
+                    {
+                        $and: [
+                            {status: {$in: ['Pendiente', 'Lista', 'Recogida']}},
+                            {date: {$lt: startOfDay(new Date())}}
+                        ]
+                    },
+                    {
+                        $and: [
+                            {status: 'Completada'},
+                            {dateOfCompletion: {$gte : startOfDay(new Date())}}
+                        ]
+                    }
+                ]        
+            });
+        break;
+
+        case '1':
+            orders = await Order.find({
                 $and: [
-                    {status: {$in: ['Pendiente', 'Lista', 'Recogida']}},
+                    {status: 'Lista'},
                     {date: {$lt: startOfDay(new Date())}}
-                ]
-            },
-            {
+                ]       
+            });
+        break;
+
+        case '2':
+            orders = await Order.find({
                 $and: [
-                    {status: 'Completada'},
-                    {dateOfCompletion: startOfDay(new Date())}
-                ]
-            }
-        ]        
-    });
+                    {status: 'Recogida'},
+                    {date: {$lt: startOfDay(new Date())}}
+                ]       
+            });
+        break;
+
+        default:
+            return 'opciones: 0 = todos, 1 = listas, 2= recogidas';
+
+    }
 
     let
         bagsLength = 0,
@@ -333,9 +364,11 @@ async function getDailyBags() {
 
     bagsReadyPercentage = bagsReadyLength * 100 / bagsLength;
 
+    console.log(bagsReadyPercentage, bagsReadyLength)
+
     return {
 
-        bagsReady : Number((parseFloat(bagsReadyPercentage).toFixed(0))),
+        bagsReady : bagsReadyPercentage.toFixed(0),
         finalArray
 
     }
