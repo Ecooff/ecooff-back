@@ -2,21 +2,15 @@ const db = require('_helpers/db');
 const config = require('config.json');
 const jwt = require('jsonwebtoken');
 const ObjectId = require('mongodb').ObjectId;
-const bagService = require('../bags/bag.service');
-const startOfDay = require('date-fns/startOfDay');
 const Order = db.Order;
 const Cart = db.Cart;
 const Stock = db.Stock;
 const Bag = db.Bag;
 const User = db.User;
-const Provider = db.Provider;
+const bagService = require('../bags/bag.service');
+
 
 module.exports = {
-    changeBagStatus,
-    getDailyOrdersLength,
-    getDailyBags,
-    getDeliveryScreenData,
-    getOrderDetail,
     create,
     openOrder,
     listOfOrders,
@@ -26,482 +20,6 @@ module.exports = {
     changeStatus,
     cancelOrder
 };
-
-async function changeBagStatus(userParam) {
-    
-    const order = await Order.findOne({_id : ObjectId(userParam.orderId)});
-    const code = userParam.statusCode;
-    const bags = order.bags;
-    let stateChange = false;
-    let orderStatusChange = true;
-
-    if(order) {
-
-        switch (code) {
-            case '1':
-
-                for (const bag of bags) {
-
-                    if (bag.bagId == userParam.bagId) {
-                        bag.bagStatus = 'Lista';
-                        stateChange = true;
-                    }
-
-                }
-
-                if(!stateChange) throw 'bagId erroneo';
-
-                for (const bag of bags) {
-
-                    if (bag.bagStatus != 'Lista') orderStatusChange = false;
-
-                }
-
-                if (orderStatusChange) order.status = 'Lista';
-
-                break;
-            case '2':
-
-                for (const bag of bags) {
-
-                    if (bag.bagId == userParam.bagId && bag.bagStatus == 'Lista') {
-                        bag.bagStatus = 'Recogida';
-                        stateChange = true;
-                    }
-
-                }
-
-                if(!stateChange) throw 'bagId erroneo o la bag no esta lista.';
-
-                for (const bag of bags) {
-
-                    if (bag.bagStatus != 'Recogida') orderStatusChange = false;
-
-                }
-
-                if (orderStatusChange) order.status = 'Recogida';
-
-                break;
-        }
-
-        await order.save();
-        return order;
-    } else throw 'orderId erroneo';
-
-}
-
-async function getDailyOrdersLength() {
-    const orders = await Order.find({
-        $or: [
-            {
-                $and: [
-                    {status: {$in: ['Pendiente', 'Lista', 'Recogida']}},
-                    {date: {$lt: startOfDay(new Date())}}
-                ]
-            },
-            {
-                $and: [
-                    {status: 'Completada'},
-                    {dateOfCompletion: startOfDay(new Date())}
-                ]
-            }
-        ]        
-    });
-
-    let 
-        ordersLength = orders.length,
-        bagsLength = 0,
-        providersLength = 0,
-        ordersReadyLength = 0,
-        ordersRetrievedLength = 0,
-        ordersCompletedLength = 0,
-        ordersReadyPercentage = 0,
-        ordersRetrievedPercentage = 0,
-        ordersCompletedPercentage = 0;
-
-    if (orders) {
-
-        for (const order of orders) {
-
-            if (order.status == 'Lista') ordersReadyLength++;
-
-            if (order.status == 'Recogida') ordersRetrievedLength++;
-
-            if (order.status == 'Completada') ordersCompletedLength++;
-
-
-            let bags = order.bags;
-
-            bagsLength += bags.length;
-
-            for (const bag of bags) {
-                
-                let fetchBag = await Bag.findOne({ _id: bag.bagId});
-
-                if (fetchBag) {
-
-                    let fetchBagProvider = await Provider.findOne({_id : ObjectId(fetchBag.providerId)});
-
-                    if (fetchBagProvider) {
-
-                        providersLength++;
-
-                    } else {
-
-                        throw 'Hubo un problema al buscar el proveedor de uno de los pedidos';
-
-                    }
-
-                } else {
-
-                    throw 'hubo un problema al reconocer las bags de uno de los pedidos';
-
-                }
-
-            }
-
-        }
-
-    } else {
-
-        throw 'no hay ordenes hoy'
-
-    }
-
-    ordersReadyPercentage = ordersReadyLength * 100 / ordersLength;
-    ordersRetrievedPercentage = ordersRetrievedLength * 100 / ordersLength;
-    ordersCompletedPercentage = ordersCompletedLength * 100 / ordersLength;
-
-    return {
-
-        ordersLength,
-        providersLength,
-        bagsLength,
-        ordersReady : Number((parseFloat(ordersReadyPercentage + ordersRetrievedPercentage + ordersCompletedPercentage).toFixed(0))),
-        ordersRetrieved : Number((parseFloat(ordersRetrievedPercentage + ordersCompletedPercentage).toFixed(0))),
-        ordersCompleted : Number((parseFloat(ordersCompletedPercentage).toFixed(0)))
-
-    }
-
-}
-
-async function getDailyBags() {
-
-    const orders = await Order.find({
-        $or: [
-            {
-                $and: [
-                    {status: {$in: ['Pendiente', 'Lista', 'Recogida']}},
-                    {date: {$lt: startOfDay(new Date())}}
-                ]
-            },
-            {
-                $and: [
-                    {status: 'Completada'},
-                    {dateOfCompletion: startOfDay(new Date())}
-                ]
-            }
-        ]        
-    });
-
-    let
-        bagsLength = 0,
-        bagsReadyLength = 0,
-        bagsReadyPercentage = 0,
-        bagArray = [];
-
-    if (orders) {
-
-        for (const order of orders) {
-
-            let bags = order.bags;
-
-            for (const bag of bags) {
-
-                let productsLength = 0;
-
-                bagsLength++;
-
-                if (bag.bagStatus != 'Pendiente') bagsReadyLength++;
-
-                let fetchBag = await Bag.findOne({ _id: bag.bagId});
-
-                if (fetchBag) {
-
-                    let provider = await Provider.findOne({_id : fetchBag.providerId});
-
-                    if (!provider) throw 'hubo un error al buscar los proveedores de las bags';
-
-                    let
-                        providerId = provider._id,
-                        providerName = provider.name,
-                        providerImg = provider.img,
-                        providerAddress = provider.address,
-                        products = fetchBag.products;
-
-                    for (const product of products) productsLength += product.quantity;
-
-                    bagArray.push({
-
-                        orderId : order._id,
-                        bagId : fetchBag._id,
-                        productsLength : productsLength,
-                        status : bag.bagStatus,
-                        providerId : providerId,
-                        providerName : providerName,
-                        providerImg : providerImg,
-                        providerAddress : providerAddress
-                        
-                    });
-
-                } else throw 'hubo un problema al reconocer las bags de uno de los pedidos';
-
-            }
-
-        }
-
-    } else throw 'no hay ordenes hoy';
-
-    let finalArray = [];
-
-    for (const bag of bagArray) {
-
-        let itemIndex = finalArray.findIndex(p => p.providerId == bag.providerId.toString());
-
-        if(itemIndex == -1) {
-
-            finalArray.push({
-
-                providerId : bag.providerId.toString(),
-                providerName : bag.providerName,
-                providerImg : bag.providerImg,
-                providerAddress : bag.providerAddress[0],
-                bags: [
-                    {
-
-                        orderId : bag.orderId,
-                        bagId : bag.bagId,
-                        productsLength : bag.productsLength,
-                        status : bag.status
-
-                    }
-                ]
-            })
-
-        } else {
-
-            finalArray[itemIndex].bags.push({
-
-                orderId : bag.orderId,
-                bagId : bag.bagId,
-                productsLength : bag.productsLength,
-                status : bag.status
-
-            })
-        }
-    }
-
-    let 
-        bagsLengthPerProv = 0,
-        bagsReadyLengthPerProv = 0,
-        bagsReadyPercentagePerProv = 0,
-        bagsReadyPerProv = 0;
-
-    for (const provider of finalArray) {
-
-        let bags = provider.bags;
-
-        bagsLengthPerProv = 0;
-        bagsReadyLengthPerProv = 0;
-
-
-        for (const bag of bags) {
-
-            bagsLengthPerProv++;
-
-            if (bag.status != 'Pendiente') bagsReadyLengthPerProv++;
-
-        }
-
-        bagsReadyPercentagePerProv = bagsReadyLengthPerProv * 100 / bagsLengthPerProv;
-
-        bagsReadyPerProv = Number((parseFloat(bagsReadyPercentagePerProv).toFixed(0)));
-
-        provider.bagsReady = bagsReadyPerProv;
-
-    }
-
-    bagsReadyPercentage = bagsReadyLength * 100 / bagsLength;
-
-    return {
-
-        bagsReady : Number((parseFloat(bagsReadyPercentage).toFixed(0))),
-        finalArray
-
-    }
-
-}
-
-async function getDeliveryScreenData(status) {
-
-    const orders = await Order.find({
-        $or: [
-            {
-                $and: [
-                    {status: 'Recogida'},
-                    {date: {$lt: startOfDay(new Date())}}
-                ]
-            },
-            {
-                $and: [
-                    {status: 'Completada'},
-                    {dateOfCompletion: startOfDay(new Date())}
-                ]
-            }
-        ]        
-    });
-
-    if (!orders) throw 'no hay ordenes hoy';
-
-    let 
-        ordersLength = orders.length,
-        bagsLength = 0,
-        ordersCompletedLength = 0,
-        ordersCompletedPercentage = 0;
-
-    let 
-        orderArray = [],
-        orderInfo = {};
-
-    for (const item of orders) {
-
-        if (item.status == 'Completada') ordersCompletedLength++;
-
-        const user = await User.findOne({_id : item.userId});
-
-        if (!user) throw 'Hubo un problema al recuperar los datos de un usuario comprador';
-
-        let bags = item.bags;
-
-        bagsLength = bags.length;
-
-        orderInfo = await openOrder(item._id);
-
-        let userAddress = orderInfo.userAddress[0];
-
-        if (status == 'All') {
-
-            orderArray.push({
-
-                orderId : orderInfo.orderId,
-                date : orderInfo.date,
-                status : orderInfo.status,
-                userName : user.firstName + ' ' + user.lastName,
-                bagsLength,
-                street : userAddress.street,
-                streetNumber : userAddress.streetNumber,
-                floor : userAddress.floor,
-                door : userAddress.door,
-                CP : userAddress.CP
-    
-            });
-
-        } else if (orderInfo.status == status) {
-
-            orderArray.push({
-
-                orderId : orderInfo.orderId,
-                date : orderInfo.date,
-                status : orderInfo.status,
-                userName : user.firstName + ' ' + user.lastName,
-                bagsLength,
-                street : userAddress.street,
-                streetNumber : userAddress.streetNumber,
-                floor : userAddress.floor,
-                door : userAddress.door,
-                CP : userAddress.CP
-    
-            });
-        }
-    }
-
-    ordersCompletedPercentage = ordersCompletedLength * 100 / ordersLength;
-
-    if(typeof(ordersCompletedPercentage) != 'number') ordersCompletedPercentage = 0;
-    if(ordersLength == null) ordersLength = 0;
-
-    return {
-
-        ordersCompleted : ordersCompletedPercentage,
-        ordersLength,
-        orderArray
-
-    }
-
-}
-
-async function getOrderDetail(id) {
-
-    let order = await Order.findOne({ _id : id });
-
-    if (!order) throw 'No existe una orden con ese ID.';
-
-    let 
-        user = await User.findOne({ _id : order.userId }),
-        bags = order.bags;
-
-    if (!user) throw 'Hubo un problema al recuperar los datos del comprador.';
-
-    let 
-        username = user.firstName + ' ' + user.lastName;
-        bagArray = [];
-
-    for (const bag of bags) {
-
-        let fetchBag = await Bag.findOne({ _id: bag.bagId });
-
-        if (!fetchBag) throw 'Hubo un problema al reconocer las bags del pedido.';
-
-        let provider = await Provider.findOne({ _id : fetchBag.providerId });
-
-        if (!provider) throw 'Hubo un problema al buscar los datos del proveedor.';
-
-        let 
-            products = fetchBag.products,
-            productArray = [];
-
-        for (const product of products) {
-
-            productArray.push({ 
-                productId : product.productId,
-                name : product.name,
-                quantity : product.quantity,
-                img : product.img
-            });
-
-        }
-
-        bagArray.push({
-            provderId : provider._id,
-            providerName : provider.name,
-            providerImg : provider.img,
-            productArray
-        });
-
-    }
-
-    return {
-
-        orderId : order.id,
-        status : order.status,
-        username,
-        userAddress : order.address[0],
-        bagArray
-        
-
-    }
-
-}
 
 async function create (token, userParam) {
 
@@ -673,7 +191,7 @@ async function create (token, userParam) {
 
             await order.save();
 
-            //await Cart.deleteOne({_id : ObjectId(cart.id)});
+            await Cart.deleteOne({_id : ObjectId(cart.id)});
 
             return order;
 
@@ -719,7 +237,7 @@ async function openOrder(id) {
 
             } else {
 
-                throw 'hubo un problema al reconocer las bags del pedido';
+                throw 'hubo un problema al reconocer las bags del pedido'
 
             }
         }
@@ -745,8 +263,8 @@ async function openOrder(id) {
 
     }
 }
-
-async function listOfOrders(token) {
+2
+async function listOfOrders(token, status) {
 
     let userId = '';
 
@@ -762,11 +280,27 @@ async function listOfOrders(token) {
         });
     }
 
-    let 
-        orderArray = [],
-        order = {};
+    let orderArray = [],
+        order = {},
+        orders;
 
-    const orders = await Order.find({ userId : userId}).sort('-date');
+    if (status == 0) {
+
+        orders = await Order.find({ userId : userId, status : {$in:['Pendiente', 'Lista', 'Recogida']}}).sort('-date');
+
+    } else if(status == 1) {
+
+        orders = await Order.find({ userId : userId, status : 'Completada'}).sort('-date');
+
+    } else if(status == 2) {
+
+        orders = await Order.find({ userId : userId}).sort('-date');
+
+    } else {
+
+        throw 'Codigo de estado incorrecto, enviar 0 (No completadas), 1 (Completadas) o 2 (Todas).';
+
+    }
 
     for (const item of orders) {
 
@@ -802,47 +336,17 @@ async function getById(id) {
 async function changeStatus(userParam) {
     const order = await Order.findOne({_id : ObjectId(userParam.id)});
     const code = userParam.statusCode;
-    let bags = order.bags;
 
     if(order) {
         switch (code) {
-
             case '1':
-
-                for (const bag of bags) {
-
-                    if (bag.bagStatus != 'Lista') throw 'Todas las bolsas deben estar listas para realizar esta accion.';
-
-                }
-
-                order.status = 'Lista';
+                order.status = 'Pendiente'
                 break;
             case '2':
-                
-                for (const bag of bags) {
-
-                    if (bag.bagStatus != 'Recogida') throw 'Todas las bolsas deben estar recogidas para realizar esta accion.';
-
-                }
-
-                order.status = 'Recogida';
+                order.status = 'En curso'
                 break;
             case '3':
-
-                for (const bag of bags) {
-
-                    if (bag.bagStatus != 'Recogida') throw 'Todas las bolsas deben estar recogidas para realizar esta accion.';
-
-                }
-
-                for (const bag of bags) {
-
-                    bag.bagStatus = 'Completada';
-
-                }
-
-                order.status = 'Completada';
-                order.dateOfCompletion = startOfDay(new Date());
+                order.status = 'Completada'
                 break;
         }
 
@@ -856,3 +360,5 @@ async function cancelOrder(userParam) {
 
     return;
 }
+
+
