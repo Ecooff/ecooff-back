@@ -11,10 +11,6 @@ module.exports = {
 };
 
 async function create(userParam) {
-    
-    if (await Provider.findOne({ name: userParam.name })) {
-        throw 'Ese proveedor ya existe';
-    }
 
     const provider = new Provider(userParam);
 

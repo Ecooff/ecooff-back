@@ -1,6 +1,7 @@
 const expressJwt = require('express-jwt');
 const config = require('config.json');
 const userService = require('../users/user.service');
+const shippingUserService = require('../shippingUsers/shippingUser.service');
 
 module.exports = jwt;
 
@@ -15,7 +16,9 @@ function jwt() {
             '/api/users/forgotPasswordTokenOnly',
             '/api/users/forgotPasswordUpdate',
             '/api/users/verifyEmail',
-            '/api/users/resendVerify'
+            '/api/users/resendVerify',
+            '/api/shipping/auth/register',
+            '/api/shipping/auth/authenticate'
         ]
     });
 }
@@ -25,7 +28,14 @@ async function isRevoked(req, payload, done) {
 
     // revoke token if user no longer exists
     if (!user) {
-        return done(null, true);
+
+        const shippingUser = await shippingUserService.getById(payload.sub);
+
+        if (!shippingUser) {
+
+            return done(null, true);
+
+        }
     }
 
     done();

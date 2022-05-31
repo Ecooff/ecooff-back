@@ -153,6 +153,8 @@ async function openCart(token) {
 
     const cart = await Cart.findOne({ userId }, ['products', '-_id']);
 
+    let finalArray = {};
+
     if (cart) {
 
         let products = cart.products;
@@ -206,8 +208,6 @@ async function openCart(token) {
         totalSavingsArray.carbonFootprintTotal = carbonFootprintTotal;
         totalSavingsArray.moneySaveTotal = moneySaveTotal;
 
-        let finalArray = {};
-
         finalArray.listOfProducts = productArray;
         finalArray.savings = totalSavingsArray;
 
@@ -215,7 +215,10 @@ async function openCart(token) {
 
     }   else {
 
-        throw 'El carrito esta vacio';
+        return {
+            listOfProducts:[],
+            savings: {}
+        }
 
     }
 }
@@ -236,6 +239,8 @@ async function confirmCart(token, userParam) {
     }
 
     const cart = await Cart.findOne({ userId }, ['products', '-_id']);
+
+    let finalArray = {};
 
     if (cart) {
 
@@ -294,8 +299,6 @@ async function confirmCart(token, userParam) {
         totalSavingsArray.carbonFootprintTotal = carbonFootprintTotal;
         totalSavingsArray.moneySaveTotal = moneySaveTotal;
 
-        let finalArray = {};
-
         finalArray.listOfProducts = productArray;
         finalArray.savings = totalSavingsArray;
         finalArray.userAddress = addressArray;
@@ -304,7 +307,10 @@ async function confirmCart(token, userParam) {
 
     }   else {
 
-        throw 'El carrito esta vacio';
+        return {
+            listOfProducts:[],
+            savings: {}
+        }
 
     }
 
