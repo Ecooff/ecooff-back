@@ -1,5 +1,4 @@
 ﻿const express = require('express');
-const config = require('config.json');
 const jwt = require('jsonwebtoken');
 const { JsonWebTokenError } = require('jsonwebtoken');
 const { serverAlive } = require('./user.service');

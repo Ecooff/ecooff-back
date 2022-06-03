@@ -1,10 +1,10 @@
-﻿const config = require('config.json');
+﻿const secret = process.env.SECRET_KEY;
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const crypto = require("crypto");
 const db = require('_helpers/db');
 const User = db.User;
-const sendEmail = require('_helpers/send-email');
+const mail = require('_helpers/send-email');
 const ObjectId = require('mongodb').ObjectId;
 
 module.exports = {
@@ -38,7 +38,7 @@ async function authenticate({ email, password }) {
             return {verified: user.verified};
         }   
 
-        const token = jwt.sign({ sub: user.id }, config.secret, { expiresIn: '30d' });
+        const token = jwt.sign({ sub: user.id }, secret, { expiresIn: '30d' });
         return {
             ...user.toJSON(),
             token
@@ -51,7 +51,7 @@ async function retrieveUser(token) {
     let user = '';
     if (token) {
         
-        jwt.verify(token, config.secret, (err, decoded) => {
+        jwt.verify(token, secret, (err, decoded) => {
             if (err){
                 console.log(err.message);
                 throw 'error';
@@ -61,7 +61,7 @@ async function retrieveUser(token) {
         });
         user = await User.findOne({ _id : ObjectId(id) });
 
-        const newToken = jwt.sign({ sub: user.id }, config.secret, { expiresIn: '30d' });
+        const newToken = jwt.sign({ sub: user.id }, secret, { expiresIn: '30d' });
         return {
             ...user.toJSON(),
             token : newToken,
@@ -81,7 +81,7 @@ async function addAddress(token, userParam) {
 
     if (token) {
         
-        jwt.verify(token, config.secret, (err, decoded) => {
+        jwt.verify(token, secret, (err, decoded) => {
             if (err){
                 console.log(err.message);
                 throw 'error';
@@ -137,7 +137,7 @@ async function changeDefaultAddress(token, id) {
 
     if (token) {
         
-        jwt.verify(token, config.secret, (err, decoded) => {
+        jwt.verify(token, secret, (err, decoded) => {
             if (err){
                 console.log(err.message);
                 throw 'error';
@@ -166,7 +166,7 @@ async function getUserAddresses(token) {
 
     if (token) {
         
-        jwt.verify(token, config.secret, (err, decoded) => {
+        jwt.verify(token, secret, (err, decoded) => {
             if (err){
                 console.log(err.message);
                 throw 'error';
@@ -192,7 +192,7 @@ async function deleteAddress(token, id) {
 
     if (token) {
         
-        jwt.verify(token, config.secret, (err, decoded) => {
+        jwt.verify(token, secret, (err, decoded) => {
             if (err){
                 console.log(err.message);
                 throw 'error';
@@ -242,11 +242,18 @@ async function create(userParam) {
 
     user.verificationToken = randomTokenString();
 
-    // await sendEmail({
-    //     to: user.email,
-    //     subject: 'token de validacion',
-    //     html: `<p>utiliza este token para validar tu cuenta: ${user.verificationToken}</p>`
-    // });
+    const mailOptions = {
+        from: process.env.MAIL_USER,
+        to: user.email,
+        subject:'codigo de verificacion ecooff',
+        text:user.verificationToken,
+        html: `<p>utiliza este token para validar tu cuenta: ${user.verificationToken}</p>`
+    };
+
+    console.log(mailOptions);
+
+    await mail.send(mailOptions);
+
 
     await user.save();
     return {...user.toJSON()};
@@ -262,12 +269,15 @@ async function resendVerify({ emailParam }) {
 
     user.verificationToken = randomTokenString();
 
-    
-    // await sendEmail({
-    //     to: user.email,
-    //     subject: 'token de validacion (reenvio)',
-    //     html: `<p>utiliza este token para validar tu cuenta: ${user.verificationToken}</p>`
-    // });
+    const mailOptions = {
+        from: process.env.MAIL_USER,
+        to: user.email,
+        subject:'codigo de verificacion ecooff',
+        text:user.verificationToken,
+        html: `<p>utiliza este token para validar tu cuenta: ${user.verificationToken}</p>`
+    };
+
+    await mail.send(mailOptions);
 
     await user.save();
 }
@@ -282,7 +292,7 @@ async function verifyEmail({ token }) {
 
     await user.save();
 
-    const newToken = jwt.sign({ sub: user.id }, config.secret, { expiresIn: '30d' });
+    const newToken = jwt.sign({ sub: user.id }, secret, { expiresIn: '30d' });
         return {
             ...user.toJSON(),
             newToken
@@ -301,11 +311,15 @@ async function forgotPasswordRequest({ email }) {
 
     user.forgotPwToken = randomTokenString();
 
-    // await sendEmail({
-    //     to: user.email,
-    //     subject: 'olvide mi contraseña',
-    //     html: `<p>utiliza este token reestablecer tu contraseña: ${user.forgotPwToken}</p>`
-    // });    
+    const mailOptions = {
+        from: process.env.MAIL_USER,
+        to: user.email,
+        subject:'codigo de verificacion ecooff',
+        text:user.forgotPwToken,
+        html: `<p>utiliza este token para validar tu cuenta: ${user.forgotPwToken}</p>`
+    };
+
+    await mail.send(mailOptions);  
 
     await user.save();
 }
@@ -340,7 +354,7 @@ async function editName(token, userParam) {
 
     if (token) {
         
-        jwt.verify(token, config.secret, (err, decoded) => {
+        jwt.verify(token, secret, (err, decoded) => {
             if (err){
                 console.log(err.message);
                 throw 'error';

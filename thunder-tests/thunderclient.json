@@ -928,12 +928,12 @@
     "method": "POST",
     "sortNum": 10000,
     "created": "2022-05-02T16:12:55.855Z",
-    "modified": "2022-05-02T16:18:47.203Z",
+    "modified": "2022-06-02T15:32:59.275Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"firstName\": \"eco\",\n    \"lastName\": \"off\",\n    \"password\": \"Ecooff2022\",\n    \"email\": \"demo@ecooff.com\"\n}",
+      "raw": "{\n    \"firstName\": \"eco\",\n    \"lastName\": \"off\",\n    \"password\": \"Ecooff2022\",\n    \"email\": \"demo5@ecooff.com\"\n}",
       "form": []
     },
     "tests": []
@@ -947,12 +947,12 @@
     "method": "POST",
     "sortNum": 20000,
     "created": "2022-05-02T16:12:55.856Z",
-    "modified": "2022-05-02T16:18:53.292Z",
+    "modified": "2022-06-02T15:33:07.096Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"token\" : \"74b9\"\n}",
+      "raw": "{\n    \"token\" : \"29a6\"\n}",
       "form": []
     },
     "auth": {
@@ -2034,12 +2034,12 @@
     "method": "POST",
     "sortNum": 10000,
     "created": "2022-05-26T18:19:56.502Z",
-    "modified": "2022-05-26T18:19:56.502Z",
+    "modified": "2022-06-03T15:12:58.980Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"firstName\": \"eco\",\n    \"lastName\": \"off\",\n    \"password\": \"Ecooff2022\",\n    \"email\": \"user2@ecooff.com\"\n}",
+      "raw": "{\n    \"firstName\": \"seba\",\n    \"lastName\": \"test\",\n    \"password\": \"Ecooff2022\",\n    \"email\": \"lopezlandosebastian3@gmail.com\"\n}",
       "form": []
     },
     "tests": []
@@ -2053,12 +2053,12 @@
     "method": "POST",
     "sortNum": 20000,
     "created": "2022-05-26T18:19:56.503Z",
-    "modified": "2022-05-26T18:19:56.503Z",
+    "modified": "2022-06-01T15:46:02.185Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"token\" : \"a299\"\n}",
+      "raw": "{\n    \"token\" : \"a4a4\"\n}",
       "form": []
     },
     "auth": {
@@ -2090,16 +2090,16 @@
     "colId": "5b95ec91-c24b-49ae-a0b2-50fb893c3661",
     "containerId": "bf5f7201-6a81-408e-8147-9f94ceffe694",
     "name": "authenticate",
-    "url": "http://localhost:3000/api/users/authenticate",
+    "url": "http://localhost:5000/api/users/authenticate",
     "method": "POST",
     "sortNum": 22500,
     "created": "2022-05-26T18:19:56.505Z",
-    "modified": "2022-05-26T18:19:56.505Z",
+    "modified": "2022-06-03T15:13:53.781Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"email\": \"lopezlandosebastian@gmail.com\",\n    \"password\": \"12345\"\n}",
+      "raw": "{\n    \"email\": \"demo@ecooff.com\",\n    \"password\": \"Ecooff2022\"\n}",
       "form": []
     },
     "auth": {
@@ -2113,11 +2113,11 @@
     "colId": "5b95ec91-c24b-49ae-a0b2-50fb893c3661",
     "containerId": "bf5f7201-6a81-408e-8147-9f94ceffe694",
     "name": "addAddress",
-    "url": "http://localhost:3000/api/users/addAddress",
+    "url": "http://localhost:5000/api/users/addAddress",
     "method": "POST",
     "sortNum": 25000,
     "created": "2022-05-26T18:19:56.506Z",
-    "modified": "2022-05-26T18:19:56.506Z",
+    "modified": "2022-06-01T15:46:17.295Z",
     "headers": [],
     "params": [],
     "body": {
@@ -2127,7 +2127,7 @@
     },
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjZiZjhmNDY1ODQwZTFkYzQyNTMxYWIiLCJpYXQiOjE2NTEyNDMyNzQsImV4cCI6MTY1MzgzNTI3NH0.CrkpENukYGPrIKr2D4ZfjnYlaTfDmue3j1D6qa-ITwE"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2Mjk3ODliNGVkMTI0NjM5MTA2Y2EwNjQiLCJpYXQiOjE2NTQwOTgzNjIsImV4cCI6MTY1NjY5MDM2Mn0.1j1wbgzf1lWOUioBWRn6ohcIo2iJNLrFSthjJ97oYgc"
     },
     "tests": []
   },
@@ -2577,17 +2577,17 @@
     "method": "GET",
     "sortNum": 220000,
     "created": "2022-05-26T18:19:56.530Z",
-    "modified": "2022-05-26T18:19:56.530Z",
+    "modified": "2022-06-03T15:14:27.749Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"jwtParam\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjBiZmQ3ZmJjNjFhZTIwMDg4NWRmYzEiLCJpYXQiOjE2NDQ5NTMwMTQsImV4cCI6MTY1MjcyOTAxNH0.cFF1HTRnSFmOPvSuS2i-wxzSAVIoqHzm6z4GWNoduZ4\"\n}",
+      "raw": "{\n    \"jwtParam\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjcwMDQ2NWUxZGRlYTAwMTZjYTU5YjkiLCJpYXQiOjE2NTQyNjkyMzMsImV4cCI6MTY1Njg2MTIzM30.HFiGmc6OgM9-OeHb3eZY564GJPU-w1a3dd0KEmDuCpI\"\n}",
       "form": []
     },
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjcwMDQ2NWUxZGRlYTAwMTZjYTU5YjkiLCJpYXQiOjE2NTE1MDgzMzIsImV4cCI6MTY1NDEwMDMzMn0.0UnnYpFYRu1CiYtCNXgc2EajhtGvqRhiAf6em_LZbVc"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjcwMDQ2NWUxZGRlYTAwMTZjYTU5YjkiLCJpYXQiOjE2NTQyNjkyMzMsImV4cCI6MTY1Njg2MTIzM30.HFiGmc6OgM9-OeHb3eZY564GJPU-w1a3dd0KEmDuCpI"
     },
     "tests": []
   },
@@ -2810,12 +2810,12 @@
     "method": "GET",
     "sortNum": 360000,
     "created": "2022-05-26T18:19:56.541Z",
-    "modified": "2022-05-31T19:10:02.924Z",
+    "modified": "2022-06-03T15:14:57.403Z",
     "headers": [],
     "params": [],
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjcwMDQ2NWUxZGRlYTAwMTZjYTU5YjkiLCJpYXQiOjE2NTE1MDgzMzIsImV4cCI6MTY1NDEwMDMzMn0.0UnnYpFYRu1CiYtCNXgc2EajhtGvqRhiAf6em_LZbVc"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjcwMDQ2NWUxZGRlYTAwMTZjYTU5YjkiLCJpYXQiOjE2NTQyNjkyMzMsImV4cCI6MTY1Njg2MTIzM30.HFiGmc6OgM9-OeHb3eZY564GJPU-w1a3dd0KEmDuCpI"
     },
     "tests": []
   },
@@ -2950,11 +2950,11 @@
     "colId": "5b95ec91-c24b-49ae-a0b2-50fb893c3661",
     "containerId": "a2679a4a-2075-4e0d-8c93-5b1f4013adf6",
     "name": "partialMatch",
-    "url": "http://localhost:5000/api/stock/partialMatch?name=crema&subcategory=Higiene de la piel&category=FARMACIA",
+    "url": "http://localhost:5000/api/stock/partialMatch?name=crema",
     "method": "GET",
     "sortNum": 450000,
     "created": "2022-05-26T18:19:56.549Z",
-    "modified": "2022-05-26T18:19:56.549Z",
+    "modified": "2022-06-03T15:14:41.697Z",
     "headers": [],
     "params": [
       {
@@ -2965,11 +2965,13 @@
       {
         "name": "subcategory",
         "value": "Higiene de la piel",
+        "isDisabled": true,
         "isPath": false
       },
       {
         "name": "category",
         "value": "FARMACIA",
+        "isDisabled": true,
         "isPath": false
       },
       {
@@ -2981,7 +2983,7 @@
     ],
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjcwMDQ2NWUxZGRlYTAwMTZjYTU5YjkiLCJpYXQiOjE2NTE1MDgzMzIsImV4cCI6MTY1NDEwMDMzMn0.0UnnYpFYRu1CiYtCNXgc2EajhtGvqRhiAf6em_LZbVc"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjcwMDQ2NWUxZGRlYTAwMTZjYTU5YjkiLCJpYXQiOjE2NTQyNjkyMzMsImV4cCI6MTY1Njg2MTIzM30.HFiGmc6OgM9-OeHb3eZY564GJPU-w1a3dd0KEmDuCpI"
     },
     "tests": []
   },
@@ -3255,12 +3257,12 @@
     "method": "GET",
     "sortNum": 570000,
     "created": "2022-05-26T19:45:19.949Z",
-    "modified": "2022-05-26T19:45:51.245Z",
+    "modified": "2022-06-03T15:14:09.174Z",
     "headers": [],
     "params": [],
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjcwMDQ2NWUxZGRlYTAwMTZjYTU5YjkiLCJpYXQiOjE2NTE1MDgzMzIsImV4cCI6MTY1NDEwMDMzMn0.0UnnYpFYRu1CiYtCNXgc2EajhtGvqRhiAf6em_LZbVc"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjcwMDQ2NWUxZGRlYTAwMTZjYTU5YjkiLCJpYXQiOjE2NTQyNjkyMzMsImV4cCI6MTY1Njg2MTIzM30.HFiGmc6OgM9-OeHb3eZY564GJPU-w1a3dd0KEmDuCpI"
     },
     "tests": []
   },

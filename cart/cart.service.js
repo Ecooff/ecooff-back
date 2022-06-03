@@ -1,5 +1,5 @@
 const db = require('_helpers/db');
-const config = require('config.json');
+const secret = process.env.SECRET_KEY;
 const jwt = require('jsonwebtoken');
 const ObjectId = require('mongodb').ObjectId;
 const Cart = db.Cart;
@@ -29,7 +29,7 @@ async function addToCart(token, userParam) {
     let userId = '';
     if (token) {
         
-        jwt.verify(token, config.secret, (err, decoded) => {
+        jwt.verify(token, secret, (err, decoded) => {
             if (err){
                 console.log(err.message);
                 throw 'error';
@@ -98,7 +98,7 @@ async function deleteItem(token, id) {
     let userId = '';
     if (token) {
         
-        jwt.verify(token, config.secret, (err, decoded) => {
+        jwt.verify(token, secret, (err, decoded) => {
             if (err){
                 console.log(err.message);
                 throw 'error';
@@ -121,7 +121,7 @@ async function deleteCart(token) {
     let userId = '';
     if (token) {
         
-        jwt.verify(token, config.secret, (err, decoded) => {
+        jwt.verify(token, secret, (err, decoded) => {
             if (err){
                 console.log(err.message);
                 throw 'error';
@@ -141,7 +141,7 @@ async function openCart(token) {
     let userId = '';
     if (token) {
         
-        jwt.verify(token, config.secret, (err, decoded) => {
+        jwt.verify(token, secret, (err, decoded) => {
             if (err){
                 console.log(err.message);
                 throw 'error';
@@ -228,7 +228,7 @@ async function confirmCart(token, userParam) {
     let userId = '';
     if (token) {
         
-        jwt.verify(token, config.secret, (err, decoded) => {
+        jwt.verify(token, secret, (err, decoded) => {
             if (err){
                 console.log(err.message);
                 throw 'error';
@@ -321,7 +321,7 @@ async function cartLength(token) {
     let userId = '';
     if (token) {
         
-        jwt.verify(token, config.secret, (err, decoded) => {
+        jwt.verify(token, secret, (err, decoded) => {
             if (err){
                 console.log(err.message);
                 throw 'error';
@@ -344,7 +344,7 @@ async function productLength(token, productId) {
     let userId = '';
     if (token) {
         
-        jwt.verify(token, config.secret, (err, decoded) => {
+        jwt.verify(token, secret, (err, decoded) => {
             if (err){
                 console.log(err.message);
                 throw 'error';

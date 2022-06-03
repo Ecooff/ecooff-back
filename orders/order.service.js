@@ -1,5 +1,5 @@
 const db = require('_helpers/db');
-const config = require('config.json');
+const secret = process.env.SECRET_KEY;
 const jwt = require('jsonwebtoken');
 const ObjectId = require('mongodb').ObjectId;
 const bagService = require('../bags/bag.service');
@@ -549,7 +549,7 @@ async function create (token, userParam) {
 
     if (token) {
         
-        jwt.verify(token, config.secret, (err, decoded) => {
+        jwt.verify(token, secret, (err, decoded) => {
             if (err){
                 console.log(err.message);
                 throw 'error';
@@ -785,7 +785,7 @@ async function listOfOrders(token, status) {
 
     if (token) {
         
-        jwt.verify(token, config.secret, (err, decoded) => {
+        jwt.verify(token, secret, (err, decoded) => {
             if (err){
                 console.log(err.message);
                 throw 'error';

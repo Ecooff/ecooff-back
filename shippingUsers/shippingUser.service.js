@@ -1,4 +1,4 @@
-const config = require('config.json');
+const secret = process.env.SECRET_KEY;
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const crypto = require("crypto");
@@ -20,7 +20,7 @@ async function authenticate({ email, password }) {
 
     if (shippingUser && bcrypt.compareSync(password, shippingUser.hash)) {  
 
-        const token = jwt.sign({ sub: shippingUser.id }, config.secret, { expiresIn: '30d' });
+        const token = jwt.sign({ sub: shippingUser.id }, secret, { expiresIn: '30d' });
         return {
             ...shippingUser.toJSON(),
             token
@@ -37,7 +37,7 @@ async function retrieveUser(token) {
     let shippingUser = '';
     if (token) {
         
-        jwt.verify(token, config.secret, (err, decoded) => {
+        jwt.verify(token, secret, (err, decoded) => {
             if (err){
                 console.log(err.message);
                 throw 'error';
@@ -47,7 +47,7 @@ async function retrieveUser(token) {
         });
         shippingUser = await ShippingUser.findOne({ _id : ObjectId(id) });
 
-        const newToken = jwt.sign({ sub: shippingUser.id }, config.secret, { expiresIn: '30d' });
+        const newToken = jwt.sign({ sub: shippingUser.id }, secret, { expiresIn: '30d' });
         return {
             ...shippingUser.toJSON(),
             token : newToken,
