@@ -364,11 +364,11 @@ async function getDailyBags(code) {
 
     bagsReadyPercentage = bagsReadyLength * 100 / bagsLength;
 
-    console.log(bagsReadyPercentage, bagsReadyLength)
+    if(bagsReadyLength == 0 || bagsLength == 0) bagsReadyPercentage = 0;
 
     return {
 
-        bagsReady : bagsReadyPercentage.toFixed(0),
+        bagsReady : Number(bagsReadyPercentage.toFixed(0)),
         finalArray
 
     }
