@@ -706,7 +706,7 @@ async function create (token, userParam) {
 
             await order.save();
 
-            //await Cart.deleteOne({_id : ObjectId(cart.id)});
+            await Cart.deleteOne({_id : ObjectId(cart.id)});
 
             return order;
 
