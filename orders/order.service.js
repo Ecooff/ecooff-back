@@ -664,7 +664,7 @@ async function create (token, userParam) {
                         name = stock.name;
                         img = stock.img;
 
-                        //await Stock.deleteOne({_id : ObjectId(productId)});
+                        await Stock.deleteOne({_id : ObjectId(productId)});
 
                     } else {
 
