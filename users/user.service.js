@@ -342,6 +342,12 @@ async function forgotPasswordTokenOnly(userParam) {
 }
 
 async function forgotPasswordUpdate(userParam) {
+    if(userParam.token == undefined) {
+        return {
+            message : "token indefinido"
+        }
+    }
+
     const user = await db.User.findOne({ forgotPwToken: userParam.token });
 
     if (!user) throw 'Usuario no encontrado/token invalido';
