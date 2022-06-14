@@ -113,13 +113,13 @@ function forgotPasswordRequest(req, res, next) {
 
 function forgotPasswordTokenOnly(req, res, next) {
     userService.forgotPasswordTokenOnly(req.body)
-        .then(() => res.json({ message: 'Token ok' }))
+        .then(token => token ? res.json(token) : res.status(404).json({ message: 'usuario no encontrado/token invalido' }))
         .catch(next);
 }
 
 function forgotPasswordUpdate(req, res, next) {
     userService.forgotPasswordUpdate(req.body)
-        .then(() => res.json({ message: 'Clave actualizada'}))
+        .then(user => user ? res.json(user) : res.status(404).json({ message: 'usuario no encontrado/token invalido' }))
         .catch(next);
 }
 
