@@ -322,6 +322,12 @@ async function forgotPasswordRequest({ email }) {
     await mail.send(mailOptions);  
 
     await user.save();
+
+    return {
+
+        token : user.forgotPwToken
+
+    }  
 }
 
 async function forgotPasswordTokenOnly(userParam) {

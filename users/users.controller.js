@@ -107,7 +107,7 @@ function verifyEmail(req, res, next) {
 
 function forgotPasswordRequest(req, res, next) {
     userService.forgotPasswordRequest(req.body)
-        .then(() => res.json({ message: 'Token enviado por email' }))
+        .then(token => token ? res.json(token) : res.status(404).json({ message: 'usuario no encontrado/token invalido' }))
         .catch(next);
 }
 
