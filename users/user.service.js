@@ -5,6 +5,7 @@ const crypto = require("crypto");
 const db = require('_helpers/db');
 const User = db.User;
 const mail = require('_helpers/send-email');
+const { isNumberObject } = require('util/types');
 const ObjectId = require('mongodb').ObjectId;
 
 module.exports = {
@@ -75,6 +76,8 @@ async function retrieveUser(token) {
 //ADDRESSES
 
 async function addAddress(token, userParam) {
+
+    if (isNaN(userParam.CP) || isNaN(userParam.streetNumber)) throw 'Por favor, ingresar solamente numeros en los campos CP o Número.';
 
     let id = '';
     let user = '';
