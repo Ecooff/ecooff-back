@@ -160,51 +160,35 @@ async function getDailyOrdersLength() {
 
 async function getDailyBags(code) {
 
-    let orders;
+    let 
+        orders,
+        options;
 
     switch(code) {
 
         case '0':
-            orders = await Order.find({
-                $or: [
-                    {
-                        $and: [
-                            {status: {$in: ['Pendiente', 'Lista', 'Recogida']}},
-                            {date: {$lt: startOfDay(new Date())}}
-                        ]
-                    },
-                    {
-                        $and: [
-                            {status: 'Completada'},
-                            {dateOfCompletion: {$gte : startOfDay(new Date())}}
-                        ]
-                    }
-                ]        
-            });
+            options = ['Pendiente', 'Lista', 'Recogida'];
         break;
 
         case '1':
-            orders = await Order.find({
-                $and: [
-                    {status: 'Lista'},
-                    {date: {$lt: startOfDay(new Date())}}
-                ]       
-            });
+            options = ['Lista'];
         break;
 
         case '2':
-            orders = await Order.find({
-                $and: [
-                    {status: 'Recogida'},
-                    {date: {$lt: startOfDay(new Date())}}
-                ]       
-            });
+            options = ['Recogida'];
         break;
 
         default:
             return 'opciones: 0 = todos, 1 = listas, 2= recogidas'; // trae bags
 
     }
+
+    orders = await Order.find({
+        $and: [
+            {status: {$in: options}},
+            {date: {$lt: startOfDay(new Date())}}
+        ]      
+    });
 
     if (!orders) throw 'no hay ordenes hoy';
 
