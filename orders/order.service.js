@@ -271,22 +271,35 @@ async function getDailyBags(code) {
 
 async function getDeliveryScreenData(status) {
 
-    const orders = await Order.find({
-        $or: [
-            {
-                $and: [
-                    {status: 'Recogida'},
-                    {date: {$lt: startOfDay(new Date())}}
-                ]
-            },
-            {
-                $and: [
-                    {status: 'Completada'},
-                    {dateOfCompletion: startOfDay(new Date())}
-                ]
-            }
-        ]        
-    });
+    let orders;
+
+    if (status == 'All') {
+        orders = await Order.find({
+            $or: [
+                {
+                    $and: [
+                        {status: 'Recogida'},
+                        {date: {$lt: startOfDay(new Date())}}
+                    ]
+                },
+                {
+                    $and: [
+                        {status: 'Completada'},
+                        {dateOfCompletion: startOfDay(new Date())}
+                    ]
+                }
+            ]        
+        });
+    } else {
+        orders = await Order.find({
+            $and: [
+                { status },
+                { date: { $lt: startOfDay(new Date()) } }
+            ]     
+        });
+    }
+
+    console.log(orders);
 
     if (!orders) throw 'no hay ordenes hoy';
 
@@ -298,58 +311,41 @@ async function getDeliveryScreenData(status) {
 
     let 
         orderArray = [],
-        orderInfo = {};
+        order = {};
+
+    let usersId = orders.map((order) => order.userId);
+
+    const users = await User.find({_id : usersId});
 
     for (const item of orders) {
 
         if (item.status == 'Completada') ordersCompletedLength++;
 
-        const user = await User.findOne({_id : item.userId});
-
-        if (!user) throw 'Hubo un problema al recuperar los datos de un usuario comprador';
-
         let bags = item.bags;
 
         bagsLength = bags.length;
 
-        orderInfo = await openOrder(item._id);
+        order = await openOrder(item._id);
 
-        let userAddress = orderInfo.userAddress[0];
+        let userAddress = order.userAddress[0];
 
-        if (status == 'All') {
+        let userIndex = users.findIndex(u => u._id == item.userId);
 
-            orderArray.push({
+        orderArray.push({
 
-                orderId : orderInfo.orderId,
-                date : orderInfo.date,
-                status : orderInfo.status,
-                userName : user.firstName + ' ' + user.lastName,
-                bagsLength,
-                street : userAddress.street,
-                streetNumber : userAddress.streetNumber,
-                floor : userAddress.floor,
-                door : userAddress.door,
-                CP : userAddress.CP
-    
-            });
+            orderId : order.orderId,
+            date : order.date,
+            status : order.status,
+            userName : users[userIndex].firstName + ' ' + users[userIndex].lastName,
+            bagsLength,
+            street : userAddress.street,
+            streetNumber : userAddress.streetNumber,
+            floor : userAddress.floor,
+            door : userAddress.door,
+            CP : userAddress.CP
 
-        } else if (orderInfo.status == status) {
+        });
 
-            orderArray.push({
-
-                orderId : orderInfo.orderId,
-                date : orderInfo.date,
-                status : orderInfo.status,
-                userName : user.firstName + ' ' + user.lastName,
-                bagsLength,
-                street : userAddress.street,
-                streetNumber : userAddress.streetNumber,
-                floor : userAddress.floor,
-                door : userAddress.door,
-                CP : userAddress.CP
-    
-            });
-        }
     }
 
     ordersCompletedPercentage = ordersCompletedLength * 100 / ordersLength;
