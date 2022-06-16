@@ -138,6 +138,15 @@ async function closeToExp(){
 async function forYou(req){  //emprolijar con casos puntuales
     const user = await userService.retrieveUser(req);
     const favs = user.favorites;
+
+    if (favs.length == 0) {
+
+        const empty =  await Stock.find().limit(20);
+
+        return empty;
+
+    }
+
     let favItems = [];
     let listOfFavs = [];
     favs.sort((a, b) => {
