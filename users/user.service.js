@@ -158,9 +158,15 @@ async function changeDefaultAddress(token, id) {
         'addresses.$.defaultAddress': 'true',
     }});
 
-    const user = await User.find({ _id : userId });
+    const user = await User.findOne({ _id : userId });
 
-    return user;
+    console.log(user);
+
+    const addresses = user.addresses.filter(address => address.defaultAddress == true);
+
+    
+
+    return addresses[0];
 }
 
 async function getUserAddresses(token) {
