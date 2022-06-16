@@ -3,7 +3,7 @@ const router = express.Router();
 const orderService = require('./order.service');
 
 //routes
-router.put('/changeBagStatus', changeBagStatus);
+router.put('/changeBagStatus/:statusCode/:orderId/:bagId', changeBagStatus);
 router.get('/getDailyOrdersLength', getDailyOrdersLength);
 router.get('/getDailyBags/:code', getDailyBags);
 router.get('/getDeliveryScreenData/:status', getDeliveryScreenData);
@@ -21,7 +21,7 @@ router.get('/:id', getById);
 module.exports = router;
 
 function changeBagStatus(req, res, next) {
-    orderService.changeBagStatus(req.body)
+    orderService.changeBagStatus(req.params)
         .then(order => order ? res.json(order) : res.status(404).json({ message: 'No se pudo actualizar el estado de la bag' }))
         .catch(err => next(err));
 }
