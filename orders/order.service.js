@@ -91,6 +91,7 @@ async function changeBagStatus(userParam) {
 }
 
 async function getDailyOrdersLength() {
+
     const orders = await Order.find({
         $or: [
             {
@@ -108,6 +109,83 @@ async function getDailyOrdersLength() {
         ]        
     });
 
+    let groupedOrders = orders.reduce((objectsByKeyValue, obj) => {
+        const value = obj['status'];
+        objectsByKeyValue[value] = (objectsByKeyValue[value] || []).concat(obj);
+        return objectsByKeyValue;
+    }, {});
+
+    let
+        readys = (groupedOrders.Lista || []),
+        retrieveds = (groupedOrders.Recogida || []),
+        completeds = (groupedOrders.Completada || []);
+
+        let readyLength = readys.length,
+        retrievedLength = retrieveds.length,
+        completedLength = completeds.length,
+
+        ordersReadyPercentage = readyLength * 100 / orders.length,
+        ordersRetrievedPercentage = retrievedLength * 100 / orders.length,
+        ordersCompletedPercentage = completedLength * 100 / orders.length;
+
+    
+
+    let ordersId = orders.map((order) => order._id);
+
+    const bags = await Bag.find({orderId : ordersId});
+
+    let providersId = [];
+
+    bags.forEach((bag) => {
+
+        !providersId.includes(bag.providerId) && providersId.push(bag.providerId);
+
+    })
+
+    const providers = await Provider.find({_id : providersId});
+
+
+
+    return {
+
+        ordersLength : orders.length,
+        bagsLength : bags.length,
+        providersLength : providers.length,
+        ordersReady : Number((parseFloat(ordersReadyPercentage + ordersRetrievedPercentage + ordersCompletedPercentage).toFixed(0))),
+        ordersRetrieved : Number((parseFloat(ordersRetrievedPercentage + ordersCompletedPercentage).toFixed(0))),
+        ordersCompleted : Number((parseFloat(ordersCompletedPercentage).toFixed(0)))
+
+
+    };
+
+}
+
+async function shippingHome() {
+
+    let time1 = new Date().getTime(),
+        time2,
+        time3,
+        timeFinal;
+
+    const orders = await Order.find({
+        $or: [
+            {
+                $and: [
+                    {status: {$in: ['Pendiente', 'Lista', 'Recogida']}},
+                    {date: {$lt: startOfDay(new Date())}}
+                ]
+            },
+            {
+                $and: [
+                    {status: 'Completada'},
+                    {dateOfCompletion: startOfDay(new Date())}
+                ]
+            }
+        ]        
+    });
+
+    time2 = new Date().getTime() - time1;
+
     let 
         ordersLength = orders.length,
         bagsLength = 0,
@@ -119,58 +197,44 @@ async function getDailyOrdersLength() {
         ordersRetrievedPercentage = 0,
         ordersCompletedPercentage = 0;
 
-    if (orders) {
+    if (!orders) throw 'no hay ordenes hoy';
 
-        for (const order of orders) {
+    for (const [i, order] of orders.entries()) {
 
-            if (order.status == 'Lista') ordersReadyLength++;
+        if (order.status == 'Lista') ordersReadyLength++;
 
-            if (order.status == 'Recogida') ordersRetrievedLength++;
+        if (order.status == 'Recogida') ordersRetrievedLength++;
 
-            if (order.status == 'Completada') ordersCompletedLength++;
+        if (order.status == 'Completada') ordersCompletedLength++;
 
 
-            let bags = order.bags;
+        let bags = order.bags;
 
-            bagsLength += bags.length;
+        bagsLength += bags.length;
 
-            for (const bag of bags) {
-                
-                let fetchBag = await Bag.findOne({ _id: bag.bagId});
+        for (const [j, bag] of bags.entries()) {
+            
+            let fetchBag = await Bag.findOne({ _id: bag.bagId});
 
-                if (fetchBag) {
+            if (!fetchBag) throw 'hubo un problema al reconocer las bags de uno de los pedidos';
 
-                    let fetchBagProvider = await Provider.findOne({_id : ObjectId(fetchBag.providerId)});
+            let fetchBagProvider = await Provider.findOne({_id : ObjectId(fetchBag.providerId)});
 
-                    if (fetchBagProvider) {
+            if (!fetchBagProvider) throw 'Hubo un problema al buscar el proveedor de uno de los pedidos';
 
-                        providersLength++;
+            providersLength++;
 
-                    } else {
-
-                        throw 'Hubo un problema al buscar el proveedor de uno de los pedidos';
-
-                    }
-
-                } else {
-
-                    throw 'hubo un problema al reconocer las bags de uno de los pedidos';
-
-                }
-
-            }
+            j == bags.length-1 && i == orders.length-1 ? time3 = new Date().getTime() - time1 - time2 : null;
 
         }
-
-    } else {
-
-        throw 'no hay ordenes hoy'
 
     }
 
     ordersReadyPercentage = ordersReadyLength * 100 / ordersLength;
     ordersRetrievedPercentage = ordersRetrievedLength * 100 / ordersLength;
     ordersCompletedPercentage = ordersCompletedLength * 100 / ordersLength;
+
+    timeFinal = new Date().getTime() - time1 - time2 - time3;
 
     return {
 
@@ -179,7 +243,10 @@ async function getDailyOrdersLength() {
         bagsLength,
         ordersReady : Number((parseFloat(ordersReadyPercentage + ordersRetrievedPercentage + ordersCompletedPercentage).toFixed(0))),
         ordersRetrieved : Number((parseFloat(ordersRetrievedPercentage + ordersCompletedPercentage).toFixed(0))),
-        ordersCompleted : Number((parseFloat(ordersCompletedPercentage).toFixed(0)))
+        ordersCompleted : Number((parseFloat(ordersCompletedPercentage).toFixed(0))),
+        time2 : time2,
+        time3 : time3,
+        timeFinal : timeFinal
 
     }
 
