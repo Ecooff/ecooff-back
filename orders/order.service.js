@@ -256,7 +256,7 @@ async function getDailyBags(code) {
                 providerId : bag.providerId,
                 providerName : providers[providerIndex].name,
                 providerImg : providers[providerIndex].img,
-                providerAddress : providers[providerIndex].address,
+                providerAddress : providers[providerIndex].address[0],
                 bags: newBag
 
             })
@@ -282,138 +282,6 @@ async function getDailyBags(code) {
         finalArray
 
     }
-
-    // for (const order of orders) { //loop dentro de loop para buscar bags
-
-    //     let bags = order.bags;
-
-    //     for (const bag of bags) {
-
-    //         let productsLength = 0;
-
-    //         bagsLength++;
-
-    //         if (bag.bagStatus != 'Pendiente') bagsReadyLength++;
-
-    //         let fetchBag = await Bag.findOne({ _id: bag.bagId});
-
-    //         if (fetchBag) {//busca provider por fetchBag para traer sus datos
-
-    //             let provider = await Provider.findOne({_id : fetchBag.providerId});
-
-    //             if (!provider) throw 'hubo un error al buscar los proveedores de las bags';
-
-    //             let
-    //                 providerId = provider._id,
-    //                 providerName = provider.name,
-    //                 providerImg = provider.img,
-    //                 providerAddress = provider.address,
-    //                 products = fetchBag.products;
-
-    //             for (const product of products) productsLength += product.quantity;
-    //             //productsLength es cantidad total de productos, no el length
-    //             bagArray.push({
-
-    //                 orderId : order._id,
-    //                 bagId : fetchBag._id,
-    //                 productsLength : productsLength,
-    //                 status : bag.bagStatus,
-    //                 providerId : providerId,
-    //                 providerName : providerName,
-    //                 providerImg : providerImg,
-    //                 providerAddress : providerAddress
-                    
-    //             });
-
-    //         } else throw 'hubo un problema al reconocer las bags de uno de los pedidos';
-
-    //     }
-
-    // }
-
-    // let finalArray = [];
-
-    // for (const bag of bagArray) { 
-    //     // explicacion de este for: si el proveedor de la bag ya esta presente,
-    //     // se pushea la bag como subdocumento de ese proveedor.
-    //     // si todavia no esta el proveedor, se crea un documento del nuevo prov
-
-    //     let itemIndex = finalArray.findIndex(p => p.providerId == bag.providerId.toString());
-
-    //     if(itemIndex == -1) {
-
-    //         finalArray.push({
-
-    //             providerId : bag.providerId.toString(),
-    //             providerName : bag.providerName,
-    //             providerImg : bag.providerImg,
-    //             providerAddress : bag.providerAddress[0],
-    //             bags: [
-    //                 {
-
-    //                     orderId : bag.orderId,
-    //                     bagId : bag.bagId,
-    //                     productsLength : bag.productsLength,
-    //                     status : bag.status
-
-    //                 }
-    //             ]
-    //         })
-
-    //     } else {
-
-    //         finalArray[itemIndex].bags.push({
-
-    //             orderId : bag.orderId,
-    //             bagId : bag.bagId,
-    //             productsLength : bag.productsLength,
-    //             status : bag.status
-
-    //         })
-    //     }
-    // }
-
-    // let 
-    //     bagsLengthPerProv = 0,
-    //     bagsReadyLengthPerProv = 0,
-    //     bagsReadyPercentagePerProv = 0,
-    //     bagsReadyPerProv = 0;
-
-    // for (const provider of finalArray) { //calcula length de bags per prov y ready bags
-
-    //     let bags = provider.bags;
-
-    //     bagsLengthPerProv = 0;
-    //     bagsReadyLengthPerProv = 0;
-
-
-    //     for (const bag of bags) {
-
-    //         bagsLengthPerProv++;
-
-    //         if (bag.status != 'Pendiente') bagsReadyLengthPerProv++;
-
-    //     }
-
-    //     bagsReadyPercentagePerProv = bagsReadyLengthPerProv * 100 / bagsLengthPerProv;
-
-    //     bagsReadyPerProv = Number((parseFloat(bagsReadyPercentagePerProv).toFixed(0)));
-
-    //     provider.bagsReady = bagsReadyPerProv;
-
-    // }
-
-    // bagsReadyPercentage = bagsReadyLength * 100 / bagsLength;
-
-    // if(bagsReadyLength == 0 || bagsLength == 0) bagsReadyPercentage = 0;
-
-    // return {
-
-    //     bagsReady : Number(bagsReadyPercentage.toFixed(0)),
-    //     finalArray
-
-    // }
-
 }
 
 async function getDeliveryScreenData(status) {
