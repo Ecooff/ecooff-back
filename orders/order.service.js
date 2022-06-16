@@ -231,11 +231,12 @@ async function getDailyBags(code) {
 
             bag.status = orders[orderIndex].bags[statusIndex].bagStatus;
 
-        bag.status == 'Lista' && bagsReadyLength++;
+        bag.status == 'Lista' && bagsReadyLength++
 
         let newBag = [
             {
                 _id : bag._id,
+                bagId : bag._id,
                 status : bag.status,
                 products : bag.products,
                 orderId : bag.orderId,
