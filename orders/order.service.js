@@ -120,7 +120,8 @@ async function getDailyOrdersLength() {
         retrieveds = (groupedOrders.Recogida || []),
         completeds = (groupedOrders.Completada || []);
 
-        let readyLength = readys.length,
+    let 
+        readyLength = readys.length,
         retrievedLength = retrieveds.length,
         completedLength = completeds.length,
 
@@ -144,8 +145,6 @@ async function getDailyOrdersLength() {
 
     const providers = await Provider.find({_id : providersId});
 
-
-
     return {
 
         ordersLength : orders.length,
@@ -155,108 +154,13 @@ async function getDailyOrdersLength() {
         ordersRetrieved : Number((parseFloat(ordersRetrievedPercentage + ordersCompletedPercentage).toFixed(0))),
         ordersCompleted : Number((parseFloat(ordersCompletedPercentage).toFixed(0)))
 
-
     };
-
-}
-
-async function shippingHome() {
-
-    let time1 = new Date().getTime(),
-        time2,
-        time3,
-        timeFinal;
-
-    const orders = await Order.find({
-        $or: [
-            {
-                $and: [
-                    {status: {$in: ['Pendiente', 'Lista', 'Recogida']}},
-                    {date: {$lt: startOfDay(new Date())}}
-                ]
-            },
-            {
-                $and: [
-                    {status: 'Completada'},
-                    {dateOfCompletion: startOfDay(new Date())}
-                ]
-            }
-        ]        
-    });
-
-    time2 = new Date().getTime() - time1;
-
-    let 
-        ordersLength = orders.length,
-        bagsLength = 0,
-        providersLength = 0,
-        ordersReadyLength = 0,
-        ordersRetrievedLength = 0,
-        ordersCompletedLength = 0,
-        ordersReadyPercentage = 0,
-        ordersRetrievedPercentage = 0,
-        ordersCompletedPercentage = 0;
-
-    if (!orders) throw 'no hay ordenes hoy';
-
-    for (const [i, order] of orders.entries()) {
-
-        if (order.status == 'Lista') ordersReadyLength++;
-
-        if (order.status == 'Recogida') ordersRetrievedLength++;
-
-        if (order.status == 'Completada') ordersCompletedLength++;
-
-
-        let bags = order.bags;
-
-        bagsLength += bags.length;
-
-        for (const [j, bag] of bags.entries()) {
-            
-            let fetchBag = await Bag.findOne({ _id: bag.bagId});
-
-            if (!fetchBag) throw 'hubo un problema al reconocer las bags de uno de los pedidos';
-
-            let fetchBagProvider = await Provider.findOne({_id : ObjectId(fetchBag.providerId)});
-
-            if (!fetchBagProvider) throw 'Hubo un problema al buscar el proveedor de uno de los pedidos';
-
-            providersLength++;
-
-            j == bags.length-1 && i == orders.length-1 ? time3 = new Date().getTime() - time1 - time2 : null;
-
-        }
-
-    }
-
-    ordersReadyPercentage = ordersReadyLength * 100 / ordersLength;
-    ordersRetrievedPercentage = ordersRetrievedLength * 100 / ordersLength;
-    ordersCompletedPercentage = ordersCompletedLength * 100 / ordersLength;
-
-    timeFinal = new Date().getTime() - time1 - time2 - time3;
-
-    return {
-
-        ordersLength,
-        providersLength,
-        bagsLength,
-        ordersReady : Number((parseFloat(ordersReadyPercentage + ordersRetrievedPercentage + ordersCompletedPercentage).toFixed(0))),
-        ordersRetrieved : Number((parseFloat(ordersRetrievedPercentage + ordersCompletedPercentage).toFixed(0))),
-        ordersCompleted : Number((parseFloat(ordersCompletedPercentage).toFixed(0))),
-        time2 : time2,
-        time3 : time3,
-        timeFinal : timeFinal
-
-    }
 
 }
 
 async function getDailyBags(code) {
 
     let orders;
-
-    console.log(code)
 
     switch(code) {
 
@@ -298,140 +202,79 @@ async function getDailyBags(code) {
         break;
 
         default:
-            return 'opciones: 0 = todos, 1 = listas, 2= recogidas';
+            return 'opciones: 0 = todos, 1 = listas, 2= recogidas'; // trae bags
 
     }
 
-    let
-        bagsLength = 0,
-        bagsReadyLength = 0,
-        bagsReadyPercentage = 0,
-        bagArray = [];
+    if (!orders) throw 'no hay ordenes hoy';
 
-    if (orders) {
+    let ordersId = orders.map((order) => order._id);
 
-        for (const order of orders) {
+    const bags = await Bag.find({orderId : ordersId});
 
-            let bags = order.bags;
+    let providersId = [];
 
-            for (const bag of bags) {
+    bags.forEach((bag) => !providersId.includes(bag.providerId) && providersId.push(bag.providerId));
 
-                let productsLength = 0;
+    const providers = await Provider.find({_id : providersId});
 
-                bagsLength++;
+    let 
+        finalArray = [],
+        bagsReadyLength = 0;
 
-                if (bag.bagStatus != 'Pendiente') bagsReadyLength++;
+    bags.forEach((bag) => {
 
-                let fetchBag = await Bag.findOne({ _id: bag.bagId});
+        let
+            bagIndex = finalArray.findIndex(b => b.providerId == bag.providerId),
+            orderIndex = orders.findIndex(o => o._id == bag.orderId),
+            statusIndex = orders[orderIndex].bags.findIndex(s => s.bagId == bag._id);
 
-                if (fetchBag) {
+            bag.status = orders[orderIndex].bags[statusIndex].bagStatus;
 
-                    let provider = await Provider.findOne({_id : fetchBag.providerId});
+        bag.status == 'Lista' && bagsReadyLength++;
 
-                    if (!provider) throw 'hubo un error al buscar los proveedores de las bags';
-
-                    let
-                        providerId = provider._id,
-                        providerName = provider.name,
-                        providerImg = provider.img,
-                        providerAddress = provider.address,
-                        products = fetchBag.products;
-
-                    for (const product of products) productsLength += product.quantity;
-
-                    bagArray.push({
-
-                        orderId : order._id,
-                        bagId : fetchBag._id,
-                        productsLength : productsLength,
-                        status : bag.bagStatus,
-                        providerId : providerId,
-                        providerName : providerName,
-                        providerImg : providerImg,
-                        providerAddress : providerAddress
-                        
-                    });
-
-                } else throw 'hubo un problema al reconocer las bags de uno de los pedidos';
-
+        let newBag = [
+            {
+                _id : bag._id,
+                status : bag.status,
+                products : bag.products,
+                orderId : bag.orderId,
+                providerId : bag.providerId
             }
+        ]
 
-        }
+        if(bagIndex > -1) {
 
-    } else throw 'no hay ordenes hoy';
-
-    let finalArray = [];
-
-    for (const bag of bagArray) {
-
-        let itemIndex = finalArray.findIndex(p => p.providerId == bag.providerId.toString());
-
-        if(itemIndex == -1) {
-
-            finalArray.push({
-
-                providerId : bag.providerId.toString(),
-                providerName : bag.providerName,
-                providerImg : bag.providerImg,
-                providerAddress : bag.providerAddress[0],
-                bags: [
-                    {
-
-                        orderId : bag.orderId,
-                        bagId : bag.bagId,
-                        productsLength : bag.productsLength,
-                        status : bag.status
-
-                    }
-                ]
-            })
+            finalArray[bagIndex].bags.push(newBag[0])
 
         } else {
 
-            finalArray[itemIndex].bags.push({
+            let providerIndex = providers.findIndex(p => p._id == bag.providerId);
+            
+            finalArray.push({
 
-                orderId : bag.orderId,
-                bagId : bag.bagId,
-                productsLength : bag.productsLength,
-                status : bag.status
+                providerId : bag.providerId,
+                providerName : providers[providerIndex].name,
+                providerImg : providers[providerIndex].img,
+                providerAddress : providers[providerIndex].address,
+                bags: newBag
 
             })
-        }
-    }
-
-    let 
-        bagsLengthPerProv = 0,
-        bagsReadyLengthPerProv = 0,
-        bagsReadyPercentagePerProv = 0,
-        bagsReadyPerProv = 0;
-
-    for (const provider of finalArray) {
-
-        let bags = provider.bags;
-
-        bagsLengthPerProv = 0;
-        bagsReadyLengthPerProv = 0;
-
-
-        for (const bag of bags) {
-
-            bagsLengthPerProv++;
-
-            if (bag.status != 'Pendiente') bagsReadyLengthPerProv++;
 
         }
 
-        bagsReadyPercentagePerProv = bagsReadyLengthPerProv * 100 / bagsLengthPerProv;
+    });
 
-        bagsReadyPerProv = Number((parseFloat(bagsReadyPercentagePerProv).toFixed(0)));
+    finalArray.forEach((provider, i) => {
 
-        provider.bagsReady = bagsReadyPerProv;
+        let readyLength = provider.bags.filter(item => item.status == 'Lista').length,
+            provReadyPercentage = readyLength * 100 / provider.bags.length;
 
-    }
+        finalArray[i].bagsReady =  Number(provReadyPercentage.toFixed(0));
 
-    bagsReadyPercentage = bagsReadyLength * 100 / bagsLength;
+    });
 
-    if(bagsReadyLength == 0 || bagsLength == 0) bagsReadyPercentage = 0;
+    let bagsReadyPercentage = bagsReadyLength * 100 / bags.length;
 
     return {
 
@@ -439,6 +282,137 @@ async function getDailyBags(code) {
         finalArray
 
     }
+
+    // for (const order of orders) { //loop dentro de loop para buscar bags
+
+    //     let bags = order.bags;
+
+    //     for (const bag of bags) {
+
+    //         let productsLength = 0;
+
+    //         bagsLength++;
+
+    //         if (bag.bagStatus != 'Pendiente') bagsReadyLength++;
+
+    //         let fetchBag = await Bag.findOne({ _id: bag.bagId});
+
+    //         if (fetchBag) {//busca provider por fetchBag para traer sus datos
+
+    //             let provider = await Provider.findOne({_id : fetchBag.providerId});
+
+    //             if (!provider) throw 'hubo un error al buscar los proveedores de las bags';
+
+    //             let
+    //                 providerId = provider._id,
+    //                 providerName = provider.name,
+    //                 providerImg = provider.img,
+    //                 providerAddress = provider.address,
+    //                 products = fetchBag.products;
+
+    //             for (const product of products) productsLength += product.quantity;
+    //             //productsLength es cantidad total de productos, no el length
+    //             bagArray.push({
+
+    //                 orderId : order._id,
+    //                 bagId : fetchBag._id,
+    //                 productsLength : productsLength,
+    //                 status : bag.bagStatus,
+    //                 providerId : providerId,
+    //                 providerName : providerName,
+    //                 providerImg : providerImg,
+    //                 providerAddress : providerAddress
+                    
+    //             });
+
+    //         } else throw 'hubo un problema al reconocer las bags de uno de los pedidos';
+
+    //     }
+
+    // }
+
+    // let finalArray = [];
+
+    // for (const bag of bagArray) { 
+    //     // explicacion de este for: si el proveedor de la bag ya esta presente,
+    //     // se pushea la bag como subdocumento de ese proveedor.
+    //     // si todavia no esta el proveedor, se crea un documento del nuevo prov
+
+    //     let itemIndex = finalArray.findIndex(p => p.providerId == bag.providerId.toString());
+
+    //     if(itemIndex == -1) {
+
+    //         finalArray.push({
+
+    //             providerId : bag.providerId.toString(),
+    //             providerName : bag.providerName,
+    //             providerImg : bag.providerImg,
+    //             providerAddress : bag.providerAddress[0],
+    //             bags: [
+    //                 {
+
+    //                     orderId : bag.orderId,
+    //                     bagId : bag.bagId,
+    //                     productsLength : bag.productsLength,
+    //                     status : bag.status
+
+    //                 }
+    //             ]
+    //         })
+
+    //     } else {
+
+    //         finalArray[itemIndex].bags.push({
+
+    //             orderId : bag.orderId,
+    //             bagId : bag.bagId,
+    //             productsLength : bag.productsLength,
+    //             status : bag.status
+
+    //         })
+    //     }
+    // }
+
+    // let 
+    //     bagsLengthPerProv = 0,
+    //     bagsReadyLengthPerProv = 0,
+    //     bagsReadyPercentagePerProv = 0,
+    //     bagsReadyPerProv = 0;
+
+    // for (const provider of finalArray) { //calcula length de bags per prov y ready bags
+
+    //     let bags = provider.bags;
+
+    //     bagsLengthPerProv = 0;
+    //     bagsReadyLengthPerProv = 0;
+
+
+    //     for (const bag of bags) {
+
+    //         bagsLengthPerProv++;
+
+    //         if (bag.status != 'Pendiente') bagsReadyLengthPerProv++;
+
+    //     }
+
+    //     bagsReadyPercentagePerProv = bagsReadyLengthPerProv * 100 / bagsLengthPerProv;
+
+    //     bagsReadyPerProv = Number((parseFloat(bagsReadyPercentagePerProv).toFixed(0)));
+
+    //     provider.bagsReady = bagsReadyPerProv;
+
+    // }
+
+    // bagsReadyPercentage = bagsReadyLength * 100 / bagsLength;
+
+    // if(bagsReadyLength == 0 || bagsLength == 0) bagsReadyPercentage = 0;
+
+    // return {
+
+    //     bagsReady : Number(bagsReadyPercentage.toFixed(0)),
+    //     finalArray
+
+    // }
 
 }
 
