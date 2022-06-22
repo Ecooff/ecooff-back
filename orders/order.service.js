@@ -185,10 +185,12 @@ async function getDailyBags(code) {
 
     orders = await Order.find({
         $and: [
-            {status: {$in: options}},
+            {'bags.bagStatus': {$in: options}},
             {date: {$lt: startOfDay(new Date())}}
         ]      
     });
+
+    console.log(orders);
 
     if (!orders) throw 'no hay ordenes hoy';
 
@@ -320,7 +322,7 @@ async function getDeliveryScreenData(status) {
     for (const item of orders) {
 
         if (item.status == 'Completada') ordersCompletedLength++;
-
+ 
         let bags = item.bags;
 
         bagsLength = bags.length;
