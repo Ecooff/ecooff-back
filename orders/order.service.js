@@ -190,13 +190,27 @@ async function getDailyBags(code) {
         ]      
     });
 
-    console.log(orders);
-
     if (!orders) throw 'no hay ordenes hoy';
 
-    let ordersId = orders.map((order) => order._id);
+    let bagsId = [];
 
-    const bags = await Bag.find({orderId : ordersId});
+    orders.forEach((order) => {
+
+        order.bags.forEach((bag) => {
+
+            if (options.includes(bag.bagStatus)) {
+
+                const bagId = bag.bagId;
+
+                bagsId.push(bagId);
+
+            }
+
+        })
+
+    })
+
+    const bags = await Bag.find({_id : bagsId});
 
     let providersId = [];
 
