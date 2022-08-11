@@ -30,7 +30,7 @@ app.use('/api/shipping/auth', require('./shippingUsers/shippingUser.controller')
 app.use(errorHandler);
 
 // start server
-const port = process.env.PORT || 80;
+const port = process.env.PORT || 3000;
 const server = app.listen(port, function () {
     console.log('Server running on port ' + port);
 });
